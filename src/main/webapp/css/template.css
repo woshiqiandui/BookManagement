@@ -1,0 +1,372 @@
+#navigation {
+	/* 	position:absolute;
+	left:0;top:0px;
+	 border: 5px solid  green;  
+	  width: 100%;
+height: 60px;
+  */
+	
+}
+/**标题部分的css*/
+ul#nav {
+	position: absolute;
+	left: 0;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: rgb(227, 228, 229);
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+ul#nav li {
+	display: inline;
+	height: 60px;
+}
+
+ul#nav li a {
+	display: inline-block;
+	padding: 0 20px;
+	height: 60px;
+	line-height: 60px;
+	color: #aaa;
+	font-size: 16px;
+	text-decoration: none
+}
+
+ul#nav li a:HOVER {
+	background-color: #aaa;
+	color: rgb(191, 18, 31);
+}
+/*重新设置欢迎文字的效果*/
+ul#nav li a#welcome {
+	font-size: 20px;
+	color: rgb(214, 5, 21);
+}
+
+ul#nav li a#welcome:hover {
+	background-color: rgb(191, 18, 31);
+	color: #FFF;
+}
+
+ul#nav li span:HOVER {
+	color: rgb(229, 46, 203);
+}
+
+/**常用的css*/
+/*1.文本框的红色显示 */
+.input_text_red {
+	border: 1px solid rgb(214, 5, 21);
+	height: 30px;
+	font-size: 18px;
+	/*宽度根据需要设置*/
+}
+
+.input_text_red:FOCUS {
+	outline: none;
+	border: 1px solid red;
+}
+
+.input_text_blue {
+	border: 1px solid rgb(13, 8, 160);
+	height: 30px;
+	font-size: 18px;
+	/*宽度根据需要设置*/
+}
+
+.input_text_blue:FOCUS {
+	outline: none;
+	border: 1px solid blue;
+}
+/*2.1搜索按钮*/
+.input_button_search {
+	background-color: rgb(214, 5, 21);
+	color: #fff;
+	border: none;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	margin: 2px;
+	width: 80px;
+	height: 31px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	/*设置圆角*/
+	border-radius: 4px;
+	/*块状内联呈现*/
+	display: inline-block;
+	/*变指针*/
+	cursor: pointer;
+}
+
+.input_button_search:HOVER {
+	background-color: red;
+}
+
+.input_button_search:FOCUS {
+	background-color: rgb(224, 3, 18);
+	/* 取消按下的边框效果*/
+	outline: none;
+}
+/*2.1登陆按钮*/
+.input_button_login {
+	background-color: rgb(214, 5, 21);
+	color: #fff;
+	border: none;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	margin: 2px;
+	width: 160px;
+	height: 31px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	/*设置圆角*/
+	border-radius: 4px;
+	/*块状内联呈现*/
+	display: inline-block;
+	/*变指针*/
+	cursor: pointer;
+}
+
+.input_button_login:HOVER {
+	background-color: red;
+}
+
+.input_button_login:FOCUS {
+	background-color: rgb(224, 3, 18);
+	/* 取消按下的边框效果*/
+	outline: none;
+}
+
+/*3.提交按钮*/
+.input_button_submit {
+	background-color: rgb(10, 108, 216);
+	color: #fff;
+	border: none;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	margin: 2px;
+	width: 80px;
+	height: 31px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	/*设置圆角*/
+	border-radius: 8px;
+	/*块状内联呈现*/
+	display: inline-block;
+	/*变指针*/
+	cursor: pointer;
+}
+
+.input_button_submit:HOVER {
+	background-color: blue;
+}
+
+.input_button_submit:FOCUS {
+	background-color: rgb(11, 109, 218);
+	/*取消按下的边框效果*/
+	outline: none;
+}
+
+.input_button_big_submit {
+	background-color: rgb(10, 108, 216);
+	color: #fff;
+	border: none;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	margin: 2px;
+	width: 160px;
+	height: 31px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	/*设置圆角*/
+	border-radius: 8px;
+	/*块状内联呈现*/
+	display: inline-block;
+	/*变指针*/
+	cursor: pointer;
+}
+
+.input_button_big_submit:HOVER {
+	background-color: blue;
+}
+
+.input_button_big_submit:FOCUS {
+	background-color: rgb(11, 109, 218);
+	/*取消按下的边框效果*/
+	outline: none;
+}
+/*4.修改按钮*/
+.input_button_modify {
+	background-color: rgb(16, 180, 29);
+	color: #fff;
+	border: none;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	margin: 2px;
+	width: 80px;
+	height: 31px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	/*设置圆角*/
+	border-radius: 8px;
+	/*块状内联呈现*/
+	display: inline-block;
+	/*变指针*/
+	cursor: pointer;
+}
+
+.input_button_modify:FOCUS {
+	background-color: green;
+}
+
+.input_button_modify:HOVER {
+	background-color: rgb(21, 196, 28);
+	/*取消按下的边框效果*/
+	outline: none;
+}
+.input_button_big_modify {
+	background-color: rgb(16, 180, 29);
+	color: #fff;
+	border: none;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	margin: 2px;
+	width: 180px;
+	height: 31px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	/*设置圆角*/
+	border-radius: 8px;
+	/*块状内联呈现*/
+	display: inline-block;
+	/*变指针*/
+	cursor: pointer;
+}
+
+.input_button_big_modify:FOCUS {
+	background-color: green;
+}
+
+.input_button_big_modify:HOVER {
+	background-color: rgb(21, 196, 28);
+	/*取消按下的边框效果*/
+	outline: none;
+}
+/*5.普通表格*/
+.simpletable {
+	border: 1px solid;
+	border-collapse: collapse;
+	text-align: center;
+	margin: 0px auto;
+}
+
+.simpletable tr {
+	border: 1px solid;
+}
+
+.simpletable th {
+	border: 1px solid;
+	padding: 3px;
+	background-color: #99CCFF;
+}
+/* .simpletable th:HOVER{
+background-color: #ccc;
+} */
+.simpletable td {
+	border: 1px solid;
+	/* background-color: #eee; */
+}
+/*6.悬停设置颜色 */
+.simpletable tr.hover {
+	background-color: #FFFF33;
+}
+/*7.表格单双行颜色设置 */
+/*奇数行*/
+.simpletable tr.odd {
+	background-color: #FFCC33;
+}
+/*偶数行*/
+.simpletable tr.even {
+	background-color: #FFFFCC;
+}
+/*主体部分的背景色*/
+ .main{
+	position: absolute;
+	left: 0;
+	top: 64px;
+	width: 100%;
+  	height: 1100px; 
+	background-color: rgb(246, 246, 246);
+} 
+/*8.普通下拉选框*/
+.normal_select {
+	background: transparent;
+	width: 100px;
+	padding: 3px;
+	font-size: 16px;
+	border: 1px solid rgb(214, 5, 21);
+	height: 33px;
+	/*设置按钮水平对齐*/
+	vertical-align: middle;
+	/*假装对齐*/
+	padding: 0 0 0 20px;
+}
+
+.normal_select:FOCUS {
+	border: 1px solid blue;
+}
+/*9.普通标签*/
+.normal_label {
+	font-family: "楷体";
+	font-size: 20px;
+}
+/*10.普通的水平线*/
+.normal_hr {
+	border: 1px solid #ccc;
+}
+/*11.手动居中 */
+.trycenter {
+	position: absolute;
+	left: 50%;
+	top: 17%;
+	margin-left: -100px;
+	margin-top: -50px;
+}
+/*12.登陆成功信息提示 */
+.success_info{
+	background-color:rgb(153,204,102);
+	text-align:center; 
+	margin: 0 auto; 
+	padding: 30px;
+	width:260px;
+	height:20px;
+	color:rgb(255,255,102);
+}
+.info{
+	background-color:rgb(153,204,102);
+	text-align:center; 
+	margin: 0 auto; 
+	padding: 30px;
+	width:260px;
+	height:20px;
+	color:rgb(255,255,102);
+}
+/*13.警告的提示*/ 
+.warning_info{
+   background-color:rgb(255,102,102);
+ 	text-align:center; 
+	margin: 0 auto; 
+	padding: 30px;
+	color:rgb(0,153,204); 
+	width:260px;
+	height:20px;
+	border:1px solid rgb(204,204,204);
+}
+ 
+ 

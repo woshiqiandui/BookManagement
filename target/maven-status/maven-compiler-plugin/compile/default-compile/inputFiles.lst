@@ -1,0 +1,14 @@
+C:\Users\steven\workspace3\BookManagement\src\main\java\dao\AdminDao.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\dao\BookDao.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\dao\ReaderDao.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\entities\Borrow_history.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\dao\Borrow_historyDao.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\entities\Person.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\entities\Admin.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\action\ValidateCode.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\action\ActionServlet.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\tools\BookCheck.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\dao\DBUtility.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\entities\Book.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\entities\Reader.java
+C:\Users\steven\workspace3\BookManagement\src\main\java\tools\MD5Encrypt.java
