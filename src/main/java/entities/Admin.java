@@ -1,14 +1,14 @@
 package entities;
 
 /**
-     * @author ³ÂÇ¨¶Ô
+     * @author é™ˆè¿å¯¹
      * Email: woshiqiandui@gmail.com
-     * @version 2017Äê9ÔÂ27ÈÕ  ÉÏÎç9:43:41
+     * @version 2017å¹´9æœˆ27æ—¥  ä¸Šåˆ9:43:41
      */
 public class Admin extends Person{ 
 	
 	/**
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @param id,name,password
 	 */
     public Admin(String id, String name,String password) {
@@ -16,16 +16,16 @@ public class Admin extends Person{
 	}
 	
   /**
-   * function£ºÖØĞ´toString·½·¨
-   * @author ³ÂÇ¨¶Ô  
+   * functionï¼šé‡å†™toStringæ–¹æ³•
+   * @author é™ˆè¿å¯¹  
    * @return String 
    */
 	public String toString() {
 		return "Admin [id=" + id + ", name=" + name + "]";
 	}
 	/**
-	 * function:ÖØĞ´hashCode·½·¨
-	 * @author ³ÂÇ¨¶Ô
+	 * function:é‡å†™hashCodeæ–¹æ³•
+	 * @author é™ˆè¿å¯¹
 	 * @return result
 	 */
 	public int hashCode() {
@@ -36,8 +36,8 @@ public class Admin extends Person{
 		return result;
 	}
 	/**
-	 * function:ÖØĞ´equals·½·¨
-	 * @author ³ÂÇ¨¶Ô
+	 * function:é‡å†™equalsæ–¹æ³•
+	 * @author é™ˆè¿å¯¹
 	 * @param obj
 	 * @return boolean
 	 */

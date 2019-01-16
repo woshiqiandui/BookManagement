@@ -11,11 +11,11 @@ import java.util.List;
 import entities.Book;
 
 /**
- * Group 2 Class Java06 Group member:ÀîìÏ¡¢½­ÒËÈğ¡¢º«ÔÆÌÎ¡¢ÀîÃ·¡¢³ÂÇ¨¶Ô function:±í¸ñBookµÄÊı¾İ¿â²Ù×÷¹¤¾ßÀà
+ * Group 2 Class Java06 Group member:æç…œã€æ±Ÿå®œç‘ã€éŸ©äº‘æ¶›ã€ææ¢…ã€é™ˆè¿å¯¹ function:è¡¨æ ¼Bookçš„æ•°æ®åº“æ“ä½œå·¥å…·ç±»
  * 
- * @author ÀîìÏ
- * @version 2017-9-3 ÉÏÎç0:53:32 function: ·â×°¶ÔÊé¼®±íµÄ²éÑ¯¡¢É¾³ı¡¢Ôö¼Ó¡¢¸üĞÂµÄ·½·¨
- *          introduction:ÔÚ²éÑ¯ÖĞ£¬¶ÔÓÚÊéÃû×Ö¡¢³ö°æÉç¡¢×÷Õß ÎÒÃÇ²ÉÓÃÁËÄ£ºı²éÑ¯,ÆäËû²éÑ¯ÔËÓÃÁË¾«×¼²éÑ¯
+ * @author æç…œ
+ * @version 2017-9-3 ä¸Šåˆ0:53:32 function: å°è£…å¯¹ä¹¦ç±è¡¨çš„æŸ¥è¯¢ã€åˆ é™¤ã€å¢åŠ ã€æ›´æ–°çš„æ–¹æ³•
+ *          introduction:åœ¨æŸ¥è¯¢ä¸­ï¼Œå¯¹äºä¹¦åå­—ã€å‡ºç‰ˆç¤¾ã€ä½œè€… æˆ‘ä»¬é‡‡ç”¨äº†æ¨¡ç³ŠæŸ¥è¯¢,å…¶ä»–æŸ¥è¯¢è¿ç”¨äº†ç²¾å‡†æŸ¥è¯¢
  */
 public class BookDao {
 
@@ -25,22 +25,22 @@ public class BookDao {
 	List<Book> books = null;
 
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * 
 	 * @throws SQLException
 	 */
 	public BookDao() throws SQLException {
 		try {
-			con = DBUtility.getConnection();// »ñµÃÊı¾İ¿âÁ¬½Ó
+			con = DBUtility.getConnection();// è·å¾—æ•°æ®åº“è¿æ¥
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * function:Í¨¹ırs²»¶ÏÌí¼Óbook
+	 * function:é€šè¿‡rsä¸æ–­æ·»åŠ book
 	 * 
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @param rs2
 	 * @return
 	 * @return books
@@ -60,9 +60,9 @@ public class BookDao {
 
 	}
 	/**
-	 * function:Í¨¹ırs²»¶ÏÌí¼Óbook,Í¼ÊéĞÅÏ¢Ö»ÏÔÊ¾²¿·Ö
+	 * function:é€šè¿‡rsä¸æ–­æ·»åŠ book,å›¾ä¹¦ä¿¡æ¯åªæ˜¾ç¤ºéƒ¨åˆ†
 	 * 
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @param rs2
 	 * @return
 	 * @return books
@@ -78,7 +78,7 @@ public class BookDao {
 			}
 		}
 		String shortInfo = null;
-		//¶ÔÓÚ¹ı³¤µÄÊı¾İĞèÒª½øĞĞ²¿·ÖÏÔÊ¾
+		//å¯¹äºè¿‡é•¿çš„æ•°æ®éœ€è¦è¿›è¡Œéƒ¨åˆ†æ˜¾ç¤º
 		if( values[9].length()>50) { 
 			shortInfo =  values[9].substring(0, 50)+"...";
 		}else {
@@ -89,11 +89,11 @@ public class BookDao {
 
 	}
 	/**
-	 * function:»ñµÃËùÓĞÊé¼®µÄĞÅÏ¢
+	 * function:è·å¾—æ‰€æœ‰ä¹¦ç±çš„ä¿¡æ¯
 	 * 
 	 * @param null
 	 * @return ResultSet
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public ResultSet selectAll() throws SQLException {
@@ -109,11 +109,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:»ñµÃËùÓĞÊé¼®µÄĞÅÏ¢µÄ¼¯ºÏ
+	 * function:è·å¾—æ‰€æœ‰ä¹¦ç±çš„ä¿¡æ¯çš„é›†åˆ
 	 * 
 	 * @param null
 	 * @return List<Book>
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public List<Book> selectAllWithInfo() throws SQLException {
@@ -123,7 +123,7 @@ public class BookDao {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (SQLException e) {
@@ -133,99 +133,99 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İidÉ¾³ıÊé¼®
+	 * function:æ ¹æ®idåˆ é™¤ä¹¦ç±
 	 * 
 	 * @param String
 	 *            id
 	 * @return Boolean
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public Boolean deleteBookById(String id) throws SQLException {
-		int isDelete = 0;// ³õÊ¼»¯Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±íÓĞÓ°Ïì
+		int isDelete = 0;// åˆå§‹åŒ–ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨æœ‰å½±å“
 		try {
 			String sql = "delete from book where id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			isDelete = ps.executeUpdate();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			isDelete = ps.executeUpdate();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (isDelete > 0) {
-			// Èç¹ûÉ¾³ı³É¹¦
+			// å¦‚æœåˆ é™¤æˆåŠŸ
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * function:¸ù¾İÊéÃûÉ¾³ıÊé¼®
+	 * function:æ ¹æ®ä¹¦ååˆ é™¤ä¹¦ç±
 	 * 
 	 * @param String
 	 *            name
 	 * @return Boolean
-	 * @author ÀîìÏ * ´Ë·½·¨²»½¨ÒéÊ¹ÓÃ
+	 * @author æç…œ * æ­¤æ–¹æ³•ä¸å»ºè®®ä½¿ç”¨
 	 * @throws SQLException
 	 */
 	@Deprecated
 	public Boolean deleteBookByName(String name) throws SQLException {
-		int isDelete = 0;// ³õÊ¼»¯Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±íÓĞÓ°Ïì
+		int isDelete = 0;// åˆå§‹åŒ–ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨æœ‰å½±å“
 		try {
 			String sql = "delete from book where name = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, name);
-			isDelete = ps.executeUpdate();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			isDelete = ps.executeUpdate();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (isDelete > 0) {
-			// Èç¹ûÉ¾³ı³É¹¦
+			// å¦‚æœåˆ é™¤æˆåŠŸ
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * function:¸ù¾İ¹ú¼Ê±ê×¼ºÅÉ¾³ıÊé¼®
+	 * function:æ ¹æ®å›½é™…æ ‡å‡†å·åˆ é™¤ä¹¦ç±
 	 * 
 	 * @param String
 	 *            name
 	 * @return Boolean
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public Boolean deleteBookByISBN(String ISBN) throws SQLException {
-		int isDelete = 0;// ³õÊ¼»¯Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±íÓĞÓ°Ïì
+		int isDelete = 0;// åˆå§‹åŒ–ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨æœ‰å½±å“
 		try {
 			String sql = "delete from book where ISBN = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, ISBN);
-			isDelete = ps.executeUpdate();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			isDelete = ps.executeUpdate();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (isDelete > 0) {
-			// Èç¹ûÉ¾³ı³É¹¦
+			// å¦‚æœåˆ é™¤æˆåŠŸ
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * function:Ôö¼ÓÒ»ÌõÊé¼®Êı¾İµ½book±í
+	 * function:å¢åŠ ä¸€æ¡ä¹¦ç±æ•°æ®åˆ°bookè¡¨
 	 * 
 	 * @param Book
 	 *            book
 	 * @return Boolean
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public Boolean insertBook(Book book) throws SQLException {
-		int isInsert = 0;// ³õÊ¼Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±í²úÉúÓ°Ïì
+		int isInsert = 0;// åˆå§‹ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨äº§ç”Ÿå½±å“
 		try {
 			String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
-			// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			ps.setString(1, book.getId().trim());
 			ps.setString(2, book.getName().trim());
 			ps.setString(3, book.getWriter().trim());
@@ -233,7 +233,7 @@ public class BookDao {
 			ps.setString(5, book.getPublisher().trim());
 			ps.setString(6, book.getCheck_in_String().trim());
 			ps.setString(7, book.getPublish_String().trim());
-			ps.setString(8, book.getPrice());// priceÊÇfloatÀàĞÍ£¬ĞèÒªµ÷ÓÃÎÒÃÇĞ´¹ıµÄ·½·¨½«Æä×ª»»Îª×Ö·û´®
+			ps.setString(8, book.getPrice());// priceæ˜¯floatç±»å‹ï¼Œéœ€è¦è°ƒç”¨æˆ‘ä»¬å†™è¿‡çš„æ–¹æ³•å°†å…¶è½¬æ¢ä¸ºå­—ç¬¦ä¸²
 			ps.setString(9, book.getType().trim());
 			ps.setString(10, book.getOther().trim());
 			isInsert = ps.executeUpdate();
@@ -248,7 +248,7 @@ public class BookDao {
 	}
 
 	/**
-	 * function: Í¨¹ıÊé±àºÅÅĞ¶ÏÊéÊÇ·ñ´æÔÚ
+	 * function: é€šè¿‡ä¹¦ç¼–å·åˆ¤æ–­ä¹¦æ˜¯å¦å­˜åœ¨
 	 * 
 	 * @param Id
 	 * @return
@@ -262,7 +262,7 @@ public class BookDao {
 			}
 			String sql = "select * from book where id = ?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, id.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, id.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				isExist = true;
@@ -275,7 +275,7 @@ public class BookDao {
 	}
 
 	/**
-	 * function: Í¨¹ıÊéISBNÅĞ¶ÏÊéÊÇ·ñ´æÔÚ
+	 * function: é€šè¿‡ä¹¦ISBNåˆ¤æ–­ä¹¦æ˜¯å¦å­˜åœ¨
 	 * 
 	 * @param Id
 	 * @return
@@ -289,7 +289,7 @@ public class BookDao {
 			}
 			String sql = "select * from book where ISBN = ?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, ISBN.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, ISBN.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				isExist = true;
@@ -302,11 +302,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İbook_id½øĞĞ²éÑ¯ÊéµÄ×â½ğ
+	 * function:æ ¹æ®book_idè¿›è¡ŒæŸ¥è¯¢ä¹¦çš„ç§Ÿé‡‘
 	 * 
 	 * @param String
 	 *            id
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return rent
 	 * @param book_id
 	 * @throws SQLException
@@ -320,7 +320,7 @@ public class BookDao {
 			}
 			String sql = "select rent from book where id = ?";
 			ps = con.prepareStatement(sql);
-		    ps.setString(1, book_id.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+		    ps.setString(1, book_id.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			if(rs.next()) { 
 				rent = rs.getString(1);
@@ -332,11 +332,11 @@ public class BookDao {
 	}
 	
 	/**
-	 * function:¸ù¾İborrow_id½øĞĞ²éÑ¯ÊéµÄ×â½ğ
+	 * function:æ ¹æ®borrow_idè¿›è¡ŒæŸ¥è¯¢ä¹¦çš„ç§Ÿé‡‘
 	 * 
 	 * @param String
 	 *            id
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return rent
 	 * @param borrrow_id
 	 * @throws SQLException
@@ -348,10 +348,10 @@ public class BookDao {
 			if (borrow_id.isEmpty()) {
 				return null;
 			}
-			//ÕâÀïÓÃÁË¶à±í²éÑ¯,rent±ØĞëÃ÷È·ÊÇbookµÄ
+			//è¿™é‡Œç”¨äº†å¤šè¡¨æŸ¥è¯¢,rentå¿…é¡»æ˜ç¡®æ˜¯bookçš„
 			String sql = "select book.rent from book,borrow_history where borrow_id  = ?";
 			ps = con.prepareStatement(sql);
-		    ps.setString(1, borrow_id.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+		    ps.setString(1, borrow_id.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			if(rs.next()) { 
 				rent = rs.getString(1);
@@ -363,11 +363,11 @@ public class BookDao {
 	}
 	
 	/**
-	 * function:¸ù¾İBook-id½øĞĞ²éÑ¯
+	 * function:æ ¹æ®Book-idè¿›è¡ŒæŸ¥è¯¢
 	 * 
 	 * @param String
 	 *            id
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return ResultSet
 	 * @throws SQLException
 	 */
@@ -378,7 +378,7 @@ public class BookDao {
 			}
 			String sql = "select * from book where id = ? ORDER BY -id DESC";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, id.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, id.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 
 		} catch (Exception e) {
@@ -388,11 +388,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-id½øĞĞ²éÑ¯Êé¼®ĞÅÏ¢µÄ¼¯ºÏ
+	 * function:æ ¹æ®Book-idè¿›è¡ŒæŸ¥è¯¢ä¹¦ç±ä¿¡æ¯çš„é›†åˆ
 	 * 
 	 * @param String
 	 *            id
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -404,10 +404,10 @@ public class BookDao {
 			}
 			String sql = "select * from book where id = ? ORDER BY -id DESC";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, id.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, id.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -417,11 +417,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-name½øĞĞÄ£ºı²éÑ¯
+	 * function:æ ¹æ®Book-nameè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢
 	 * 
 	 * @param String
 	 *            name
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return ResultSet
 	 * @throws SQLException
 	 */
@@ -431,9 +431,9 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where name like ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + name.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + name.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -442,11 +442,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-name½øĞĞ²éÑ¯Êé¼®µÄ¼¯ÌåĞÅÏ¢
+	 * function:æ ¹æ®Book-nameè¿›è¡ŒæŸ¥è¯¢ä¹¦ç±çš„é›†ä½“ä¿¡æ¯
 	 * 
 	 * @param String
 	 *            name
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -457,12 +457,12 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where name like ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + lessname.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + lessname.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -472,11 +472,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İISBN½øĞĞ²éÑ¯
+	 * function:æ ¹æ®ISBNè¿›è¡ŒæŸ¥è¯¢
 	 * 
 	 * @param String
 	 *            ISBN
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return ResultSet
 	 * @throws SQLException
 	 */
@@ -486,9 +486,9 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where ISBN = ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, ISBN.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, ISBN.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -497,11 +497,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İISBN½øĞĞ²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢
+	 * function:æ ¹æ®ISBNè¿›è¡ŒæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯
 	 * 
 	 * @param String
 	 *            ISBN
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -512,12 +512,12 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where ISBN = ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, ISBN.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, ISBN.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -527,11 +527,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-writer½øĞĞÄ£ºı²éÑ¯
+	 * function:æ ¹æ®Book-writerè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢
 	 * 
 	 * @param String
 	 *            writer
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return ResultSet
 	 * @throws SQLException
 	 */
@@ -541,9 +541,9 @@ public class BookDao {
 		}
 		try {
 			String sql = "select * from book where writer like ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + writer.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + writer.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -552,11 +552,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-writer½øĞĞÄ£ºı²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢
+	 * function:æ ¹æ®Book-writerè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯
 	 * 
 	 * @param String
 	 *            lesswriter
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -567,12 +567,12 @@ public class BookDao {
 		}
 		try {
 			String sql = "select * from book where writer like ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + lesswriter.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + lesswriter.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -582,11 +582,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-publisher½øĞĞÄ£ºı²éÑ¯
+	 * function:æ ¹æ®Book-publisherè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢
 	 * 
 	 * @param String
 	 *            publisher
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return ResultSet
 	 * @throws SQLException
 	 */
@@ -596,9 +596,9 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where publisher like ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + publisher.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + publisher.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -607,11 +607,11 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-publisher½øĞĞÄ£ºı²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢
+	 * function:æ ¹æ®Book-publisherè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯
 	 * 
 	 * @param String
 	 *            lesspublisher
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -622,12 +622,12 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where publisher like ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + lesspublisher.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + lesspublisher.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -637,10 +637,10 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-publisher½øĞĞÄ£ºı²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢,²¢·ÖÒ³
+	 * function:æ ¹æ®Book-publisherè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯,å¹¶åˆ†é¡µ
 	 * 
 	 * @param String lesspublisher,int startPage,int pageSize
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -652,14 +652,14 @@ public class BookDao {
 				return null;
 			}
 			String sql = "select * from book where publisher like ? ORDER BY -id DESC limit ?,?";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + lesspublisher.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + lesspublisher.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			ps.setInt(2, startPage);
 			ps.setInt(3, pageSize);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -668,9 +668,9 @@ public class BookDao {
 		return books;
 	}
 	/**
-	 * function:¸ù¾İBook-publisher»ñµÃÄ£ºı²éÑ¯Êé¼®µÄ½á¹ûÌõÊı
+	 * function:æ ¹æ®Book-publisherè·å¾—æ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„ç»“æœæ¡æ•°
 	 * @param String  lesspublisher
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return int resultRows
 	 * @throws Exception
 	 */
@@ -681,9 +681,9 @@ public class BookDao {
 			if (lesspublisher==null||"".equals(lesspublisher)) { 
 			}else {
 			String sql = "select count(*) from book where publisher like ? ";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + lesspublisher.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + lesspublisher.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				resultRows = rs.getInt(1);
@@ -696,20 +696,20 @@ public class BookDao {
 	}
  
 	/**
-	 * function:¸ù¾İBook-type½øĞĞÄ£ºı²éÑ¯
+	 * function:æ ¹æ®Book-typeè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢
 	 * 
 	 * @param String
 	 *            type
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return ResultSet
 	 * @throws SQLExceptio
 	 */
 	public ResultSet QueryByBookType(String type) throws SQLException {
 		try {
 			String sql = "select * from book where type = ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, type.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, type.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 
 			rs = ps.executeQuery();
 		} catch (Exception e) {
@@ -719,10 +719,10 @@ public class BookDao {
 	}
 
 	/**
-	 * function:¸ù¾İBook-type½øĞĞ²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢
+	 * function:æ ¹æ®Book-typeè¿›è¡ŒæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯
 	 * 
 	 * @param String type
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -730,12 +730,12 @@ public class BookDao {
 		books = new ArrayList<Book>();
 		try {
 			String sql = "select * from book where type = ? ORDER BY -id DESC";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, type.trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, type.trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -745,11 +745,11 @@ public class BookDao {
 	}
 
 	/**
-	 * Function:¸ù¾İÊé¼®µÄID¸üĞÂÊé¼®ĞÅÏ¢
+	 * Function:æ ¹æ®ä¹¦ç±çš„IDæ›´æ–°ä¹¦ç±ä¿¡æ¯
 	 * 
 	 * @param book
 	 * @return boolean
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public Boolean updateById(Book book) throws SQLException {
@@ -760,7 +760,7 @@ public class BookDao {
 			con = DBUtility.getConnection();
 			ps = con.prepareStatement(sql);
 			ps = con.prepareStatement(sql);
-			// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			ps.setString(1, book.getName().trim());
 			ps.setString(2, book.getWriter().trim());
 			ps.setString(3, book.getISBN().trim());
@@ -769,7 +769,7 @@ public class BookDao {
 			ps.setString(6, book.getPublish_String().trim());
 			ps.setString(7, book.getPrice()); 
 			ps.setString(8, book.getType().trim());
-			//Èç¹ûsimpleinfoÎªnull,ÄÇÃ´¾ÍÊÇÓ¦¸ÃÎª¸ÄÎª¿Õ×Ö·û´®
+			//å¦‚æœsimpleinfoä¸ºnull,é‚£ä¹ˆå°±æ˜¯åº”è¯¥ä¸ºæ”¹ä¸ºç©ºå­—ç¬¦ä¸²
 			ps.setString(9, (book.getSimpleinfo()==null?"":book.getSimpleinfo()).trim());
 			ps.setString(10, book.getRent().trim());
 			ps.setString(11, book.getOther().trim());
@@ -785,11 +785,11 @@ public class BookDao {
 	}
 
 	/**
-	 * Function:¸ù¾İÊé¼®µÄÃû×Ö¸üĞÂÊé¼®ĞÅÏ¢
+	 * Function:æ ¹æ®ä¹¦ç±çš„åå­—æ›´æ–°ä¹¦ç±ä¿¡æ¯
 	 * 
 	 * @param book
 	 * @return
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public Boolean updateByName(Book book) throws SQLException {
@@ -798,14 +798,14 @@ public class BookDao {
 		try {
 			con = DBUtility.getConnection();
 			ps = con.prepareStatement(sql);
-			// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			ps.setString(1, book.getId().trim());
 			ps.setString(2, book.getWriter().trim());
 			ps.setString(3, book.getISBN().trim());
 			ps.setString(4, book.getPublisher().trim());
 			ps.setString(5, book.getCheck_in_String().trim());
 			ps.setString(6, book.getPublish_String().trim());
-			ps.setString(7, book.getPrice());// priceÊÇfloatÀàĞÍ£¬ĞèÒªµ÷ÓÃÎÒÃÇĞ´¹ıµÄ·½·¨½«Æä×ª»»Îª×Ö·û´®
+			ps.setString(7, book.getPrice());// priceæ˜¯floatç±»å‹ï¼Œéœ€è¦è°ƒç”¨æˆ‘ä»¬å†™è¿‡çš„æ–¹æ³•å°†å…¶è½¬æ¢ä¸ºå­—ç¬¦ä¸²
 			ps.setString(8, book.getType().trim());
 			ps.setString(9, book.getOther().trim());
 			ps.setString(10, book.getSimpleinfo().trim());
@@ -822,10 +822,10 @@ public class BookDao {
 	}
 	
 	/**
-	 * function:¸ù¾İÊäÈëµÄÀàĞÍºÍ¶ÔÓ¦µÄÊı¾İ½øĞĞÄ£ºı²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢,²¢·ÖÒ³
+	 * function:æ ¹æ®è¾“å…¥çš„ç±»å‹å’Œå¯¹åº”çš„æ•°æ®è¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯,å¹¶åˆ†é¡µ
 	 * 
 	 * @param String searchType,int value, int startPage,int pageSize
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -845,14 +845,14 @@ public class BookDao {
 			}else if(searchType.equals("type")) {
 			}*/
 			String sql = "select * from book where "+searchType+" like ? ORDER BY -id DESC limit ?,?";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + value.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + value.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			ps.setInt(2, startPage);
 			ps.setInt(3, pageSize);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢
 				getBooksFromRs(rs);
 			}
 		} catch (Exception e) {
@@ -861,10 +861,10 @@ public class BookDao {
 		return books;
 	}
 	/**
-	 * function:¸ù¾İÊäÈëµÄÀàĞÍºÍ¶ÔÓ¦µÄÊı¾İ½øĞĞÄ£ºı²éÑ¯Êé¼®µÄ¾ßÌåĞÅÏ¢,²¢·ÖÒ³,Êé×ÊÁÏÖ»ÏÔÊ¾²¿·Ö
+	 * function:æ ¹æ®è¾“å…¥çš„ç±»å‹å’Œå¯¹åº”çš„æ•°æ®è¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„å…·ä½“ä¿¡æ¯,å¹¶åˆ†é¡µ,ä¹¦èµ„æ–™åªæ˜¾ç¤ºéƒ¨åˆ†
 	 * 
 	 * @param String searchType,int value, int startPage,int pageSize
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return List<Book>
 	 * @throws SQLException
 	 */
@@ -878,14 +878,14 @@ public class BookDao {
 			}
 			 
 			String sql = "select * from book where "+searchType+" like ? ORDER BY -id DESC limit ?,?";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + value.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + value.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			ps.setInt(2, startPage);
 			ps.setInt(3, pageSize);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// ²»¶ÏÌí¼Óbookµ½booksÀïÃæ£¬Í¼ÊéĞÅÏ¢Ö»ÏÔÊ¾²¿·Ö
+				// ä¸æ–­æ·»åŠ bookåˆ°booksé‡Œé¢ï¼Œå›¾ä¹¦ä¿¡æ¯åªæ˜¾ç¤ºéƒ¨åˆ†
 				getBooksFromRsWithShortInfo(rs);
 			}
 		} catch (Exception e) {
@@ -894,9 +894,9 @@ public class BookDao {
 		return books;
 	}
 	/**
-	 * function:¸ù¾İÀàĞÍºÍÖµ»ñµÃÄ£ºı²éÑ¯Êé¼®µÄ½á¹ûÌõÊı
+	 * function:æ ¹æ®ç±»å‹å’Œå€¼è·å¾—æ¨¡ç³ŠæŸ¥è¯¢ä¹¦ç±çš„ç»“æœæ¡æ•°
 	 * @param String searchType  String value
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @return int resultRows
 	 * @throws Exception
 	 */
@@ -907,9 +907,9 @@ public class BookDao {
 			if (value==null||"".equals(value)) { 
 			}else {
 			String sql = "select count(*) from book where "+searchType+" like ? ";
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
+			con = DBUtility.getConnection();// è·å–è¿æ¥
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + value.trim() + "%");// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, "%" + value.trim() + "%");// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				resultRows = rs.getInt(1);
@@ -921,9 +921,9 @@ public class BookDao {
 		return resultRows;
 	}
 	/**
-	 * function:¹Ø±Õ×ÊÔ´
+	 * function:å…³é—­èµ„æº
 	 * 
-	 * @author ÀîìÏ
+	 * @author æç…œ
 	 * @throws SQLException
 	 */
 	public void close() throws SQLException {

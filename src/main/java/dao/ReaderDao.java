@@ -11,24 +11,24 @@ import entities.Reader;
 import tools.MD5Encrypt;
 
 /**
- * Group 2 Class Java06 Group member:ÀîìÏ¡¢½­ÒËÈğ¡¢º«ÔÆÌÎ¡¢ÀîÃ·¡¢³ÂÇ¨¶Ô
- * function:±í¸ñReaderµÄÊı¾İ¿â²Ù×÷¹¤¾ßÀà
- * @author ½­ÒËÈğ Email£º1457908216@qq.com
- * @version 2017Äê9ÔÂ27ÈÕ ÉÏÎç10:05:20
+ * Group 2 Class Java06 Group member:æç…œã€æ±Ÿå®œç‘ã€éŸ©äº‘æ¶›ã€ææ¢…ã€é™ˆè¿å¯¹
+ * function:è¡¨æ ¼Readerçš„æ•°æ®åº“æ“ä½œå·¥å…·ç±»
+ * @author æ±Ÿå®œç‘ Emailï¼š1457908216@qq.com
+ * @version 2017å¹´9æœˆ27æ—¥ ä¸Šåˆ10:05:20
  */
 public class ReaderDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	Connection con = null;
 
-	/** ¹¹Ôìº¯Êı */
+	/** æ„é€ å‡½æ•° */
 	
 	public ReaderDao() throws Exception {
-			con = DBUtility.getConnection();// »ñµÃÊı¾İ¿âÁ¬½Ó
+			con = DBUtility.getConnection();// è·å¾—æ•°æ®åº“è¿æ¥
 	}
 	/**
-	 * function:Í¨¹ı id-password ¶Ô »òÕß name-password ¶Ô À´¼ì²éÊÇ·ñÎª¶ÁÕß
-	 * @author ½­ÒËÈğ
+	 * function:é€šè¿‡ id-password å¯¹ æˆ–è€… name-password å¯¹ æ¥æ£€æŸ¥æ˜¯å¦ä¸ºè¯»è€…
+	 * @author æ±Ÿå®œç‘
 	 * @param reader
 	 * @return Boolean
 	 * @exception
@@ -39,17 +39,17 @@ public class ReaderDao {
 				con =DBUtility.getConnection();
 				String sql="select * from reader where id = ? and password= ? or name= ? and password= ?";           
 				ps = con.prepareStatement(sql);
-				String id = reader.getId().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
-				String name = reader.getName().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
-				String password = MD5Encrypt.encryptByMD5(reader.getPassword());//ÃÜÂë¿Õ¸ñÒ²ÊÇ°®£¬²»ÄÜÉ¾³ı
-				//¶ÔÃÜÂë½øĞĞ¼ÓÃÜ²Ù×÷£¬ĞèÒª½÷É÷Ê¹ÓÃ
+				String id = reader.getId().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
+				String name = reader.getName().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
+				String password = MD5Encrypt.encryptByMD5(reader.getPassword());//å¯†ç ç©ºæ ¼ä¹Ÿæ˜¯çˆ±ï¼Œä¸èƒ½åˆ é™¤
+				//å¯¹å¯†ç è¿›è¡ŒåŠ å¯†æ“ä½œï¼Œéœ€è¦è°¨æ…ä½¿ç”¨
 				 ps.setString(1, id);
 				 ps.setString(2, password);
 				 ps.setString(3, name);
 				 ps.setString(4, password);
 				 rs = ps.executeQuery();
 				 /**
-				   * ÓÃ»§´æÔÚ
+				   * ç”¨æˆ·å­˜åœ¨
 				   */
 			  if(rs.next()) {
 					 isReader = true ;  
@@ -68,16 +68,16 @@ public class ReaderDao {
 				DBUtility.closeConnection(con);
 			}
 	/**
-	 * ¶ÁÕß²»´æÔÚ
+	 * è¯»è€…ä¸å­˜åœ¨
 	 */
      return isReader;
 		
 	}
 	 /**
-		 * function:¼ì²é¸ø¶¨µÄ¶ÁÕßidÊÇ·ñÕıÈ·
+		 * function:æ£€æŸ¥ç»™å®šçš„è¯»è€…idæ˜¯å¦æ­£ç¡®
 		 * @param reader
 		 * @return isRightId
-		 * @author ½­ÒËÈğ
+		 * @author æ±Ÿå®œç‘
 		 * @exception
 		 */
 	 public boolean isRightId(Reader reader) throws Exception{
@@ -86,12 +86,12 @@ public class ReaderDao {
 				con =DBUtility.getConnection();
 				String sql="select * from reader where id = ? ";           
 				ps = con.prepareStatement(sql);
-				String id = reader.getId().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
+				String id = reader.getId().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
 				 ps.setString(1, id);
 				  rs = ps.executeQuery() ;
 				  
 			  if(rs.next()) {
-				  //¹ÜÀíÔ±id´æÔÚ
+				  //ç®¡ç†å‘˜idå­˜åœ¨
 				  isRightId =true ;  
 				 } 
 			}catch (Exception e) {
@@ -107,14 +107,14 @@ public class ReaderDao {
 				}
 				DBUtility.closeConnection(con);
 			}
-	  //¶ÁÕßid²»´æÔÚ
+	  //è¯»è€…idä¸å­˜åœ¨
 		return isRightId;	 
 	 }
 	 /**
-		 * function:¼ì²é¸ø¶¨µÄ¶ÁÕßÃû×ÖÊÇ·ñÕıÈ·
+		 * function:æ£€æŸ¥ç»™å®šçš„è¯»è€…åå­—æ˜¯å¦æ­£ç¡®
 		 * @param admin
 		 * @return isRightName
-		 * @author ³ÂÇ¨¶Ô
+		 * @author é™ˆè¿å¯¹
 		 * @exception
 		 */
 	 public boolean isRightName(Reader reader) throws Exception{
@@ -123,12 +123,12 @@ public class ReaderDao {
 				con =DBUtility.getConnection();
 				String sql="select * from reader where name = ? ";           
 				ps = con.prepareStatement(sql);
-				String name = reader.getName().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
+				String name = reader.getName().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
 				 ps.setString(1, name);
 				  rs = ps.executeQuery() ;
 				  
 			  if(rs.next()) {
-				  //¹ÜÀíÔ±name´æÔÚ
+				  //ç®¡ç†å‘˜nameå­˜åœ¨
 				  isRightName =true ;  
 				 } 
 			}catch (Exception e) {
@@ -144,14 +144,14 @@ public class ReaderDao {
 				}
 				DBUtility.closeConnection(con);
 			}
-	  //¶ÁÕßname²»´æÔÚ
+	  //è¯»è€…nameä¸å­˜åœ¨
 		return isRightName;	 
 	 }
 	 /**
-	  * function:Í¨¹ıid»ñµÃname
+	  * function:é€šè¿‡idè·å¾—name
 	  * @param String id
 	  * @return name
-	  * @author ½­ÒËÈğ
+	  * @author æ±Ÿå®œç‘
 	  * @exception
 	  */
 	 public String getNameById(String id) throws Exception{
@@ -179,10 +179,10 @@ public class ReaderDao {
 		 return name;
 	 }
 	 /**
-	  * function:Í¨¹ıname»ñµÃid
+	  * function:é€šè¿‡nameè·å¾—id
 	  * @param name
 	  * @return id
-	  * @author ½­ÒËÈğ
+	  * @author æ±Ÿå®œç‘
 	  * @exception
 	  */
 	 public String getIdByName(String name) throws Exception{
@@ -211,11 +211,11 @@ public class ReaderDao {
 	 }
 
 	/**
-	 * function:»ñµÃËùÓĞÓÃ»§µÄĞÅÏ¢
+	 * function:è·å¾—æ‰€æœ‰ç”¨æˆ·çš„ä¿¡æ¯
 	 * 
 	 * @param null
 	 * @return ResultSet
-	 * @author ½­ÒËÈğ
+	 * @author æ±Ÿå®œç‘
 	 * @exception
 	 */
 	public List<Reader> selectAll() throws Exception{
@@ -247,10 +247,10 @@ public class ReaderDao {
 		return readers;
 	}
     /**
-     * function: Í¨¹ıidµÃµ½ÕâÒ»ĞĞÊı¾İ
+     * function: é€šè¿‡idå¾—åˆ°è¿™ä¸€è¡Œæ•°æ®
      * @return rs
      * @param id
-     * @author ½­ÒËÈğ
+     * @author æ±Ÿå®œç‘
      * @exception
      */
     public Reader QueryById(String id) throws Exception{	
@@ -259,7 +259,7 @@ public class ReaderDao {
     		String sql = "select * from reader where id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			rs= ps.executeQuery();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			rs= ps.executeQuery();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 			if(rs.next()){
 				String name=rs.getString("name");
 				String gender=rs.getString("gender");
@@ -282,10 +282,10 @@ public class ReaderDao {
     	return reader;
     }
     /**
-     * function: Í¨¹ınameµÃµ½ÕâÒ»ĞĞÊı¾İ
+     * function: é€šè¿‡nameå¾—åˆ°è¿™ä¸€è¡Œæ•°æ®
      * @return rs
      * @param id
-     * @author ½­ÒËÈğ
+     * @author æ±Ÿå®œç‘
      * @exception
      */
     public Reader QueryByName(String name) throws Exception{	
@@ -294,7 +294,7 @@ public class ReaderDao {
     		String sql = "select * from reader where name = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, name);
-			rs= ps.executeQuery();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			rs= ps.executeQuery();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 			if(rs.next()){
 				String id=rs.getString("id");
 				String gender=rs.getString("gender");
@@ -311,20 +311,20 @@ public class ReaderDao {
     	return  reader;
     }
 	/**
-	 * function:¸ù¾İidÉ¾³ıÓÃ»§
+	 * function:æ ¹æ®idåˆ é™¤ç”¨æˆ·
 	 * 
 	 * @param String id
 	 * @return Boolean
-	 * @author ½­ÒËÈğ
+	 * @author æ±Ÿå®œç‘
 	 * @exception
 	 */
 	public Boolean deleteReaderById(String id) throws Exception{
-		int isDelete = 0;// ³õÊ¼»¯Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±íÓĞÓ°Ïì
+		int isDelete = 0;// åˆå§‹åŒ–ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨æœ‰å½±å“
 		try {
 			String sql = "delete from reader where id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			isDelete = ps.executeUpdate();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			isDelete = ps.executeUpdate();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -338,28 +338,28 @@ public class ReaderDao {
 			DBUtility.closeConnection(con);
 		}
 		if (isDelete == 1) {
-			// Èç¹ûÉ¾³ı³É¹¦
+			// å¦‚æœåˆ é™¤æˆåŠŸ
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * function:Ôö¼ÓÒ»ÌõÓÃ»§Êı¾İµ½Reader±í
+	 * function:å¢åŠ ä¸€æ¡ç”¨æˆ·æ•°æ®åˆ°Readerè¡¨
 	 * @param Reader  reader
 	 * @return Boolean
-	 * @author ½­ÒËÈğ
+	 * @author æ±Ÿå®œç‘
 	 * @exception
 	 */
 	public Boolean insertReader(Reader reader) throws Exception{
-		int isInsert = 0;// ³õÊ¼Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±í²úÉúÓ°Ïì
+		int isInsert = 0;// åˆå§‹ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨äº§ç”Ÿå½±å“
 		try {
 			String sql = "insert into reader values"+"(reader_id_seq.nextval,?,?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, reader.getId().trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(2, reader.getName().trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(3, reader.getGender().trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(4, reader.getBirthday().trim());// ²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, reader.getId().trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(2, reader.getName().trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(3, reader.getGender().trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(4, reader.getBirthday().trim());// æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			isInsert = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -379,20 +379,20 @@ public class ReaderDao {
 		return false;
 	}
 	/**
-	 * function:¸ù¾İid¸üĞÂÒ»Ìõ¶ÁÕßĞÅÏ¢
-	 * @author ½­ÒËÈğ
+	 * function:æ ¹æ®idæ›´æ–°ä¸€æ¡è¯»è€…ä¿¡æ¯
+	 * @author æ±Ÿå®œç‘
 	 * @return Boolean
 	 * @exception
 	 */
 	public Boolean updateById(Reader reader) throws Exception{
-		int isUpdate = 0;// ³õÊ¼Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±í²úÉúÓ°Ïì
+		int isUpdate = 0;// åˆå§‹ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨äº§ç”Ÿå½±å“
 		try {
 			String sql = "update reader set name=?,gender=?,birthday=?,password=? where id=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, reader.getName().trim());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(2, reader.getGender().trim());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(3, reader.getBirthday().trim());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(4, reader.getPassword());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, reader.getName().trim());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(2, reader.getGender().trim());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(3, reader.getBirthday().trim());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(4, reader.getPassword());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			isUpdate = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -412,20 +412,20 @@ public class ReaderDao {
 		return false;
 	}
 	/**
-	 * function:¸ù¾İname¸üĞÂÒ»Ìõ¶ÁÕßĞÅÏ¢
-	 * @author ½­ÒËÈğ
+	 * function:æ ¹æ®nameæ›´æ–°ä¸€æ¡è¯»è€…ä¿¡æ¯
+	 * @author æ±Ÿå®œç‘
 	 * @return Boolean
 	 * @exception
 	 */
 	public Boolean updateByName(Reader reader) throws Exception{
-		int isUpdate = 0;// ³õÊ¼Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±í²úÉúÓ°Ïì
+		int isUpdate = 0;// åˆå§‹ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨äº§ç”Ÿå½±å“
 		try {
 			String sql = "update reader set id=?,gender=?,birthday=?,password=? where name=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, reader.getId().trim());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(2, reader.getGender().trim());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(3, reader.getBirthday().trim());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(4, reader.getPassword());// ¸üĞÂÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, reader.getId().trim());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(2, reader.getGender().trim());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(3, reader.getBirthday().trim());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(4, reader.getPassword());// æ›´æ–°ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			isUpdate = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -6,52 +6,52 @@ import java.security.NoSuchAlgorithmException;
 
 
 /**
- * function:ÕâÊÇÒ»¸ömd5¼ÓÃÜÀà£¬·½·¨È«²¿ÉèÖÃÎª¾²Ì¬
- * @author ³ÂÇ¨¶Ô Email: woshiqiandui@gmail.com
- * @version 2017-9-5  ÉÏÎç12:06:24
+ * function:è¿™æ˜¯ä¸€ä¸ªmd5åŠ å¯†ç±»ï¼Œæ–¹æ³•å…¨éƒ¨è®¾ç½®ä¸ºé™æ€
+ * @author é™ˆè¿å¯¹ Email: woshiqiandui@gmail.com
+ * @version 2017-9-5  ä¸Šåˆ12:06:24
  */
 public class MD5Encrypt {
 
 	/**
-	 * function:md5¼ÓÃÜ
+	 * function:md5åŠ å¯†
 	 * @return fillMD5(md5Str)
 	 * @param args
 	 */
 	public static String encryptByMD5(String str) {
-		String md5Str = null;//¼ÓÃÜºóµÄ×Ö·û´®
+		String md5Str = null;//åŠ å¯†åçš„å­—ç¬¦ä¸²
 		try {
 			
-			//¾²Ì¬ÀàMessageDigestÖ»ÄÜÓÃgetInstance()·½·¨À´ÊµÀı»¯×Ô¼º
+			//é™æ€ç±»MessageDigeståªèƒ½ç”¨getInstance()æ–¹æ³•æ¥å®ä¾‹åŒ–è‡ªå·±
 			MessageDigest md =MessageDigest.getInstance("MD5");
-			//Éú³Émd5¼ÓÃÜÕªÒª
-			md.update(str.getBytes());//¼ÆËãmd5º¯Êı
+			//ç”Ÿæˆmd5åŠ å¯†æ‘˜è¦
+			md.update(str.getBytes());//è®¡ç®—md5å‡½æ•°
 			md5Str = new BigInteger(1, md.digest()).toString(16); 
 			/* 1.public byte[] digest() 
-			 * Í¨¹ıÖ´ĞĞÖîÈçÌî³äÖ®ÀàµÄ×îÖÕ²Ù×÷Íê³É¹şÏ£¼ÆËã¡£ÔÚµ÷ÓÃ´Ë·½·¨Ö®ºó£¬ÕªÒª±»ÖØÖÃ¡£
+			 * é€šè¿‡æ‰§è¡Œè¯¸å¦‚å¡«å……ä¹‹ç±»çš„æœ€ç»ˆæ“ä½œå®Œæˆå“ˆå¸Œè®¡ç®—ã€‚åœ¨è°ƒç”¨æ­¤æ–¹æ³•ä¹‹åï¼Œæ‘˜è¦è¢«é‡ç½®ã€‚
 			 * 2.public BigInteger(int signum,byte[] magnitude)
-			 * ½« BigInteger µÄ·ûºÅ-ÊıÁ¿±íÊ¾ĞÎÊ½×ª»»Îª BigInteger¡£¸Ã·ûºÅ±íÊ¾ÎªÒ»¸öÕı¸ººÅÕûÊıÖµ£º
-			 * -1 ±íÊ¾¸º£¬0 ±íÊ¾Áã£¬1 ±íÊ¾Õı¡£¸Ã´óĞ¡ÊÇÒ»¸ö big-endian ×Ö½ÚË³ĞòµÄ byte Êı×é£º
-			 * ×î¸ßÓĞĞ§×Ö½ÚÔÚµÚÁã¸öÔªËØÖĞ¡£
+			 * å°† BigInteger çš„ç¬¦å·-æ•°é‡è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸º BigIntegerã€‚è¯¥ç¬¦å·è¡¨ç¤ºä¸ºä¸€ä¸ªæ­£è´Ÿå·æ•´æ•°å€¼ï¼š
+			 * -1 è¡¨ç¤ºè´Ÿï¼Œ0 è¡¨ç¤ºé›¶ï¼Œ1 è¡¨ç¤ºæ­£ã€‚è¯¥å¤§å°æ˜¯ä¸€ä¸ª big-endian å­—èŠ‚é¡ºåºçš„ byte æ•°ç»„ï¼š
+			 * æœ€é«˜æœ‰æ•ˆå­—èŠ‚åœ¨ç¬¬é›¶ä¸ªå…ƒç´ ä¸­ã€‚
 			 * 3.public String toString(int radix)
-			 * ·µ»Ø´Ë BigInteger µÄ¸ø¶¨»ùÊıµÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£
-			 * Èç¹û¸Ã»ùÊı³¬³ö´Ó Character.MIN_RADIX µ½ Character.MAX_RADIX£¨°üÀ¨£©ÕâÒ»·¶Î§£¬
-			 * ÔòÆäÄ¬ÈÏÖµÎª 10£¨Integer.toString ¾ÍÊÇÕâÖÖÇé¿ö£©¡£´Ë´¦ÉèÎª16¾ÍÊÇ×ª»»ÎªÊ®Áù½øÖÆ¡£
+			 * è¿”å›æ­¤ BigInteger çš„ç»™å®šåŸºæ•°çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚
+			 * å¦‚æœè¯¥åŸºæ•°è¶…å‡ºä» Character.MIN_RADIX åˆ° Character.MAX_RADIXï¼ˆåŒ…æ‹¬ï¼‰è¿™ä¸€èŒƒå›´ï¼Œ
+			 * åˆ™å…¶é»˜è®¤å€¼ä¸º 10ï¼ˆInteger.toString å°±æ˜¯è¿™ç§æƒ…å†µï¼‰ã€‚æ­¤å¤„è®¾ä¸º16å°±æ˜¯è½¬æ¢ä¸ºåå…­è¿›åˆ¶ã€‚
 			 */
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  	 
-		//ÓÉÓÚÖĞ¼äÓÃBigInteger½øĞĞ´¦Àí£¬ÓĞ¿ÉÄÜ²úÉúÒ»¸ö31Î»µÄ×Ö·û´®£¬ĞèÒª´¦Àí
+		//ç”±äºä¸­é—´ç”¨BigIntegerè¿›è¡Œå¤„ç†ï¼Œæœ‰å¯èƒ½äº§ç”Ÿä¸€ä¸ª31ä½çš„å­—ç¬¦ä¸²ï¼Œéœ€è¦å¤„ç†
 		return fillMD5(md5Str);		
 	} 
 	   /**
-	    * function:´¦Àí31Î»£¬Ê¹Æä»Ö¸´µ½32Î»
+	    * function:å¤„ç†31ä½ï¼Œä½¿å…¶æ¢å¤åˆ°32ä½
 	    * @param md5
 	    * @return md5 or "0"+md5
 	    */
 	   public static String fillMD5(String md5){
-		   /*²úÉú31Î»×Ö·û´®µÄÔ­ÒòÊÇ¿ªÍ·µÄ0±»¹ıÂËÁË£¬µ«ÊÇ¶ÔÓÚ¼ÓÃÜµÄ×Ö·û´®¶øÑÔ£¬Õâ¸ö±Ø²»¿ÉÈ±
-		    * Òò´Ë£¬Èç¹û×Ö·û´®³¤¶È²»ÊÇ32Î»£¬ÄÇ¾ÍÒªÔÚ¿ªÍ·¼ÓÉÏÒ»¸ö0
+		   /*äº§ç”Ÿ31ä½å­—ç¬¦ä¸²çš„åŸå› æ˜¯å¼€å¤´çš„0è¢«è¿‡æ»¤äº†ï¼Œä½†æ˜¯å¯¹äºåŠ å¯†çš„å­—ç¬¦ä¸²è€Œè¨€ï¼Œè¿™ä¸ªå¿…ä¸å¯ç¼º
+		    * å› æ­¤ï¼Œå¦‚æœå­—ç¬¦ä¸²é•¿åº¦ä¸æ˜¯32ä½ï¼Œé‚£å°±è¦åœ¨å¼€å¤´åŠ ä¸Šä¸€ä¸ª0
 		    */
 	        return md5.length()==32?md5:fillMD5("0"+md5);
 	    }

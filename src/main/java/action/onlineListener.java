@@ -5,13 +5,13 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 /**
- * function:¼à²âÔÚÏßÈËÊı
- * @author ³ÂÇ¨¶Ô
+ * function:ç›‘æµ‹åœ¨çº¿äººæ•°
+ * @author é™ˆè¿å¯¹
  * 
  */
 public class onlineListener implements HttpSessionListener {
      
-	//µ±Ò³ÃæÉÏ³öÏÖÔÚÏßÊıÎªnull£¬ÖØÆôä¯ÀÀÆ÷¾Í¿ÉÒÔ»Ö¸´Êı×ÖÁË ¡£
+	//å½“é¡µé¢ä¸Šå‡ºç°åœ¨çº¿æ•°ä¸ºnullï¼Œé‡å¯æµè§ˆå™¨å°±å¯ä»¥æ¢å¤æ•°å­—äº† ã€‚
 	private int onlineNumber = 0;
 
 	/**
@@ -19,13 +19,13 @@ public class onlineListener implements HttpSessionListener {
      */
     public void sessionCreated(HttpSessionEvent hse)  { 
    
-    	//Ìí¼ÓÔÚÏßÈËÊı
+    	//æ·»åŠ åœ¨çº¿äººæ•°
     	onlineNumber++;
-    	//»ñµÃsession±äÁ¿
+    	//è·å¾—sessionå˜é‡
     	HttpSession session = hse.getSession();
-    	//»ñÈ¡ServletÉÏÏÂÎÄ
+    	//è·å–Servletä¸Šä¸‹æ–‡
     	ServletContext  context = session.getServletContext();
-    	//ÉèÖÃservletÉÏÏÂÎÄÊôĞÔ
+    	//è®¾ç½®servletä¸Šä¸‹æ–‡å±æ€§
     	context.setAttribute("onlineNumber", onlineNumber);
     	
     }
@@ -34,15 +34,15 @@ public class onlineListener implements HttpSessionListener {
      * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
      */
     public void sessionDestroyed(HttpSessionEvent hse)  { 
-    	//²»ÄÜÊ¹ÔÚÏßÈËÊıĞ¡ÓÚ0
+    	//ä¸èƒ½ä½¿åœ¨çº¿äººæ•°å°äº0
      	if(onlineNumber>0){
-    	//¼õÉÙÔÚÏßÈËÊı
+    	//å‡å°‘åœ¨çº¿äººæ•°
     	onlineNumber--;
-    	//»ñµÃsession±äÁ¿
+    	//è·å¾—sessionå˜é‡
     	HttpSession session = hse.getSession();
-    	//»ñÈ¡ServletÉÏÏÂÎÄ
+    	//è·å–Servletä¸Šä¸‹æ–‡
     	ServletContext  context = session.getServletContext();
-    	//ÉèÖÃservletÉÏÏÂÎÄÊôĞÔ
+    	//è®¾ç½®servletä¸Šä¸‹æ–‡å±æ€§
     	context.setAttribute("onlineNumber", onlineNumber);
      	}
     	

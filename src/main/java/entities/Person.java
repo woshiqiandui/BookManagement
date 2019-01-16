@@ -1,24 +1,24 @@
 package entities;
 /**
- * function:ÈËÀà£¬ÊÇReaderºÍAdminµÄ¸¸Àà
- * @author ³ÂÇ¨¶Ô
+ * function:äººç±»ï¼Œæ˜¯Readerå’ŒAdminçš„çˆ¶ç±»
+ * @author é™ˆè¿å¯¹
  *  Email: woshiqiandui@gmail.com
- * @version 2017-9-6  ÉÏÎç1:49:06
+ * @version 2017-9-6  ä¸Šåˆ1:49:06
  */
 public abstract class Person {
 
-	//final ²»ÔÊĞíĞŞ¸ÄÁĞµÄ³¤¶È£¬ÁĞµÄ³¤¶ÈÊÇ¸ö¶¨Öµ
+	//final ä¸å…è®¸ä¿®æ”¹åˆ—çš„é•¿åº¦ï¼Œåˆ—çš„é•¿åº¦æ˜¯ä¸ªå®šå€¼
 	final static  int columnsNumber = 3 ;
 	protected String id;
 	protected String name;
 	protected String password;
-	//ÁĞµÄÃû×Ö·ÖÎªÖĞÎÄºÍÓ¢ÎÄ¡£
-	protected static String[] columnsCN ={ "±àºÅ","ĞÕÃû","ÃÜÂë"};
+	//åˆ—çš„åå­—åˆ†ä¸ºä¸­æ–‡å’Œè‹±æ–‡ã€‚
+	protected static String[] columnsCN ={ "ç¼–å·","å§“å","å¯†ç "};
 	protected static String[] columnsEN ={ "id","name","password"};
    
 	
     /** 
-     * @author ³ÂÇ¨¶Ô
+     * @author é™ˆè¿å¯¹
      * @param id,name,password
      */
 	public Person(String id, String name, String password) {
@@ -28,7 +28,7 @@ public abstract class Person {
 
 	}
 
-	/** gettersºÍsetters ·½·¨ */
+	/** getterså’Œsetters æ–¹æ³• */
 	public String getId() {
 		return id;
 	}

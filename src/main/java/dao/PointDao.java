@@ -2,7 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
-//java.sql.Date ÊÇjava.util.Date µÄ×ÓÀà,ºóÃæµÄDate ±íÊ¾ java.sql.Date,¶øjava.util.Date ±ØĞëÈ«³Æ
+//java.sql.Date æ˜¯java.util.Date çš„å­ç±»,åé¢çš„Date è¡¨ç¤º java.sql.Date,è€Œjava.util.Date å¿…é¡»å…¨ç§°
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,9 +11,9 @@ import java.util.List;
 
 import entities.Point;
 /**
- * @function: ¶Ôpoint±íµÄ²Ù×÷
- * @author ³ÂÇ¨¶Ô
- * @2017Äê10ÔÂ20ÈÕ @ÏÂÎç1:05:56
+ * @function: å¯¹pointè¡¨çš„æ“ä½œ
+ * @author é™ˆè¿å¯¹
+ * @2017å¹´10æœˆ20æ—¥ @ä¸‹åˆ1:05:56
  */
 public class PointDao {
 
@@ -22,16 +22,16 @@ public class PointDao {
 	Connection con = null;
 	List<Point> points = null;
 	
-	/** ³õÊ¼»¯Á¬½Ó*/
+	/** åˆå§‹åŒ–è¿æ¥*/
 	public PointDao() {
 		try {
-			con = DBUtility.getConnection();// »ñµÃÊı¾İ¿âÁ¬½Ó
+			con = DBUtility.getConnection();// è·å¾—æ•°æ®åº“è¿æ¥
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	/**
-	 * @function:Í¨¹ıpoint±íÖĞÒ»¸öÁĞÀ´²éÑ¯ÁíÒ»¸öÁĞ
+	 * @function:é€šè¿‡pointè¡¨ä¸­ä¸€ä¸ªåˆ—æ¥æŸ¥è¯¢å¦ä¸€ä¸ªåˆ—
 	 * @param resultColumn
 	 * @param String column
 	 * @param String columnValue
@@ -40,9 +40,9 @@ public class PointDao {
 	public String QueryValueByKey(String resultColumn,String column,String columnValue) {
 		String value = null;
 		try{
-		//1.×¼±¸sqlÓï¾ä
+		//1.å‡†å¤‡sqlè¯­å¥
 		String sql ="select "+resultColumn+" from point where "+column+"= ?";
-		//2.³õÊ¼»¯ps
+		//2.åˆå§‹åŒ–ps
 		ps = con.prepareStatement(sql);
 		ps.setString(1, columnValue);
 		rs = ps.executeQuery();
@@ -56,7 +56,7 @@ public class PointDao {
 	}
 	
 	/**
-	 * @function£ºÒ»´Î¸üĞÂpoint±íµÄ²Ù×÷£¬ÕâÀï²»¸üĞÂtotalCharge£¨ÏÖ½ğ³äÖµ£©
+	 * @functionï¼šä¸€æ¬¡æ›´æ–°pointè¡¨çš„æ“ä½œï¼Œè¿™é‡Œä¸æ›´æ–°totalChargeï¼ˆç°é‡‘å……å€¼ï¼‰
 	 * @param reader_id
 	 * @param sumpoint
 	 * @param lastsign
@@ -66,21 +66,21 @@ public class PointDao {
 	public boolean updateBySignOperate(String reader_id,int sumpoint,Date lastsign,int signcount) {
 		boolean isUpdate = false;
 		try{
-		//1.»ñÈ¡sqlÓï¾ä
+		//1.è·å–sqlè¯­å¥
 			String sql = "update  point set sumpoint=?,lastsign=?,signcount=? "
 					+ "where reader_id= ?";
-		//2.×¼±¸ps
+		//2.å‡†å¤‡ps
 			ps = con.prepareStatement(sql);
-		//3.°ó¶¨Êı¾İ
+		//3.ç»‘å®šæ•°æ®
 			ps.setInt(1,sumpoint);
 			ps.setDate(2,lastsign);
 			ps.setInt(3,signcount);
 			ps.setString(4,reader_id);
-		//4.Ö´ĞĞsql
+		//4.æ‰§è¡Œsql
 			System.out.println(ps);
 			int affectRows =ps.executeUpdate();
 			if(affectRows==1) {
-				//Ö»ÓĞ²åÈëÊı¾İ²úÉúÁËÒ»ĞĞÓ°Ïì²Å±»ÈÏÎª³É¹¦Ö´ĞĞ
+				//åªæœ‰æ’å…¥æ•°æ®äº§ç”Ÿäº†ä¸€è¡Œå½±å“æ‰è¢«è®¤ä¸ºæˆåŠŸæ‰§è¡Œ
 				isUpdate = true;
 			}
 		}catch(Exception e) {
@@ -90,7 +90,7 @@ public class PointDao {
 	}
 	
 	/**
-	 * @function:¸ø¶ÁÕßÔö¼ÓÒ»´ÎÇ©µ½¼ÇÂ¼µ½Êı¾İ¿â±í point,ÕâÀïĞèÒª¶ş´Î²éÑ¯£¬µÚ¶ş´Î²éÑ¯¿ÉÒÔ²ÉÓÃÒÑ¾­¶¨ÒåµÄº¯Êı
+	 * @function:ç»™è¯»è€…å¢åŠ ä¸€æ¬¡ç­¾åˆ°è®°å½•åˆ°æ•°æ®åº“è¡¨ point,è¿™é‡Œéœ€è¦äºŒæ¬¡æŸ¥è¯¢ï¼Œç¬¬äºŒæ¬¡æŸ¥è¯¢å¯ä»¥é‡‡ç”¨å·²ç»å®šä¹‰çš„å‡½æ•°
 	 * @param reader_id
 	 * @return boolean isSign
 	 */
@@ -100,41 +100,41 @@ public class PointDao {
 		int signcount = 0;
 		String sql = null;
 		try {
-		//1.×¼±¸sql Óï¾ä
+		//1.å‡†å¤‡sql è¯­å¥
 		 sql = "select sumpoint,signcount from point where reader_id =?";
-		//2.×¼±¸ps
+		//2.å‡†å¤‡ps
 		ps = con.prepareStatement(sql);
-		//3.°ó¶¨Êı¾İ
+		//3.ç»‘å®šæ•°æ®
 		ps.setString(1, reader_id);
-		//4.Ö´ĞĞ²éÑ¯
+		//4.æ‰§è¡ŒæŸ¥è¯¢
 		rs = ps.executeQuery();
-		//5.»ñµÃ½á¹û
+		//5.è·å¾—ç»“æœ
 		if(rs.next()) {
-			//»ñµÃsumpoint ºÍ signcount Öµ
+			//è·å¾—sumpoint å’Œ signcount å€¼
 			sumpoint = rs.getInt("sumpoint");
 			signcount = rs.getInt("signcount");		
 		}
-		//6.sumpoint(»ı·ÖÊı) ºÍ signcount(Ç©µ½Êı) ¸÷¼Ó1
+		//6.sumpoint(ç§¯åˆ†æ•°) å’Œ signcount(ç­¾åˆ°æ•°) å„åŠ 1
 		    sumpoint++;
 		    signcount++;
-		/*//7.ÔÙ´Î×¼±¸sqlÓï¾ä
+		/*//7.å†æ¬¡å‡†å¤‡sqlè¯­å¥
 		     sql ="update point set sumpoint = ?,signcount = ?,"
 		     		+ "lastsign =?  where reader_id = ? ";
-		//8.ÔÙ´Î×¼±¸ps
+		//8.å†æ¬¡å‡†å¤‡ps
 		     ps = con.prepareStatement(sql);
-		//9.ÔÙ´Î°ó¶¨Êı¾İ
+		//9.å†æ¬¡ç»‘å®šæ•°æ®
 		     ps.setInt(1, sumpoint);
 		     ps.setInt(2, signcount);
 		     ps.setDate(3,lastsign);
 		     ps.setString(4, reader_id);
-        //10.Ö´ĞĞ¸üĞÂ²Ù×÷
+        //10.æ‰§è¡Œæ›´æ–°æ“ä½œ
 		     int affectRows = ps.executeUpdate();
-		//11.ÅĞ¶ÏÊÇ·ñ³É¹¦²Ù×÷
+		//11.åˆ¤æ–­æ˜¯å¦æˆåŠŸæ“ä½œ
 		     if(affectRows==1) {
-		    	 //Èç¹ûÓ°ÏìĞĞÊıÎª1£¬±íÊ¾³É¹¦²Ù×÷
+		    	 //å¦‚æœå½±å“è¡Œæ•°ä¸º1ï¼Œè¡¨ç¤ºæˆåŠŸæ“ä½œ
 		    	 isSign = true;
 		     }*/
-		 //7.Ö±½Óµ÷ÓÃÒÑ¶¨ÒåµÄ·½·¨À´´¦Àí(¸üĞÂpoint Êı¾İ)
+		 //7.ç›´æ¥è°ƒç”¨å·²å®šä¹‰çš„æ–¹æ³•æ¥å¤„ç†(æ›´æ–°point æ•°æ®)
 		    isSign = updateBySignOperate(reader_id, sumpoint, lastsign, signcount);
 		
 		} catch(Exception e) {
@@ -144,7 +144,7 @@ public class PointDao {
 		return isSign;
 	}
 	/**
-	 * @function:¸ù¾İ¶ÁÕßµÄid¼õÉÙÆä»ı·Ö
+	 * @function:æ ¹æ®è¯»è€…çš„idå‡å°‘å…¶ç§¯åˆ†
 	 * @param int point
 	 * @param String  reader_id
 	 * @return boolean isReduce
@@ -152,9 +152,9 @@ public class PointDao {
 	public boolean reducepoint(String reader_id,int point ) {
         boolean isReduce = false;
 		try{
-		//1.×¼±¸sqlÓï¾ä
+		//1.å‡†å¤‡sqlè¯­å¥
 		String sql ="update point set sumpoint = sumpoint-? where reader_id = ?";
-		//2.³õÊ¼»¯ps
+		//2.åˆå§‹åŒ–ps
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, point);
 		ps.setString(2, reader_id);
@@ -168,8 +168,8 @@ public class PointDao {
 		return isReduce;
 	}
 	/**
-	 * function:¹Ø±Õ×ÊÔ´
-	 * @author ³ÂÇ¨¶Ô
+	 * function:å…³é—­èµ„æº
+	 * @author é™ˆè¿å¯¹
 	 * @throws SQLException
 	 */
 	public void close() throws SQLException {
@@ -203,14 +203,14 @@ public class PointDao {
        System.out.println("lastsign="+lastsign);
        
        java.util.Date udate = new java.util.Date();
-       //ÔÙ×ª»»Îª java.sql.Date ÀàĞÍ,ÕâÀï¹¹ÔìÆ÷µÄ²ÎÊıÊÇlongÀàĞÍµÄºÁÃëÊı
+       //å†è½¬æ¢ä¸º java.sql.Date ç±»å‹,è¿™é‡Œæ„é€ å™¨çš„å‚æ•°æ˜¯longç±»å‹çš„æ¯«ç§’æ•°
        java.sql.Date sdate = new java.sql.Date(udate.getTime());
-       /* ÏÂÃæÖ´ĞĞÒ»´ÎÄ£ÄâÇ©µ½²Ù×÷ */
-       //ÏÈ»ñµÃÒ»¸öjava.util.DateµÄ¶ÔÏó d
+       /* ä¸‹é¢æ‰§è¡Œä¸€æ¬¡æ¨¡æ‹Ÿç­¾åˆ°æ“ä½œ */
+       //å…ˆè·å¾—ä¸€ä¸ªjava.util.Dateçš„å¯¹è±¡ d
        /*boolean isUpdate = pd.updateBySignOperate("s001", 12, sdate, 1);
        System.out.println("isUpdate="+isUpdate);*/
        
-       /*ÏÂÃæÖ´ĞĞÒ»´ÎÕæÊµÇ©µ½²Ù×÷*/
+       /*ä¸‹é¢æ‰§è¡Œä¸€æ¬¡çœŸå®ç­¾åˆ°æ“ä½œ*/
        /*boolean isSign = pd.readerSignOperate("s001", sdate);
        System.out.println("isSign="+isSign);*/
        

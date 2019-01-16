@@ -4,8 +4,8 @@ package entities;
 import dao.BookDao;
 
 /**
- * @author ½­ÒËÈğ Email£º1457908216@qq.com
- * @version 2017Äê9ÔÂ27ÈÕ ÉÏÎç9:35:56
+ * @author æ±Ÿå®œç‘ Emailï¼š1457908216@qq.com
+ * @version 2017å¹´9æœˆ27æ—¥ ä¸Šåˆ9:35:56
  */
 public class Book { 
 	private String id;
@@ -27,24 +27,24 @@ public class Book {
   
 	
 	/**
-	 * ÖĞÎÄÁĞ
+	 * ä¸­æ–‡åˆ—
 	 */
-	private static String[] columnsCN = { "ĞòºÅ", "ÊéÃû", "×÷Õß", "ISBN", "³ö°æÉç", "Èë¿âÊ±¼ä", "³ö°æÊ±¼ä", "¼Û¸ñ", "·ÖÀà","ĞÅÏ¢","×â½ğ","ÆäËû" };
-	private String[] columns_CN = { "ĞòºÅ", "ÊéÃû", "×÷Õß", "ISBN", "³ö°æÉç", "Èë¿âÊ±¼ä", "³ö°æÊ±¼ä", "¼Û¸ñ", "·ÖÀà","ĞÅÏ¢","×â½ğ","ÆäËû" };
+	private static String[] columnsCN = { "åºå·", "ä¹¦å", "ä½œè€…", "ISBN", "å‡ºç‰ˆç¤¾", "å…¥åº“æ—¶é—´", "å‡ºç‰ˆæ—¶é—´", "ä»·æ ¼", "åˆ†ç±»","ä¿¡æ¯","ç§Ÿé‡‘","å…¶ä»–" };
+	private String[] columns_CN = { "åºå·", "ä¹¦å", "ä½œè€…", "ISBN", "å‡ºç‰ˆç¤¾", "å…¥åº“æ—¶é—´", "å‡ºç‰ˆæ—¶é—´", "ä»·æ ¼", "åˆ†ç±»","ä¿¡æ¯","ç§Ÿé‡‘","å…¶ä»–" };
 
 	/**
-	 * Ó¢ÎÄÁĞ
+	 * è‹±æ–‡åˆ—
 	 */
 	private static String[] columnsEN = { "id", "name", "writer", "ISBN", "publisher", "check_in_String",
 			"publish_String", "price", "type","simpleinfo","rent","other" };
 	private  String[] columns_EN = { "id", "name", "writer", "ISBN", "publisher", "check_in_String",
 			"publish_String", "price", "type","simpleinfo","rent","other" };
 
-	/** ¹¹Ôìº¯Êı£¬Ê®¶ş¸ö´«Èë²ÎÊı */
+	/** æ„é€ å‡½æ•°ï¼ŒåäºŒä¸ªä¼ å…¥å‚æ•° */
 	/**
-	 * @author ½­ÒËÈğ
-	 * @param id£¬name,writer£¬iSBN£¬publisher£¬check_in_String£¬
-	 *            publish_String£¬price£¬type£¬info,rent,other
+	 * @author æ±Ÿå®œç‘
+	 * @param idï¼Œname,writerï¼ŒiSBNï¼Œpublisherï¼Œcheck_in_Stringï¼Œ
+	 *            publish_Stringï¼Œpriceï¼Œtypeï¼Œinfo,rent,other
 	 */
 	
 	public Book(String id, String name, String writer, String iSBN, String publisher, String check_in_String,
@@ -56,7 +56,7 @@ public class Book {
 		ISBN = iSBN;
 		this.publisher = publisher;
 		if (check_in_String!=null) {
-			// ÈÕÆÚ¿ÉÒÔÎª¿ÕÖµ,ÈÕÆÚ×î³¤³¤¶ÈÎª20
+			// æ—¥æœŸå¯ä»¥ä¸ºç©ºå€¼,æ—¥æœŸæœ€é•¿é•¿åº¦ä¸º20
 			if(check_in_String.length()>=20) {
 			this.check_in_String = check_in_String.substring(0,19);
 			}else {
@@ -64,7 +64,7 @@ public class Book {
 			}
 		}
 		if (publish_String!=null) {
-			// ´Ë´¦ÈÕÆÚÒ²¿ÉÒÔÎª¿ÕÖµ
+			// æ­¤å¤„æ—¥æœŸä¹Ÿå¯ä»¥ä¸ºç©ºå€¼
 			if(publish_String.length()>=10) {
 				this.publish_String = publish_String.substring(0,10); 
 			} else {
@@ -74,23 +74,23 @@ public class Book {
 		this.price = price;
 		this.type = type;
 		if (other != null) {
-			// Èç¹û²»Îª¿ÕÖµ¾Í´«Èë²ÎÊı
+			// å¦‚æœä¸ä¸ºç©ºå€¼å°±ä¼ å…¥å‚æ•°
 			this.other = other;
 		} else{
 			this.other = "";
 		}
 		if (simpleinfo!= null) {
-			// ´Ë´¦¼ò½éÒ²¿ÉÒÔÎª¿ÕÖµ
+			// æ­¤å¤„ç®€ä»‹ä¹Ÿå¯ä»¥ä¸ºç©ºå€¼
 			this.simpleinfo = simpleinfo;
 		}
 		if (rent!= null) {
-			// ´Ë´¦×â½ğÒ²¿ÉÒÔÎª¿ÕÖµ
+			// æ­¤å¤„ç§Ÿé‡‘ä¹Ÿå¯ä»¥ä¸ºç©ºå€¼
 			this.rent = rent;
 		}
 	}
 
 	/**
-	 * @author ½­ÒËÈğ ÖØĞ´hashCode·½·¨
+	 * @author æ±Ÿå®œç‘ é‡å†™hashCodeæ–¹æ³•
 	 */
 	public int hashCode() {
 		final int prime = 31;
@@ -110,7 +110,7 @@ public class Book {
 		return result;
 	}
 	/**
-	 * @author ½­ÒËÈğ ÖØĞ´equals·½·¨
+	 * @author æ±Ÿå®œç‘ é‡å†™equalsæ–¹æ³•
 	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -184,7 +184,7 @@ public class Book {
 	}
 
 	/**
-	 * @author ½­ÒËÈğ ÖØĞ´toString·½·¨
+	 * @author æ±Ÿå®œç‘ é‡å†™toStringæ–¹æ³•
 	 */
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", writer=" + writer + ", ISBN=" + ISBN + ", publisher="
@@ -192,7 +192,7 @@ public class Book {
 				+ price + ", type=" + type + ", info=" + simpleinfo + ", rent=" + rent + ", other=" + other + "]";
 	}
 	/**
-	 * @author ½­ÒËÈğ getter()ºÍsetter()·½·¨
+	 * @author æ±Ÿå®œç‘ getter()å’Œsetter()æ–¹æ³•
 	 */
 
 	public String getId() {

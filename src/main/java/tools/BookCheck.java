@@ -10,54 +10,54 @@ import entities.Book;
 public class BookCheck {
 
 	/**
-	 * function :¼ì²âÕâ¸ö×Ö·û´®ÊÇ·ñÎª¸¡µãÊı»òÕûÊı
+	 * function :æ£€æµ‹è¿™ä¸ªå­—ç¬¦ä¸²æ˜¯å¦ä¸ºæµ®ç‚¹æ•°æˆ–æ•´æ•°
 	 * 
 	 * @param numberStr
 	 * @return
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 */
 	public static boolean isFloatOrInteger(String numberStr) {
 
-		// 1.ÏÈ´¦Àí¿Õ¸ñ
+		// 1.å…ˆå¤„ç†ç©ºæ ¼
 		numberStr = numberStr.trim();
-		// 2.½«×Ö·û´®·Ö¸î
+		// 2.å°†å­—ç¬¦ä¸²åˆ†å‰²
 		String[] numSubStr = numberStr.split("\\.");
 		int pointSize = 0;
-		// 3.ÅĞ¶Ï·Ö¸îºóµÄ×Ö·û´®ÊÇ·ñÎªÊı×Ö
+		// 3.åˆ¤æ–­åˆ†å‰²åçš„å­—ç¬¦ä¸²æ˜¯å¦ä¸ºæ•°å­—
 		for (int i = 0; i < numberStr.length(); i++) {
 			if (numberStr.charAt(i) == '.') {
 				pointSize++;
 			}
 		}
 		if (pointSize == 1 || pointSize == 0) {
-			// Èç¹ûÓĞÒ»¸öµã»òÕßÃ»ÓĞ
+			// å¦‚æœæœ‰ä¸€ä¸ªç‚¹æˆ–è€…æ²¡æœ‰
 			for (int i = 0; i < numSubStr.length; i++) {
 				if (!StringUtils.isNumeric(numSubStr[i])) {
 					return false;
 				}
 			}
-			// 4.·ûºÏÒªÇó·µ»¹true
+			// 4.ç¬¦åˆè¦æ±‚è¿”è¿˜true
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * function£º¶ÔÊ±¼ä¸ñÊ½ÊÇ·ñÕıÈ·ºÍÊ±¼äÊı¾İÊÇ·ñºÏ·¨µÄÅĞ¶Ï
+	 * functionï¼šå¯¹æ—¶é—´æ ¼å¼æ˜¯å¦æ­£ç¡®å’Œæ—¶é—´æ•°æ®æ˜¯å¦åˆæ³•çš„åˆ¤æ–­
 	 * 
 	 * @param date
 	 * @return boolean
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 */
 	public static boolean isValidDate(String date) {
-        //×Ö·û´®È¡³öÁ½±ß¿Õ
+        //å­—ç¬¦ä¸²å–å‡ºä¸¤è¾¹ç©º
 		date = date.trim();
 		int HH =0;
 		int mm =0;
 		int ss =0;
 		SimpleDateFormat dateFormat = null;
 		dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		// ÏÈÅĞ¶ÏÊÇ·ñÊÇ°üÀ¨Ê±¼äµÄÈÕÆÚ,Èç¹ûÊÇÊ±¼ä£¬¾ÍÏÈÅĞ¶ÏÊ±¼ä
+		// å…ˆåˆ¤æ–­æ˜¯å¦æ˜¯åŒ…æ‹¬æ—¶é—´çš„æ—¥æœŸ,å¦‚æœæ˜¯æ—¶é—´ï¼Œå°±å…ˆåˆ¤æ–­æ—¶é—´
 		if (date.length() > 11) {
 //			dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss"); 
 			try {
@@ -65,62 +65,62 @@ public class BookCheck {
 			 mm=Integer.parseInt(date.substring(14, 16));
 			 ss=Integer.parseInt(date.substring(17, 19));
 			}catch(Exception e) {
-				//Èç¹û×ª»»³ö´í£¬ÄÇÃ´¾ÍËµÃ÷Ò»¶¨ÓĞÎÊÌâ¡£
+				//å¦‚æœè½¬æ¢å‡ºé”™ï¼Œé‚£ä¹ˆå°±è¯´æ˜ä¸€å®šæœ‰é—®é¢˜ã€‚
 				return false;
 			}
-			 //ÏÈÅĞ¶ÏÊ±¼äÊÇ·ñºÏ·¨£¬ÊıÖµ¹ı´óÒ²»¹ÊÇ´íµÄ
+			 //å…ˆåˆ¤æ–­æ—¶é—´æ˜¯å¦åˆæ³•ï¼Œæ•°å€¼è¿‡å¤§ä¹Ÿè¿˜æ˜¯é”™çš„
 			 if(HH<0||HH>=24||mm<0||mm>=60||ss<0||ss>=60) {
 				 return false;
 			 }
 			 date = date.substring(0,10);
 		}  
 		/**
-		 * ÕâÀï´¦Àí¶ÔÊ±¼ä¸ñÊ½ÊÇ·ñÕıÈ·µÄÅĞ¶Ï£¬Í¬Ê±Ò²´¦Àí¶ÔÊ±¼äÊı¾İÊÇ·ñºÏ·¨µÄÅĞ¶Ï ÓĞÒÔÏÂ5ÖÖÇé¿ö
-		 * 1.¸ñÊ½ÕıÈ·£¬µ«ÊıÖµ´íÎó£¬²»»á±¨´í£¬±ÈÈç2017-2-33£¬»á×ª»»Îª2017-2-2
-		 * 2.¸ñÊ½´íÎó£¬º¯Êı»áÇ¿ÖÆ×ª»»ÎªÒ»¸öÈÕÆÚ£¬Èç2017-2--3»áÇ¿ÖÆ×ª»»Îª2017-2-28
-		 * 3.¸ñÊ½ÍêÈ«´íÎó£¨Ò»°ã¶¼ÊÇÈ±ÉÙ"-"£©¾Í»á±¨´í£¬Èç2017
-		 * 4.¸ñÊ½´íÎó£¬µ«ÊÇÊÇºÏ·¨µÄÊ±¼ä£¬Èç2017-1-1£¬Ó¦¸ÃĞ´³É2017-01-01 5.¸ñÊ½ÕıÈ·£¬Êı¾İÕıÈ·µ«ÊÇÄê·İ¹ı´ó£¬Èç20117
-		 * Õë¶ÔÒÔÉÏÎÊÌâ£¬´¦Àí·½Ê½ÈçÏÂ£º 1.ÏÈ¶ÔÊ±¼äÊı¾İ×ª»»£¬Èç¹û×ª»»³ö´í£¬ÄÇÃ´Ò»¶¨ÊÇÉÏÊöµÄµÚ3ÖÖÇé¿ö
-		 * 2.ÔÙ¶Ô×ª»»³ÉµÄDateÀà±äÁ¿½øĞĞ×ª»»£¬½«Æä×ª»»Îª×Ö·û´®¸ñÊ½£¨transferdate£©
-		 * 3.×îºó½«²ÎÊıdateÓë×Ö·û´®transferdate½øĞĞ±È½Ï£¬Èç¹ûÏàÍ¬ËµÃ÷¸ñÊ½ºÍÊı¾İ¶¼ÕıÈ·£¬
-		 * ¾ÍÊÇÉÏÊöµÚ1ÖÖÇé¿ö¡£·ñÔò¾Í²»¶Ô£¬ÎªÉÏÊöµÚ2ÖÖÇé¿ö¡£ÕâÑùÅĞ¶Ï±È½ÏÑÏÃÜ¡£ 4.¶ÔÄê·İµ¥¶ÀÌáÈ¡£¬´¦ÀíµÚ4ÖÖÇé¿ö£¬Èç¹ûÄê·İ¹ı´óÒ²ÌáÊ¾´íÎó¡£
-		 * 5.ÖµµÃ×¢ÒâµÄÊÇ£¬¶ÔÓÚÊäÈëµÄÊ±¼ä×Ö·û´®£¬±ØĞëÒªÇóÓÃ»§ÊäÈëµÄÎªyyyy-mm-dd
-		 * ¡±2017-2-1¡°ÊÇ²»ºÏÊÊµÄ£¬±ØĞëĞ´³É¡±2017-02-01¡°£¬ÕâÖÖ´íÎó±»ÈÏÎªÊÇÉÏÊöµÚËÄÖÖ¡£ÕâÔÚÓÃ»§ÊäÈë½çÃæĞèÒªÌáÊ¾ÓÃ»§¡£
+		 * è¿™é‡Œå¤„ç†å¯¹æ—¶é—´æ ¼å¼æ˜¯å¦æ­£ç¡®çš„åˆ¤æ–­ï¼ŒåŒæ—¶ä¹Ÿå¤„ç†å¯¹æ—¶é—´æ•°æ®æ˜¯å¦åˆæ³•çš„åˆ¤æ–­ æœ‰ä»¥ä¸‹5ç§æƒ…å†µ
+		 * 1.æ ¼å¼æ­£ç¡®ï¼Œä½†æ•°å€¼é”™è¯¯ï¼Œä¸ä¼šæŠ¥é”™ï¼Œæ¯”å¦‚2017-2-33ï¼Œä¼šè½¬æ¢ä¸º2017-2-2
+		 * 2.æ ¼å¼é”™è¯¯ï¼Œå‡½æ•°ä¼šå¼ºåˆ¶è½¬æ¢ä¸ºä¸€ä¸ªæ—¥æœŸï¼Œå¦‚2017-2--3ä¼šå¼ºåˆ¶è½¬æ¢ä¸º2017-2-28
+		 * 3.æ ¼å¼å®Œå…¨é”™è¯¯ï¼ˆä¸€èˆ¬éƒ½æ˜¯ç¼ºå°‘"-"ï¼‰å°±ä¼šæŠ¥é”™ï¼Œå¦‚2017
+		 * 4.æ ¼å¼é”™è¯¯ï¼Œä½†æ˜¯æ˜¯åˆæ³•çš„æ—¶é—´ï¼Œå¦‚2017-1-1ï¼Œåº”è¯¥å†™æˆ2017-01-01 5.æ ¼å¼æ­£ç¡®ï¼Œæ•°æ®æ­£ç¡®ä½†æ˜¯å¹´ä»½è¿‡å¤§ï¼Œå¦‚20117
+		 * é’ˆå¯¹ä»¥ä¸Šé—®é¢˜ï¼Œå¤„ç†æ–¹å¼å¦‚ä¸‹ï¼š 1.å…ˆå¯¹æ—¶é—´æ•°æ®è½¬æ¢ï¼Œå¦‚æœè½¬æ¢å‡ºé”™ï¼Œé‚£ä¹ˆä¸€å®šæ˜¯ä¸Šè¿°çš„ç¬¬3ç§æƒ…å†µ
+		 * 2.å†å¯¹è½¬æ¢æˆçš„Dateç±»å˜é‡è¿›è¡Œè½¬æ¢ï¼Œå°†å…¶è½¬æ¢ä¸ºå­—ç¬¦ä¸²æ ¼å¼ï¼ˆtransferdateï¼‰
+		 * 3.æœ€åå°†å‚æ•°dateä¸å­—ç¬¦ä¸²transferdateè¿›è¡Œæ¯”è¾ƒï¼Œå¦‚æœç›¸åŒè¯´æ˜æ ¼å¼å’Œæ•°æ®éƒ½æ­£ç¡®ï¼Œ
+		 * å°±æ˜¯ä¸Šè¿°ç¬¬1ç§æƒ…å†µã€‚å¦åˆ™å°±ä¸å¯¹ï¼Œä¸ºä¸Šè¿°ç¬¬2ç§æƒ…å†µã€‚è¿™æ ·åˆ¤æ–­æ¯”è¾ƒä¸¥å¯†ã€‚ 4.å¯¹å¹´ä»½å•ç‹¬æå–ï¼Œå¤„ç†ç¬¬4ç§æƒ…å†µï¼Œå¦‚æœå¹´ä»½è¿‡å¤§ä¹Ÿæç¤ºé”™è¯¯ã€‚
+		 * 5.å€¼å¾—æ³¨æ„çš„æ˜¯ï¼Œå¯¹äºè¾“å…¥çš„æ—¶é—´å­—ç¬¦ä¸²ï¼Œå¿…é¡»è¦æ±‚ç”¨æˆ·è¾“å…¥çš„ä¸ºyyyy-mm-dd
+		 * â€2017-2-1â€œæ˜¯ä¸åˆé€‚çš„ï¼Œå¿…é¡»å†™æˆâ€2017-02-01â€œï¼Œè¿™ç§é”™è¯¯è¢«è®¤ä¸ºæ˜¯ä¸Šè¿°ç¬¬å››ç§ã€‚è¿™åœ¨ç”¨æˆ·è¾“å…¥ç•Œé¢éœ€è¦æç¤ºç”¨æˆ·ã€‚
 		 */
 		Date d = new Date();
 		try {
 			d = dateFormat.parse(date);
 			String transferdate = dateFormat.format(d);
-			// Ê±¼ä¸ñÊ½×ª»»
+			// æ—¶é—´æ ¼å¼è½¬æ¢
 
-			// ±È½Ï×ª»»ºóµÄºÍ×ª»»Ö®Ç°µÄÊ±¼ä×Ö·û´®ÊÇ·ñÒ»ÖÂ
+			// æ¯”è¾ƒè½¬æ¢åçš„å’Œè½¬æ¢ä¹‹å‰çš„æ—¶é—´å­—ç¬¦ä¸²æ˜¯å¦ä¸€è‡´
 			if (transferdate.equals(date)) {
-				// Èç¹ûÒ»ÖÂ£¬ÔÚ¿´¿´Äê·İÊÇ·ñ¹ı´ó
+				// å¦‚æœä¸€è‡´ï¼Œåœ¨çœ‹çœ‹å¹´ä»½æ˜¯å¦è¿‡å¤§
 				GregorianCalendar calendar = new GregorianCalendar();
-				// ½«Date ÀàµÄ¶ÔÏódate ×ª»»Îª GregorianCalendar ÀàµÄcalendar
+				// å°†Date ç±»çš„å¯¹è±¡date è½¬æ¢ä¸º GregorianCalendar ç±»çš„calendar
 				calendar.setTime(d);
 				if (calendar.get(Calendar.YEAR) < 2020 && calendar.get(Calendar.YEAR) > 1900) {
-					// Ê±¼ä´óÓÚ1900Äê²¢ÇÒĞ¡ÓÚ2020Äê£¬±»ÈÏÎªÊÇÕıÈ·µÄÊ±¼ä
+					// æ—¶é—´å¤§äº1900å¹´å¹¶ä¸”å°äº2020å¹´ï¼Œè¢«è®¤ä¸ºæ˜¯æ­£ç¡®çš„æ—¶é—´
 					return true;
 				}
 			}
 			return false;
 		} catch (Exception e) {
-			// ³öÏÖÒì³£ËµÃ÷×ª»»Ê§°Üs
+			// å‡ºç°å¼‚å¸¸è¯´æ˜è½¬æ¢å¤±è´¥s
 			return false;
 		}
 
 	}
 
 	/**
-	 * function:¶ÔÊäÈëµÄbook¸÷¸öÖµ½øĞĞÑéÖ¤£¬È«²¿Í¨¹ıÑéÖ¤·µ»Øtrue,·ñÔò·µ»Øfalse
+	 * function:å¯¹è¾“å…¥çš„bookå„ä¸ªå€¼è¿›è¡ŒéªŒè¯ï¼Œå…¨éƒ¨é€šè¿‡éªŒè¯è¿”å›true,å¦åˆ™è¿”å›false
 	 * 
 	 * @param bookInfo
 	 * @param Optype
 	 * @return boolean
 	 */
 	public static boolean isValidBookMessage(Book bookInfo) {
-		// »ñµÃbookµÄÖµ
+		// è·å¾—bookçš„å€¼
 		String id = bookInfo.getId();
 		String name = bookInfo.getName();
 		String writer = bookInfo.getWriter();
@@ -139,56 +139,56 @@ public class BookCheck {
 					if (!ISBN.isEmpty()) {
 						if (!publisher.isEmpty()) {
 							if (isFloatOrInteger(price)) {
-								// ÀàÖĞµÄÅĞ¶ÏÊÇ·ñÎª¸¡µãÊı»òÕûÊıµÄ·½·¨
+								// ç±»ä¸­çš„åˆ¤æ–­æ˜¯å¦ä¸ºæµ®ç‚¹æ•°æˆ–æ•´æ•°çš„æ–¹æ³•
 								if (!type.isEmpty()) {
 									if (other.isEmpty()) {
-										// Èç¹ûotherÎª¿Õ£¬Ê¹Ëü±ä³É""
+										// å¦‚æœotherä¸ºç©ºï¼Œä½¿å®ƒå˜æˆ""
 										other = "";
 									}
 									if (simpleinfo==null||simpleinfo.isEmpty()) {
-										// Èç¹ûsimpleinfoÎª¿Õ£¬¾ÍÊ¹Ëü±ä³É""
+										// å¦‚æœsimpleinfoä¸ºç©ºï¼Œå°±ä½¿å®ƒå˜æˆ""
 										simpleinfo = "";
 									}
 									System.out.println("check_in_date="+check_in_date);
 									System.out.println("publish_date"+publish_date);
 									if (isValidDate(check_in_date)) {
-										// 3.Ö´ĞĞ²åÈëÓï¾ä£¬¼ì²éÊÇ·ñ³É¹¦
+										// 3.æ‰§è¡Œæ’å…¥è¯­å¥ï¼Œæ£€æŸ¥æ˜¯å¦æˆåŠŸ
 										if (isValidDate(publish_date)) {
 
 											if (!rent.isEmpty()) {
-												// ÑéÖ¤³É¹¦£¡
+												// éªŒè¯æˆåŠŸï¼
 												return true;
 											} else {
-												System.out.println("×â½ğÈ±Ê§");
+												System.out.println("ç§Ÿé‡‘ç¼ºå¤±");
 											}
 										} else {
-											System.out.println("³ö°æÈÕÆÚ¸ñÊ½»òÊıÖµ´íÎó");
+											System.out.println("å‡ºç‰ˆæ—¥æœŸæ ¼å¼æˆ–æ•°å€¼é”™è¯¯");
 										}
 
 									} else {
 										System.out.println("check_in_date" + check_in_date);
-										System.out.println("µÇ¼ÇÈÕÆÚ¸ñÊ½»òÊıÖµ´íÎó");
+										System.out.println("ç™»è®°æ—¥æœŸæ ¼å¼æˆ–æ•°å€¼é”™è¯¯");
 									}
 								} else {
-									System.out.println("ÇëÌîĞ´ÀàĞÍ");
+									System.out.println("è¯·å¡«å†™ç±»å‹");
 								}
 							} else {
-								System.out.println("ÇëÕıÈ·ÌîĞ´¼Û¸ñ");
+								System.out.println("è¯·æ­£ç¡®å¡«å†™ä»·æ ¼");
 							}
 						} else {
-							System.out.println("ÇëÌîĞ´³ö°æÉç");
+							System.out.println("è¯·å¡«å†™å‡ºç‰ˆç¤¾");
 						}
 					} else {
-						System.out.println("ÇëÌîĞ´ISBN");
+						System.out.println("è¯·å¡«å†™ISBN");
 					}
 				} else {
-					System.out.println("ÇëÌîĞ´×÷Õß");
+					System.out.println("è¯·å¡«å†™ä½œè€…");
 				}
 			} else {
-				System.out.println("ÇëÌîĞ´ÊéÃû");
+				System.out.println("è¯·å¡«å†™ä¹¦å");
 			}
 		} else {
-			System.out.println("ÇëÌîĞ´±àºÅ");
+			System.out.println("è¯·å¡«å†™ç¼–å·");
 		}
 		return false;
 	}
@@ -198,10 +198,10 @@ public class BookCheck {
 		boolean isValid2 = isValidDate("2017-2-33");
 		boolean isValid3 = isValidDate("2017-2--3");
 		boolean isValid4 = isValidDate("2017-1-1");
-		System.out.println("²âÊÔÓÃÀı1£ºÊäÈë"+"2017-10-08 02:19:03"+" Ô¤ÆÚÊä³ö"+isValid1+" Êµ¼ÊÊä³ö"+"true"+" ³É¹¦");
-		System.out.println("²âÊÔÓÃÀı2£ºÊäÈë"+"2017-2-33"+" Ô¤ÆÚÊä³ö"+isValid2+" Êµ¼ÊÊä³ö"+"false"+" ³É¹¦");
-		System.out.println("²âÊÔÓÃÀı3£ºÊäÈë"+"2017-2--3"+" Ô¤ÆÚÊä³ö"+isValid3+" Êµ¼ÊÊä³ö"+"false"+" ³É¹¦");
-		System.out.println("²âÊÔÓÃÀı4£ºÊäÈë"+"2017-1-1"+" Ô¤ÆÚÊä³ö"+isValid4+" Êµ¼ÊÊä³ö"+"false"+" ³É¹¦");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹1ï¼šè¾“å…¥"+"2017-10-08 02:19:03"+" é¢„æœŸè¾“å‡º"+isValid1+" å®é™…è¾“å‡º"+"true"+" æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹2ï¼šè¾“å…¥"+"2017-2-33"+" é¢„æœŸè¾“å‡º"+isValid2+" å®é™…è¾“å‡º"+"false"+" æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹3ï¼šè¾“å…¥"+"2017-2--3"+" é¢„æœŸè¾“å‡º"+isValid3+" å®é™…è¾“å‡º"+"false"+" æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹4ï¼šè¾“å…¥"+"2017-1-1"+" é¢„æœŸè¾“å‡º"+isValid4+" å®é™…è¾“å‡º"+"false"+" æˆåŠŸ");
 	*/
 		String numStr1 = "-1000000";
 		String numStr2 = "1000000";
@@ -220,14 +220,14 @@ public class BookCheck {
         boolean isFloatOrInteger7 = isFloatOrInteger(numStr7);
 		boolean isFloatOrInteger8 = isFloatOrInteger(numStr8);
 		 
-		System.out.println("²âÊÔÓÃÀı1£º"+"\t"+numStr1+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºfalse"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger1+"\t"+"³É¹¦");
-		System.out.println("²âÊÔÓÃÀı2£º"+"\t"+numStr2+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºtrue"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger2+"\t"+"³É¹¦");
-		System.out.println("²âÊÔÓÃÀı3£º"+"\t"+numStr3+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºtrue"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger3+"\t"+"³É¹¦");
-		System.out.println("²âÊÔÓÃÀı4£º"+"\t"+numStr4+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºtrue"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger4+"\t"+"³É¹¦");
-		System.out.println("²âÊÔÓÃÀı5£º"+"\t"+numStr5+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºtrue"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger5+"\t"+"³É¹¦");
-		System.out.println("²âÊÔÓÃÀı6£º"+"\t"+numStr6+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºtrue"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger6+"\t"+"³É¹¦");
-		System.out.println("²âÊÔÓÃÀı7£º"+"\t"+numStr7+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºfalse"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger7+"\t"+"³É¹¦");
-	    System.out.println("²âÊÔÓÃÀı8£º"+"\t"+numStr8+"\t"+"Ô¤ÆÚ½á¹ûÎª£ºfalse"+"\t"+"Êµ¼Ê½á¹ûÎª£º"+"\t"+isFloatOrInteger8+"\t"+"³É¹¦");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹1ï¼š"+"\t"+numStr1+"\t"+"é¢„æœŸç»“æœä¸ºï¼šfalse"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger1+"\t"+"æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹2ï¼š"+"\t"+numStr2+"\t"+"é¢„æœŸç»“æœä¸ºï¼štrue"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger2+"\t"+"æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹3ï¼š"+"\t"+numStr3+"\t"+"é¢„æœŸç»“æœä¸ºï¼štrue"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger3+"\t"+"æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹4ï¼š"+"\t"+numStr4+"\t"+"é¢„æœŸç»“æœä¸ºï¼štrue"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger4+"\t"+"æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹5ï¼š"+"\t"+numStr5+"\t"+"é¢„æœŸç»“æœä¸ºï¼štrue"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger5+"\t"+"æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹6ï¼š"+"\t"+numStr6+"\t"+"é¢„æœŸç»“æœä¸ºï¼štrue"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger6+"\t"+"æˆåŠŸ");
+		System.out.println("æµ‹è¯•ç”¨ä¾‹7ï¼š"+"\t"+numStr7+"\t"+"é¢„æœŸç»“æœä¸ºï¼šfalse"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger7+"\t"+"æˆåŠŸ");
+	    System.out.println("æµ‹è¯•ç”¨ä¾‹8ï¼š"+"\t"+numStr8+"\t"+"é¢„æœŸç»“æœä¸ºï¼šfalse"+"\t"+"å®é™…ç»“æœä¸ºï¼š"+"\t"+isFloatOrInteger8+"\t"+"æˆåŠŸ");
  
 	 
 	 

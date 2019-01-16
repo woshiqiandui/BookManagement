@@ -2,9 +2,9 @@ package entities;
 
 /**
  * 
- * @author ³ÂÇ¨¶Ô 
+ * @author é™ˆè¿å¯¹ 
  * Email: woshiqiandui@gmail.com
- * @version 2017Äê9ÔÂ26ÈÕ  ÏÂÎç6:26:32
+ * @version 2017å¹´9æœˆ26æ—¥  ä¸‹åˆ6:26:32
  */
  
  
@@ -13,32 +13,32 @@ public class Reader extends Person{
 	private String birthday;
 	final static int columnsNumber = 5;
 
-	protected static String[] columnsCN ={ "±àºÅ","ĞÕÃû","ĞÔ±ğ","ÉúÈÕ","ÃÜÂë"};
+	protected static String[] columnsCN ={ "ç¼–å·","å§“å","æ€§åˆ«","ç”Ÿæ—¥","å¯†ç "};
 	protected static String[] columnsEN ={ "id","name","gender","birthday","password"};
 	  
-    /** ¹¹Ôì·½·¨1*/
+    /** æ„é€ æ–¹æ³•1*/
 	public Reader(String id, String name, String gender, String birthday,String password) {
 		super(id,name,password);
 		this.gender = gender;
 		this.birthday = birthday;
 	}
-	/** ¹¹Ôì·½·¨2*/
+	/** æ„é€ æ–¹æ³•2*/
 	public Reader(String id, String name, String password) {
 		super(id,name,password);
 		gender = "";
 		birthday ="";
 	}
 	/**
-	 * @author ³ÂÇ¨¶Ô 
-	 * function:ÖØĞ´toString·½·¨
+	 * @author é™ˆè¿å¯¹ 
+	 * function:é‡å†™toStringæ–¹æ³•
 	 */
 	public String toString() {
 		return "Reader [id=" + id + ", name=" + name + ", gender=" + gender
 				+ ", birthday=" + birthday + "]";
 	}
 	/**
-	 * @author ³ÂÇ¨¶Ô
-	 * function:ÖØĞ´hashCode·½·¨
+	 * @author é™ˆè¿å¯¹
+	 * function:é‡å†™hashCodeæ–¹æ³•
 	 */
 	
 	public int hashCode() {
@@ -52,8 +52,8 @@ public class Reader extends Person{
 		return result;
 	}
 	/**
-	 * @author ³ÂÇ¨¶Ô
-	 * function£ºÖØĞ´equals·½·¨
+	 * @author é™ˆè¿å¯¹
+	 * functionï¼šé‡å†™equalsæ–¹æ³•
 	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,7 +82,7 @@ public class Reader extends Person{
 			return false;
 		return true;
 	}
-	/** getter()ºÍsetter()·½·¨ */
+	/** getter()å’Œsetter()æ–¹æ³• */
 	public String getGender() {
 		return gender;
 	}

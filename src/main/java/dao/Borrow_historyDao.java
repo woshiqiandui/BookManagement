@@ -17,10 +17,10 @@ public class Borrow_historyDao {
 	ResultSet rs = null;
 	String sql = null;
 	
-	/** ¹¹Ôìº¯Êı */
+	/** æ„é€ å‡½æ•° */
 	public Borrow_historyDao() {
 		try {
-			con = DBUtility.getConnection();// »ñµÃÊı¾İ¿âÁ¬½Ó
+			con = DBUtility.getConnection();// è·å¾—æ•°æ®åº“è¿æ¥
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -38,20 +38,20 @@ public class Borrow_historyDao {
 	
    
 	/**
-	 * function:¸ù¾İ½èÊéµÄĞòºÅ²éÕÒÊé¼®ÊÇ·ñ±»½è³ö
+	 * function:æ ¹æ®å€Ÿä¹¦çš„åºå·æŸ¥æ‰¾ä¹¦ç±æ˜¯å¦è¢«å€Ÿå‡º
 	 */
 	public boolean isReturnByBorrow_id(String borrow_id) {
 		boolean isReturn = false;
  
 		sql = "select is_return from borrow_history where borrow_id = ?";
 		try {
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
-			ps = con.prepareStatement(sql);// ´´½¨statement²éÑ¯
+			con = DBUtility.getConnection();// è·å–è¿æ¥
+			ps = con.prepareStatement(sql);// åˆ›å»ºstatementæŸ¥è¯¢
 			ps.setString(1,borrow_id.trim()); 
 			rs = ps.executeQuery();
 			if(rs.next()) { 
 				if(rs.getString(1).equals("1")) {
-					//Èç¹û±êÊ¶Îª1£¬±íÊ¾ÒÑ¾­¹é»¹ÁË
+					//å¦‚æœæ ‡è¯†ä¸º1ï¼Œè¡¨ç¤ºå·²ç»å½’è¿˜äº†
 					isReturn = true;
 				}
 			}
@@ -62,15 +62,15 @@ public class Borrow_historyDao {
 		return isReturn;
 	}
 	/**
-	 * function:¸ù¾İÊé¼®ºÅ²éÕÒÊé¼®ÊÇ·ñ±»½è³ö
+	 * function:æ ¹æ®ä¹¦ç±å·æŸ¥æ‰¾ä¹¦ç±æ˜¯å¦è¢«å€Ÿå‡º
 	 */
 	public boolean isReturnByBook_id(String book_id) {
 		boolean isReturn = false;
  
 		sql = "select * from borrow_history where book_id = ? and is_return= ?";
 		try { 
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
-			ps = con.prepareStatement(sql);// ´´½¨statement²éÑ¯
+			con = DBUtility.getConnection();// è·å–è¿æ¥
+			ps = con.prepareStatement(sql);// åˆ›å»ºstatementæŸ¥è¯¢
 			ps.setString(1,book_id.trim()); 
 			ps.setString(2, "0");
 			rs = ps.executeQuery();
@@ -84,13 +84,13 @@ public class Borrow_historyDao {
 		return isReturn;
 	} 
 	
-	/** ¸ù¾İborrow-id½øĞĞ²éÑ¯ 
+	/** æ ¹æ®borrow-idè¿›è¡ŒæŸ¥è¯¢ 
 	 * @return */
 	public ResultSet queryByBorrow_id(String borrow_id) {
 		sql = "select * from borrow_history where borrow_id = ?";
 		try {
-			con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
-			ps = con.prepareStatement(sql);// ´´½¨statement²éÑ¯
+			con = DBUtility.getConnection();// è·å–è¿æ¥
+			ps = con.prepareStatement(sql);// åˆ›å»ºstatementæŸ¥è¯¢
 			ps.setString(1,borrow_id.trim()); 
 			rs = ps.executeQuery();
 			
@@ -100,7 +100,7 @@ public class Borrow_historyDao {
 		return rs;
 	}
 
-	/** ¸ù¾İreader-id½øĞĞ²éÑ¯ 
+	/** æ ¹æ®reader-idè¿›è¡ŒæŸ¥è¯¢ 
 	 * @return */
 	public  ResultSet queryByReader_id(String Reader_id) {
 		sql = "select * from borrow_history where reader_id = ?";
@@ -115,7 +115,7 @@ public class Borrow_historyDao {
         return rs;
 	}
 
-	/** ¸ù¾İbook-id½øĞĞ²éÑ¯ 
+	/** æ ¹æ®book-idè¿›è¡ŒæŸ¥è¯¢ 
 	 * @return */
 	public ResultSet queryByBook_id(String Book_id) {
 		sql = "select * from borrow_history where book_id = ?";
@@ -131,7 +131,7 @@ public class Borrow_historyDao {
 		return rs;
 	}
 
-	/**²éÑ¯½èÊé¼ÇÂ¼µÄÈËÊı
+	/**æŸ¥è¯¢å€Ÿä¹¦è®°å½•çš„äººæ•°
 	 * @return */
 	public ResultSet queryCount(String borrow_date){
 	sql = "select count(distinct reader_id) from borrow_history";
@@ -146,7 +146,7 @@ public class Borrow_historyDao {
 	return rs;
 }
 
-	/** Ìí¼Ó½èÊé¼ÇÂ¼ 
+	/** æ·»åŠ å€Ÿä¹¦è®°å½• 
 	 * @return */
 	public boolean add(Borrow_history bh) {
 		 boolean isAdd = false;
@@ -172,24 +172,24 @@ public class Borrow_historyDao {
 	}
     
 	/**
-	 * function:²åÈë×â½ğ£¬²¢ĞŞ¸ÄË³×´Ì¬ÎªÒÑ¹é»¹
-	 * @author ³ÂÇ¨¶Ô
+	 * function:æ’å…¥ç§Ÿé‡‘ï¼Œå¹¶ä¿®æ”¹é¡ºçŠ¶æ€ä¸ºå·²å½’è¿˜
+	 * @author é™ˆè¿å¯¹
 	 * @return
 	 */
 	 public boolean returnByBorrow_id(String borrow_id,String rent) {
 		 boolean isReturn = false;
-		 //ĞŞ¸ÄµÄĞĞÊı
+		 //ä¿®æ”¹çš„è¡Œæ•°
 		 int affectRow = 0;
 		 sql = "update borrow_history set is_return='1',rent = ? where borrow_id = ?";
 			try {
-				con = DBUtility.getConnection();// »ñÈ¡Á¬½Ó
-				ps = con.prepareStatement(sql);// ´´½¨statement²éÑ¯
+				con = DBUtility.getConnection();// è·å–è¿æ¥
+				ps = con.prepareStatement(sql);// åˆ›å»ºstatementæŸ¥è¯¢
 				ps.setString(1,rent.trim()); 
 				ps.setString(2,borrow_id.trim()); 
 				affectRow= ps.executeUpdate();
 				  
 				if(affectRow==1) {
-					//ĞŞ¸ÄÓ°ÏìÎª1£¬Ôò±íÊ¾ĞŞ¸Ä³É¹¦
+					//ä¿®æ”¹å½±å“ä¸º1ï¼Œåˆ™è¡¨ç¤ºä¿®æ”¹æˆåŠŸ
 					isReturn = true;
 				}
 			} catch (SQLException e) {
@@ -199,7 +199,7 @@ public class Borrow_historyDao {
 			return isReturn;
 	 }
 
-	/**¸ù¾İ¶ÁÕßºÅÉ¾³ı½èÊé¼ÇÂ¼
+	/**æ ¹æ®è¯»è€…å·åˆ é™¤å€Ÿä¹¦è®°å½•
 	 * @return */
 	public boolean deleteByReader_id(String Reader_id) {
 		boolean isDelete = false;
@@ -219,7 +219,7 @@ public class Borrow_historyDao {
 			return isDelete;
 	}
 	
-	/**¸ù¾İÊéºÅÉ¾³ı½èÊé¼ÇÂ¼*/
+	/**æ ¹æ®ä¹¦å·åˆ é™¤å€Ÿä¹¦è®°å½•*/
 	public boolean deleteByBook_id(String Book_id) {
 		boolean isDelete = false;
 		int effectedRow = 0;
@@ -237,7 +237,7 @@ public class Borrow_historyDao {
 			}
 			return isDelete;
 	}
-	/**¸ù¾İ½èÊéºÅÉ¾³ı½èÊé¼ÇÂ¼*/
+	/**æ ¹æ®å€Ÿä¹¦å·åˆ é™¤å€Ÿä¹¦è®°å½•*/
 	public boolean deleteByBorrow_id(String Borrow_id) {
 		boolean isDelete = false;
 		int effectedRow = 0;
@@ -256,7 +256,7 @@ public class Borrow_historyDao {
 			return isDelete;
 	}
 	
-	/**¸ù¾İ½èÊéÊ±¼äÈÕÆÚÉ¾³ı½èÊé¼ÇÂ¼*/
+	/**æ ¹æ®å€Ÿä¹¦æ—¶é—´æ—¥æœŸåˆ é™¤å€Ÿä¹¦è®°å½•*/
 	public boolean deleteBorrow_date(String Borrow_date) {
 		boolean isDelete = false;
 		int effectedRow = 0;
@@ -276,8 +276,8 @@ public class Borrow_historyDao {
 	}
 
 	/**
-	 * function :Í¨¹ı¶ÁÕßid,»ñÈ¡Æä½èÔÄµÄÊé¼®id
-	 * @author ³ÂÇ¨¶Ô
+	 * function :é€šè¿‡è¯»è€…id,è·å–å…¶å€Ÿé˜…çš„ä¹¦ç±id
+	 * @author é™ˆè¿å¯¹
 	 * @param reader_id
 	 * @return bookIds
 	 */
@@ -290,7 +290,7 @@ public class Borrow_historyDao {
 				ps.setString(1,reader_id.trim());
 				rs = ps.executeQuery();
 				while(rs.next()) {
-					//²»¶ÏÌí¼ÓÊı¾İµ½bookIdsÀïÃæ
+					//ä¸æ–­æ·»åŠ æ•°æ®åˆ°bookIdsé‡Œé¢
 					bookIds.add(rs.getString(1));
 				}
 			} catch (SQLException e) {
@@ -301,8 +301,8 @@ public class Borrow_historyDao {
 	 }
 	 
 	 /**
-		 * function :Í¨¹ı¶ÁÕßid,»ñÈ¡Æä½èÔÄµÄÊé¼®µÄ½èÔÄÊı¾İ
-		 * @author ³ÂÇ¨¶Ô
+		 * function :é€šè¿‡è¯»è€…id,è·å–å…¶å€Ÿé˜…çš„ä¹¦ç±çš„å€Ÿé˜…æ•°æ®
+		 * @author é™ˆè¿å¯¹
 		 * @param reader_id
 		 * @return bookIds
 		 */
@@ -315,10 +315,10 @@ public class Borrow_historyDao {
 					ps.setString(1,borrow_id.trim());
 					rs = ps.executeQuery();
 					while(rs.next()) {
-						//³õÊ¼»¯Borrow_history,×â½ğ²»ÓÃ¸øÖµ
+						//åˆå§‹åŒ–Borrow_history,ç§Ÿé‡‘ä¸ç”¨ç»™å€¼
 						Borrow_history bh = new Borrow_history(rs.getString(1), 
 								rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6));
-						//²»¶ÏÌí¼ÓÊı¾İµ½borrow_historysÀïÃæ
+						//ä¸æ–­æ·»åŠ æ•°æ®åˆ°borrow_historysé‡Œé¢
 						borrow_historys.add(bh);
 					}
 				} catch (SQLException e) {
@@ -330,8 +330,8 @@ public class Borrow_historyDao {
 		 
 	 
 	    /**
-		 * function :Í¨¹ı¶ÁÕßid,»ñÈ¡Æä½èÔÄµÄÊé¼®µÄÏà¹ØĞÅÏ¢
-		 * @author ³ÂÇ¨¶Ô
+		 * function :é€šè¿‡è¯»è€…id,è·å–å…¶å€Ÿé˜…çš„ä¹¦ç±çš„ç›¸å…³ä¿¡æ¯
+		 * @author é™ˆè¿å¯¹
 		 * @param reader_id
 		 * @return  
 		 */
@@ -345,10 +345,10 @@ public class Borrow_historyDao {
 					ps.setString(1,reader_id.trim());
 					rs = ps.executeQuery();
 					while(rs.next()) {
-						// Ìí¼ÓÊı¾İµ½borrow_historyÀïÃæ 
+						// æ·»åŠ æ•°æ®åˆ°borrow_historyé‡Œé¢ 
 						borrow_history = new Borrow_history(rs.getString(1),rs.getString(2),rs.getString(3),
 								rs.getString(4),rs.getString(5),rs.getString(6));
-						//Ã¿´Î°ÑµÃµ½µÄÊı¾İ´æÈëlistÖĞ
+						//æ¯æ¬¡æŠŠå¾—åˆ°çš„æ•°æ®å­˜å…¥listä¸­
 						 borrow_historys.add(borrow_history);
 					}
 				} catch (SQLException e) {
@@ -359,8 +359,8 @@ public class Borrow_historyDao {
 		 }
 	 
 		 /**
-			 * function :Í¨¹ı¶ÁÕßid,»ñÈ¡Æä½èÔÄµÄÊé¼®µÄÏà¹ØĞÅÏ¢ ²¢·ÖÒ³
-			 * @author ³ÂÇ¨¶Ô
+			 * function :é€šè¿‡è¯»è€…id,è·å–å…¶å€Ÿé˜…çš„ä¹¦ç±çš„ç›¸å…³ä¿¡æ¯ å¹¶åˆ†é¡µ
+			 * @author é™ˆè¿å¯¹
 			 * @param String reader_id ,int startPage ,int pageSize
 			 * @return  
 			 */
@@ -376,10 +376,10 @@ public class Borrow_historyDao {
 						ps.setInt(3, pageSize);
 						rs = ps.executeQuery();
 						while(rs.next()) {
-							// Ìí¼ÓÊı¾İµ½borrow_historyÀïÃæ 
+							// æ·»åŠ æ•°æ®åˆ°borrow_historyé‡Œé¢ 
 							borrow_history = new Borrow_history(rs.getString(1),rs.getString(2),rs.getString(3),
 									rs.getString(4),rs.getString(5),rs.getString(6));
-							//Ã¿´Î°ÑµÃµ½µÄÊı¾İ´æÈëlistÖĞ
+							//æ¯æ¬¡æŠŠå¾—åˆ°çš„æ•°æ®å­˜å…¥listä¸­
 							 borrow_historys.add(borrow_history);
 						}
 					} catch (SQLException e) {
@@ -389,8 +389,8 @@ public class Borrow_historyDao {
 			      
 			 }
 			 /**
-				 * function :Í¨¹ı¶ÁÕßid,»ñÈ¡Æä½èÔÄµÄÊé¼®µÄÏà¹ØĞÅÏ¢µÄ½á¹ûÌõÊı
-				 * @author ³ÂÇ¨¶Ô
+				 * function :é€šè¿‡è¯»è€…id,è·å–å…¶å€Ÿé˜…çš„ä¹¦ç±çš„ç›¸å…³ä¿¡æ¯çš„ç»“æœæ¡æ•°
+				 * @author é™ˆè¿å¯¹
 				 * @param String reader_id
 				 * @return  int resultRow
 				 */
@@ -412,8 +412,8 @@ public class Borrow_historyDao {
 				 }
 		 
 		 /**
-			 * @author ³ÂÇ¨¶Ô
-			 * function:Í¨¹ıbook_id»ñµÃÓë½èÔÄÓĞ¹ØµÄËùÓĞĞÅÏ¢
+			 * @author é™ˆè¿å¯¹
+			 * function:é€šè¿‡book_idè·å¾—ä¸å€Ÿé˜…æœ‰å…³çš„æ‰€æœ‰ä¿¡æ¯
 			 * @return ResultSet
 			 */
 		 
@@ -432,8 +432,8 @@ public class Borrow_historyDao {
 			}
 			
 			/**
-			 * @author ³ÂÇ¨¶Ô
-			 * function:Í¨¹ıborrow_id²éÑ¯Õâ±¾ÊéÊÇ·ñ±»½è³ö
+			 * @author é™ˆè¿å¯¹
+			 * function:é€šè¿‡borrow_idæŸ¥è¯¢è¿™æœ¬ä¹¦æ˜¯å¦è¢«å€Ÿå‡º
 			 * @param id
 			 * @return isBorrowed
 			 */
@@ -443,10 +443,10 @@ public class Borrow_historyDao {
 					String sql ="select * from borrow_history where borrow_id = ? and is_return=?";
 					ps = con.prepareStatement(sql);
 				    ps.setString(1, borrow_id);
-				    ps.setString(2,"0");//0±íÊ¾Ã»ÓĞ¹é»¹
+				    ps.setString(2,"0");//0è¡¨ç¤ºæ²¡æœ‰å½’è¿˜
 				    rs = ps.executeQuery(); 
 					if(rs.next()) {
-						//Èç¹û±»½èÊéĞÅÏ¢ÖĞ´æÔÚÕâ±¾Êé£¬²¢ÇÒ»¹´¦ÓÚÃ»ÓĞ¹é»¹µÄ×´Ì¬
+						//å¦‚æœè¢«å€Ÿä¹¦ä¿¡æ¯ä¸­å­˜åœ¨è¿™æœ¬ä¹¦ï¼Œå¹¶ä¸”è¿˜å¤„äºæ²¡æœ‰å½’è¿˜çš„çŠ¶æ€
 						isBorrowed = true;
 					}   
 				} catch(Exception e) {
@@ -458,8 +458,8 @@ public class Borrow_historyDao {
 
 		 
 	 /**
-	  * function:¹Ø±ÕÁ¬½ÓºÍÏàÓ¦µÄ×ÊÔ´
-	  * @author ³ÂÇ¨¶Ô
+	  * function:å…³é—­è¿æ¥å’Œç›¸åº”çš„èµ„æº
+	  * @author é™ˆè¿å¯¹
 	  * 
 	  */
 	 public void close() {

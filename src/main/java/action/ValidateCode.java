@@ -25,24 +25,24 @@ public class ValidateCode extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//0.´´½¨¿Õ°×Í¼Æ¬
+		//0.åˆ›å»ºç©ºç™½å›¾ç‰‡
 				BufferedImage image = new BufferedImage(100, 30, BufferedImage.TYPE_INT_RGB);
-				//1.»ñÈ¡Í¼Æ¬µÄ»­±Ê
+				//1.è·å–å›¾ç‰‡çš„ç”»ç¬”
 				Graphics g = image.getGraphics() ;
 				Random r = new Random();
-				//2.ÉèÖÃ»­±ÊÑÕÉ«
+				//2.è®¾ç½®ç”»ç¬”é¢œè‰²
 				g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
-				//3.»æÖÆ¾ØĞÎ±³¾°
+				//3.ç»˜åˆ¶çŸ©å½¢èƒŒæ™¯
 				g.fillRect(0, 0, 100, 30);
-				//4.µ÷ÓÃ×Ô¶¨µÄ·½·¨£¬»ñÈ¡³¤¶ÈÎª5µÄ×ÖÄ¸Êı×Ö×éºÏd×Ö·û´®
+				//4.è°ƒç”¨è‡ªå®šçš„æ–¹æ³•ï¼Œè·å–é•¿åº¦ä¸º5çš„å­—æ¯æ•°å­—ç»„åˆdå­—ç¬¦ä¸²
 				String number = getNumber(5);
 				HttpSession session = request.getSession() ;
 				session.setAttribute("code", number);
 				g.setColor(new Color(0,0,0));
 				g.setFont(new Font(null, Font.BOLD, 24));
-				//5.ÉèÖÃÑÕÉ«×ÖÌåºó£¬»æÖÆ×Ö·û´®
+				//5.è®¾ç½®é¢œè‰²å­—ä½“åï¼Œç»˜åˆ¶å­—ç¬¦ä¸²
 				g.drawString(number, 5, 25);
-				//6.»æÖÆ8Ìõ¸ÉÈÅÏß
+				//6.ç»˜åˆ¶8æ¡å¹²æ‰°çº¿
 				for(int i=0;i<8;i++){
 					g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
 					g.drawLine(r.nextInt(100), r.nextInt(30), r.nextInt(100), r.nextInt(30));

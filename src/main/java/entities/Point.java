@@ -3,9 +3,9 @@ package entities;
 import java.util.Date;
 
 /**
- * @function:»ı·Ö±í£¬ÓÃÓÚ´¦Àí¶ÁÕß»ı·ÖµÄÏà¹ØĞÅÏ¢
- * @author ³ÂÇ¨¶Ô
- * @2017Äê10ÔÂ20ÈÕ @ÉÏÎç1:59:20
+ * @function:ç§¯åˆ†è¡¨ï¼Œç”¨äºå¤„ç†è¯»è€…ç§¯åˆ†çš„ç›¸å…³ä¿¡æ¯
+ * @author é™ˆè¿å¯¹
+ * @2017å¹´10æœˆ20æ—¥ @ä¸Šåˆ1:59:20
  * 
  */
 public class Point {
@@ -16,7 +16,7 @@ public class Point {
 	private int totalcharge;
 	
 	/**
-	 * @function:ÓÃÓÚ¶ÁÕßÇ©µ½µÄÊ¹ÓÃµ½µÄ¹¹ÔìÆ÷
+	 * @function:ç”¨äºè¯»è€…ç­¾åˆ°çš„ä½¿ç”¨åˆ°çš„æ„é€ å™¨
 	 * @param reader_id
 	 * @param sumpoint
 	 * @param lastsign
@@ -31,7 +31,7 @@ public class Point {
 	}
 	
 	/**
-	 * @function:Îå¸ö²ÎÊıµÄ¹¹ÔìÆ÷
+	 * @function:äº”ä¸ªå‚æ•°çš„æ„é€ å™¨
 	 * @param reader_id
 	 * @param sumpoint
 	 * @param lastsign

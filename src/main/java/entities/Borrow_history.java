@@ -1,7 +1,7 @@
 package entities;
 
 public class Borrow_history {
-	// borrow_id ×Ô¶¯Éú³É£¬ÎŞĞè²åÈëÁË
+	// borrow_id è‡ªåŠ¨ç”Ÿæˆï¼Œæ— éœ€æ’å…¥äº†
     private String book_id ;
     private String reader_id ;
     private String borrow_date ;
@@ -11,12 +11,12 @@ public class Borrow_history {
     private String[] info;
 	private static int columnsNumber = 6;
 	private static String[] columnsEN ={"borrow_id","book_id","reader_id","borrow_date" ,"rent","is_return"};
-    private static String[] columnsCN ={"½èÔÄĞòºÅ","ÊéÃû","¶ÁÕßĞòºÅ","½èÔÄÊ±¼ä","×â½ğ","ÊÇ·ñ¹é»¹"};
+    private static String[] columnsCN ={"å€Ÿé˜…åºå·","ä¹¦å","è¯»è€…åºå·","å€Ÿé˜…æ—¶é—´","ç§Ÿé‡‘","æ˜¯å¦å½’è¿˜"};
     private   String[] columns_EN ={"borrow_id","book_id","reader_id","borrow_date" ,"rent","is_return"};
-    private   String[] columns_CN ={"½èÔÄĞòºÅ","ÊéÃû","¶ÁÕßĞòºÅ","½èÔÄÊ±¼ä","×â½ğ","ÊÇ·ñ¹é»¹"};
+    private   String[] columns_CN ={"å€Ÿé˜…åºå·","ä¹¦å","è¯»è€…åºå·","å€Ÿé˜…æ—¶é—´","ç§Ÿé‡‘","æ˜¯å¦å½’è¿˜"};
     
      /**
-      * ¹¹ÔìÆ÷£¬borrow_id ÉèÖÃÎª¿Õ×Ö·û´®¾ÍĞĞ
+      * æ„é€ å™¨ï¼Œborrow_id è®¾ç½®ä¸ºç©ºå­—ç¬¦ä¸²å°±è¡Œ
       * @param book_id
       * @param reader_id
       * @param borrow_date
@@ -29,13 +29,13 @@ public class Borrow_history {
 		this.reader_id = reader_id;
 		this.borrow_date = borrow_date;
 		this.is_return = is_return;
-		//½èÔÄidÎª¿Õ×Ö·û´®
+		//å€Ÿé˜…idä¸ºç©ºå­—ç¬¦ä¸²
 		this.borrow_id ="";
-		//×â½ğ¿ªÊ¼Ã»ÓĞ¼ÆËã£¬Îª0
+		//ç§Ÿé‡‘å¼€å§‹æ²¡æœ‰è®¡ç®—ï¼Œä¸º0
 		this.rent="0";
 	}
      /**
-      * ¹¹ÔìÆ÷ 
+      * æ„é€ å™¨ 
       * @param book_id
       * @param reader_id
       * @param borrow_date
@@ -49,7 +49,7 @@ public class Borrow_history {
 		this.borrow_date = borrow_date;
 		this.is_return = is_return;
 		this.borrow_id = borrow_id;
-		//×â½ğ¿ªÊ¼Ã»ÓĞ¼ÆËã£¬Îª0
+		//ç§Ÿé‡‘å¼€å§‹æ²¡æœ‰è®¡ç®—ï¼Œä¸º0
 		if(rent==null||rent.length()==0){
 		this.rent="0";
 		} else {
@@ -57,13 +57,13 @@ public class Borrow_history {
 		}
 	}
 	 
-   //ÖØĞ´toString·½·¨
+   //é‡å†™toStringæ–¹æ³•
 	public String toString() {
 		return "Borrow_history [book_id="
 				+ book_id + ", reader_id=" + reader_id + ", borrow_date="
 				+ borrow_date + ", is_return=" + is_return + "]";
 	}
-	//ÖØĞ´hashCode·½·¨
+	//é‡å†™hashCodeæ–¹æ³•
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -75,7 +75,7 @@ public class Borrow_history {
 				+ ((reader_id == null) ? 0 : reader_id.hashCode());
 		return result;
 	}
-	//ÖØĞ´equals·½·¨
+	//é‡å†™equalsæ–¹æ³•
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -103,7 +103,7 @@ public class Borrow_history {
 			return false;
 		return true;
 	}
-	//getter()ºÍsetter()·½·¨
+	//getter()å’Œsetter()æ–¹æ³•
 	public String getBook_id() {
 		return book_id;
 	}
@@ -175,8 +175,8 @@ public class Borrow_history {
 		this.columns_CN = columns_CN;
 	}
 	/**
-	 * function:»ñµÃËùÓĞ½èÊéĞÅÏ¢
-	 * @author ³ÂÇ¨¶Ô
+	 * function:è·å¾—æ‰€æœ‰å€Ÿä¹¦ä¿¡æ¯
+	 * @author é™ˆè¿å¯¹
 	 * @return Borrow_historyInfo
 	 */
     public String[] getBorrow_hitoryInfo() {
@@ -190,8 +190,8 @@ public class Borrow_history {
     	return Borrow_historyInfo;
     }
 	/**
-	 * function:»ñµÃËùÓĞ½èÊéĞÅÏ¢
-	 * @author ³ÂÇ¨¶Ô
+	 * function:è·å¾—æ‰€æœ‰å€Ÿä¹¦ä¿¡æ¯
+	 * @author é™ˆè¿å¯¹
 	 * @return Borrow_historyInfo
 	 */
      
@@ -203,10 +203,10 @@ public class Borrow_history {
 		}
 	}
     /**
-	 * function:»ñµÃËùÓĞ½èÊéĞÅÏ¢
-	 * @author ³ÂÇ¨¶Ô
+	 * function:è·å¾—æ‰€æœ‰å€Ÿä¹¦ä¿¡æ¯
+	 * @author é™ˆè¿å¯¹
 	 * @return info
-	 * ÎªÁËÔÚjsp jstlÉÏÏÔÊ¾£¬Ãû×Ö»»ÁË
+	 * ä¸ºäº†åœ¨jsp jstlä¸Šæ˜¾ç¤ºï¼Œåå­—æ¢äº†
 	 */
 	public String[] getInfo() {
 		String []info = new String[6];

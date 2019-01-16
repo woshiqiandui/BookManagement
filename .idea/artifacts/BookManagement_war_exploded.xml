@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BookManagement:war exploded">
+    <output-path>$PROJECT_DIR$/target/BookManagement-0.0.1-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BookManagement" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.tomcat:jasper:6.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:servlet-api:6.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:juli:6.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:jsp-api:6.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:catalina:6.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:annotations-api:6.0.32" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:el-api:6.0.32" />
+          <element id="library" level="project" name="Maven: org.eclipse.jdt.core.compiler:ecj:3.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:jasper-el:6.0.32" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.8" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.2.2" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.1" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:20030825.183949" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.5" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/BookManagement-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="BookManagement/web/Web" />
+    </root>
+  </artifact>
+</component>

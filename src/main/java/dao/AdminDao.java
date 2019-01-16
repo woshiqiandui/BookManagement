@@ -10,26 +10,26 @@ import tools.MD5Encrypt;
 
 /**
  *Group 2 Class Java06
- *Group member:ÀîìÏ¡¢½­ÒËÈğ¡¢º«ÔÆÌÎ¡¢ÀîÃ·¡¢³ÂÇ¨¶Ô  
- *function:±í¸ñadminµÄÊı¾İ¿â²Ù×÷¹¤¾ßÀà
- * @author ³ÂÇ¨¶Ô Email: woshiqiandui@gmail.com
- * @version 2017-9-3  ÉÏÎç0:53:32
+ *Group member:æç…œã€æ±Ÿå®œç‘ã€éŸ©äº‘æ¶›ã€ææ¢…ã€é™ˆè¿å¯¹  
+ *function:è¡¨æ ¼adminçš„æ•°æ®åº“æ“ä½œå·¥å…·ç±»
+ * @author é™ˆè¿å¯¹ Email: woshiqiandui@gmail.com
+ * @version 2017-9-3  ä¸Šåˆ0:53:32
  */
 public class AdminDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	Connection con = null;
-	/** ¹¹Ôìº¯Êı*/
+	/** æ„é€ å‡½æ•°*/
 	public AdminDao() throws Exception {
 	  
-		con = DBUtility.getConnection();//»ñµÃÊı¾İ¿âÁ¬½Ó
+		con = DBUtility.getConnection();//è·å¾—æ•°æ®åº“è¿æ¥
 	  
 	}
 	/**
-	 * function:Í¨¹ı id-password ¶Ô »òÕß name-password ¶Ô À´¼ì²éÊÇ·ñÎª¹ÜÀíÔ±
+	 * function:é€šè¿‡ id-password å¯¹ æˆ–è€… name-password å¯¹ æ¥æ£€æŸ¥æ˜¯å¦ä¸ºç®¡ç†å‘˜
 	 * @param admin
 	 * @return isAdmin
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 */
 	 public  boolean isAdmin(Admin admin) {
 		  boolean isAdmin = false ;
@@ -37,10 +37,10 @@ public class AdminDao {
 				con =DBUtility.getConnection();
 				String sql="select * from admin where id = ? and password= ? or name= ? and password= ?";           
 				ps = con.prepareStatement(sql);
-				String id = admin.getId().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
-				String name = admin.getName().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
-				String password = MD5Encrypt.encryptByMD5(admin.getPassword());//ÃÜÂë¿Õ¸ñÒ²ÊÇ°®£¬²»ÄÜÉ¾³ı
-				//¶ÔÃÜÂë½øĞĞ¼ÓÃÜ²Ù×÷£¬ĞèÒª½÷É÷Ê¹ÓÃ
+				String id = admin.getId().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
+				String name = admin.getName().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
+				String password = MD5Encrypt.encryptByMD5(admin.getPassword());//å¯†ç ç©ºæ ¼ä¹Ÿæ˜¯çˆ±ï¼Œä¸èƒ½åˆ é™¤
+				//å¯¹å¯†ç è¿›è¡ŒåŠ å¯†æ“ä½œï¼Œéœ€è¦è°¨æ…ä½¿ç”¨
 				 ps.setString(1, id);
 				 ps.setString(2, password);
 				 ps.setString(3, name);
@@ -48,7 +48,7 @@ public class AdminDao {
 				 rs = ps.executeQuery() ;
 				  
 			  if(rs.next()) {
-				  //¹ÜÀíÔ±´æÔÚ
+				  //ç®¡ç†å‘˜å­˜åœ¨
 					 isAdmin = true ;  
 				 } 
 			}catch (Exception e) {
@@ -62,15 +62,15 @@ public class AdminDao {
 				}
 				DBUtility.closeConnection(con);
 			}
-	//¹ÜÀíÔ±²»´æÔÚ
+	//ç®¡ç†å‘˜ä¸å­˜åœ¨
      return isAdmin;
 		
 	}
 	 /**
-		 * function:¼ì²é¸ø¶¨µÄ¹ÜÀíÔ±idÊÇ·ñÕıÈ·
+		 * function:æ£€æŸ¥ç»™å®šçš„ç®¡ç†å‘˜idæ˜¯å¦æ­£ç¡®
 		 * @param admin
 		 * @return isRightId
-		 * @author ³ÂÇ¨¶Ô
+		 * @author é™ˆè¿å¯¹
 		 */
 	 public boolean isRightId(Admin admin) {
 		 boolean isRightId = false ;
@@ -78,12 +78,12 @@ public class AdminDao {
 				con =DBUtility.getConnection();
 				String sql="select * from admin where id = ? ";           
 				ps = con.prepareStatement(sql);
-				String id = admin.getId().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
+				String id = admin.getId().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
 				 ps.setString(1, id);
 				  rs = ps.executeQuery() ;
 				  
 			  if(rs.next()) {
-				  //¹ÜÀíÔ±id´æÔÚ
+				  //ç®¡ç†å‘˜idå­˜åœ¨
 				  isRightId =true ;  
 				 } 
 			}catch (Exception e) {
@@ -97,14 +97,14 @@ public class AdminDao {
 				}
 				DBUtility.closeConnection(con);
 			}
-	  //¹ÜÀíÔ±id²»´æÔÚ
+	  //ç®¡ç†å‘˜idä¸å­˜åœ¨
 		return isRightId;	 
 	 }
 	 /**
-		 * function:¼ì²é¸ø¶¨µÄ¹ÜÀíÔ±Ãû×ÖÊÇ·ñÕıÈ·
+		 * function:æ£€æŸ¥ç»™å®šçš„ç®¡ç†å‘˜åå­—æ˜¯å¦æ­£ç¡®
 		 * @param admin
 		 * @return isRightName
-		 * @author ³ÂÇ¨¶Ô
+		 * @author é™ˆè¿å¯¹
 		 */
 	 public boolean isRightName(Admin admin) {
 		 boolean isRightName = false ;
@@ -112,12 +112,12 @@ public class AdminDao {
 				con =DBUtility.getConnection();
 				String sql="select * from admin where name = ? ";           
 				ps = con.prepareStatement(sql);
-				String name = admin.getName().trim();//È¥µô¶àÓàµÄÁ½±ß¿Õ¸ñ
+				String name = admin.getName().trim();//å»æ‰å¤šä½™çš„ä¸¤è¾¹ç©ºæ ¼
 				 ps.setString(1, name);
 				  rs = ps.executeQuery() ;
 				  
 			  if(rs.next()) {
-				  //¹ÜÀíÔ±name´æÔÚ
+				  //ç®¡ç†å‘˜nameå­˜åœ¨
 				  isRightName =true ;  
 				 } 
 			}catch (Exception e) {
@@ -131,11 +131,11 @@ public class AdminDao {
 				}
 				DBUtility.closeConnection(con);
 			}
-	  //¹ÜÀíÔ±name²»´æÔÚ
+	  //ç®¡ç†å‘˜nameä¸å­˜åœ¨
 		return isRightName;	 
 	 }
 	 /**
-	  * function:Í¨¹ıÓÃ»§µÄid»ñµÃÆäÃû×Ö
+	  * function:é€šè¿‡ç”¨æˆ·çš„idè·å¾—å…¶åå­—
 	  */
 	 public String getNameById(String id) {
 		 String name = null;
@@ -153,10 +153,10 @@ public class AdminDao {
 		 return name;
 	 }
 	/** 
-	 * function:»ñµÃËùÓĞ¹ÜÀíÔ±µÄĞÅÏ¢
+	 * function:è·å¾—æ‰€æœ‰ç®¡ç†å‘˜çš„ä¿¡æ¯
 	 * @param null
 	 * @return ResultSet
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 */
 	public ResultSet selectAll() {
         
@@ -170,41 +170,41 @@ public class AdminDao {
 		return rs;
 	}
 	/** 
-	 * function:¸ù¾İidÉ¾³ı¹ÜÀíÔ±
+	 * function:æ ¹æ®idåˆ é™¤ç®¡ç†å‘˜
 	 * @param String id
 	 * @return Boolean
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 */
 	public Boolean deleteAdminById(String id) {
-		int isDelete = 0;// ³õÊ¼»¯Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±íÓĞÓ°Ïì
+		int isDelete = 0;// åˆå§‹åŒ–ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨æœ‰å½±å“
 		try {
 			String sql = "delete from admin where id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			isDelete = ps.executeUpdate();// ·µ»ØÉ¾³ıµÄ½á¹û 1±íÊ¾É¾³ı³É¹¦£¬0±íÊ¾Ã»ÓĞÉ¾³ı³É¹¦
+			isDelete = ps.executeUpdate();// è¿”å›åˆ é™¤çš„ç»“æœ 1è¡¨ç¤ºåˆ é™¤æˆåŠŸï¼Œ0è¡¨ç¤ºæ²¡æœ‰åˆ é™¤æˆåŠŸ
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (isDelete == 1) {
-			// Èç¹ûÉ¾³ı³É¹¦
+			// å¦‚æœåˆ é™¤æˆåŠŸ
 			return true;
 		}
 		return false;
 	}
 	/** 
-	 * function:Ôö¼ÓÒ»Ìõ¹ÜÀíÔ±Êı¾İµ½admin±í
+	 * function:å¢åŠ ä¸€æ¡ç®¡ç†å‘˜æ•°æ®åˆ°adminè¡¨
 	 * @param Admin admin
 	 * @return Boolean
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 */
 	public Boolean insertAdmin(Admin admin) {
-		int isInsert = 0;//³õÊ¼Îª0£¬±íÊ¾Ã»ÓĞ¶Ô±í²úÉúÓ°Ïì
+		int isInsert = 0;//åˆå§‹ä¸º0ï¼Œè¡¨ç¤ºæ²¡æœ‰å¯¹è¡¨äº§ç”Ÿå½±å“
 		try {
 			String sql = "insert into admin values(?,?,?)";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, admin.getId().trim());//²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(2,admin.getName().trim());//²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
-			ps.setString(3, MD5Encrypt.encryptByMD5(admin.getPassword().trim()));//²åÈëÒ»¶¨ÒªÈ¥µôÁ½±ß¶àÓàµÄ¿Õ¸ñ
+			ps.setString(1, admin.getId().trim());//æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(2,admin.getName().trim());//æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
+			ps.setString(3, MD5Encrypt.encryptByMD5(admin.getPassword().trim()));//æ’å…¥ä¸€å®šè¦å»æ‰ä¸¤è¾¹å¤šä½™çš„ç©ºæ ¼
 			isInsert = ps.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();

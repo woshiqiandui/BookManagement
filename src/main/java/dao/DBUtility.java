@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 /**
- * ¹¹½¨¹¤¾ßÀà£ºÁ¬½ÓÊı¾İ¿â¡¢²éÑ¯¡¢É¾³ı¡¢²åÈëµÈ¹¦ÄÜ
+ * æ„å»ºå·¥å…·ç±»ï¼šè¿æ¥æ•°æ®åº“ã€æŸ¥è¯¢ã€åˆ é™¤ã€æ’å…¥ç­‰åŠŸèƒ½
  * @author LiYu
  */
 public class DBUtility {
@@ -23,24 +23,24 @@ public class DBUtility {
 	public  PreparedStatement ps = null;
 	String sql = null;
 	static{
-		//¼ÓÔØÅäÖÃÎÄ¼ş
+		//åŠ è½½é…ç½®æ–‡ä»¶
 		try {
 			properties.load(DBUtility.class.getClassLoader().getResourceAsStream
 					("db.properties"));
 			driver = properties.getProperty("jdbc.driver");
-			url = properties.getProperty("jdbc.url");//¼ÓÔØÊı¾İ¿âÁ¬½ÓµØÖ·¡¢¶Ë¿Ú¡¢Á¬½ÓÃü¡¢Ãû
-			user = properties.getProperty("jdbc.user");//¼ÓÔØÓÃ»§Ãû³Æ
-			pwd = properties.getProperty("jdbc.password");//¼ÓÔØÃÜÂë
-			Class.forName(driver);//Çı¶¯Àà¼ÓÔØ·½Ê½
+			url = properties.getProperty("jdbc.url");//åŠ è½½æ•°æ®åº“è¿æ¥åœ°å€ã€ç«¯å£ã€è¿æ¥å‘½ã€å
+			user = properties.getProperty("jdbc.user");//åŠ è½½ç”¨æˆ·åç§°
+			pwd = properties.getProperty("jdbc.password");//åŠ è½½å¯†ç 
+			Class.forName(driver);//é©±åŠ¨ç±»åŠ è½½æ–¹å¼
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	/**»ñÈ¡Êı¾İ¿âÁ¬½Ó*/
+	/**è·å–æ•°æ®åº“è¿æ¥*/
 	public static Connection getConnection() throws SQLException{
 		return DriverManager.getConnection(url,user,pwd);
 	}
-	/**¹Ø±ÕÊı¾İ¿âÁ¬½Ó*/
+	/**å…³é—­æ•°æ®åº“è¿æ¥*/
 	public static void closeConnection(Connection con){
 		if(con != null){
 			try {
@@ -50,12 +50,12 @@ public class DBUtility {
 			}
 		}
 	}
-	/**²éÑ¯±íÊı¾İµÄ·½·¨£ºÕû±í²éÑ¯*/
+	/**æŸ¥è¯¢è¡¨æ•°æ®çš„æ–¹æ³•ï¼šæ•´è¡¨æŸ¥è¯¢*/
 	public ResultSet query(String tableName){
-		sql = "select * from "+tableName;//¶¨ÒåSQLÓï¾ä
+		sql = "select * from "+tableName;//å®šä¹‰SQLè¯­å¥
 		try {
 			con = DBUtility.getConnection();
-			con.setAutoCommit(false);//¹Ø±Õ×Ô¶¯Ìá½»
+			con.setAutoCommit(false);//å…³é—­è‡ªåŠ¨æäº¤
 			stmt = con.createStatement();
 		 
 			rs = stmt.executeQuery(sql);

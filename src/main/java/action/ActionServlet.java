@@ -27,29 +27,29 @@ import tools.BookCheck;
 import entities.Borrow_history;
 
 /**
- * function: Í¼Ê¾¹ÜÀíÏµÍ³µÄºóÌ¨´¦Àí
+ * function: å›¾ç¤ºç®¡ç†ç³»ç»Ÿçš„åå°å¤„ç†
  * 
- * @author ÀîìÏ ¡¢½­ÒËÈğ¡¢Âí³¬¡¢º«ÔÆÌÎ¡¢ÀîÃ· combined and modified by ³ÂÇ¨¶Ô
+ * @author æç…œ ã€æ±Ÿå®œç‘ã€é©¬è¶…ã€éŸ©äº‘æ¶›ã€ææ¢… combined and modified by é™ˆè¿å¯¹
  *
  */
 public class ActionServlet extends HttpServlet {
 
 	/**
-	 * ×Ô¶¯Éú³ÉµÄĞòÁĞºÅ
+	 * è‡ªåŠ¨ç”Ÿæˆçš„åºåˆ—å·
 	 */
 	private static final long serialVersionUID = -8446871030854461953L;
 	/**
-	 * Óò£¨³ÉÔ±±äÁ¿£©£ºuri:×ÊÔ´Â·¾¶£¬action:¿ÉÒÔ±æÊ¶´¦ÀíµÄÀàĞÍ£¬session:»á»°
+	 * åŸŸï¼ˆæˆå‘˜å˜é‡ï¼‰ï¼šuri:èµ„æºè·¯å¾„ï¼Œaction:å¯ä»¥è¾¨è¯†å¤„ç†çš„ç±»å‹ï¼Œsession:ä¼šè¯
 	 */
-	// »ñÈ¡ÇëÇó×ÊÔ´Â·¾¶
+	// è·å–è¯·æ±‚èµ„æºè·¯å¾„
 	private String uri;
-	// »ñÈ¡ÇëÇó×ÊÔ´Â·¾¶ÖĞ³ıÓ¦ÓÃÃûÒÔÍâµÄ²¿·Ö
+	// è·å–è¯·æ±‚èµ„æºè·¯å¾„ä¸­é™¤åº”ç”¨åä»¥å¤–çš„éƒ¨åˆ†
 	private String action;
 	private HttpSession session;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// ÉèÖÃÖĞÎÄµÄÊäÈëºÍÊä³ö
+		// è®¾ç½®ä¸­æ–‡çš„è¾“å…¥å’Œè¾“å‡º
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
 		uri = request.getRequestURI();
@@ -57,58 +57,58 @@ public class ActionServlet extends HttpServlet {
 		session = request.getSession();
 		// System.out.println(session.getId());
 		if ("readerlogin".equals(action)) {
-			// ¶Ôreaderlogin.teg½øĞĞ´¦Àí
+			// å¯¹readerlogin.tegè¿›è¡Œå¤„ç†
 			readerloginHandle(request, response);
 		} else if ("adminlogin".equals(action)) {
-			// ¶Ôadminlogin.teg½øĞĞ´¦Àí
+			// å¯¹adminlogin.tegè¿›è¡Œå¤„ç†
 			adminloginHandle(request, response);
 		} else if ("logout".equals(action)) {
-			// ¶ÔÍË³ö½øĞĞ´¦Àí
+			// å¯¹é€€å‡ºè¿›è¡Œå¤„ç†
 			exitHanlde(response);
 		} else if ("readerlogout".equals(action)) {
-			// ¶Ô¶ÁÕßÍË³ö½øĞĞ´¦Àí
+			// å¯¹è¯»è€…é€€å‡ºè¿›è¡Œå¤„ç†
 			readerexitHanlde(response);
 		}else if ("adminlogout".equals(action)) {
-			// ¶Ô¹ÜÀíÔ±ÍË³ö½øĞĞ´¦Àí
+			// å¯¹ç®¡ç†å‘˜é€€å‡ºè¿›è¡Œå¤„ç†
 			adminexitHanlde(response);
 		}else if ("adminsearch".equals(action)) {
-			// Èç¹ûÊÇÓÃ»§½øĞĞËÑË÷£¬ÄÇÃ´»á½øĞĞÊé¼®¼ìË÷²¢·µ»ØÊı¾İ
+			// å¦‚æœæ˜¯ç”¨æˆ·è¿›è¡Œæœç´¢ï¼Œé‚£ä¹ˆä¼šè¿›è¡Œä¹¦ç±æ£€ç´¢å¹¶è¿”å›æ•°æ®
 			adminsearchHandle(request, response);
 		} else if ("readersearch".equals(action)) {
-			// Èç¹ûÊÇÓÃ»§½øĞĞËÑË÷£¬ÄÇÃ´»á½øĞĞÊé¼®¼ìË÷²¢·µ»ØÊı¾İ
+			// å¦‚æœæ˜¯ç”¨æˆ·è¿›è¡Œæœç´¢ï¼Œé‚£ä¹ˆä¼šè¿›è¡Œä¹¦ç±æ£€ç´¢å¹¶è¿”å›æ•°æ®
 			readersearchHandle(request, response);
 		} else if (("loadbook").equals(action)) {
-			// °Ñ½«Òª´¦ÀíµÄÊı¾İ¼ÓÔØµ½Ò»¸öĞÂµÄÒ³ÃæÉÏ
+			// æŠŠå°†è¦å¤„ç†çš„æ•°æ®åŠ è½½åˆ°ä¸€ä¸ªæ–°çš„é¡µé¢ä¸Š
 			loadbookHandle(request, response);
 		} else if ("modifybook".equals(action)) {
-			// ĞŞ¸ÄÊéĞÅÏ¢
+			// ä¿®æ”¹ä¹¦ä¿¡æ¯
 			modifybookHandle(request, response);
 		} else if ("deletebook".equals(action)) {
-			// É¾³ıÊé²Ù×÷
+			// åˆ é™¤ä¹¦æ“ä½œ
 			deletebookHandle(request, response);
 		} else if ("bookinfo".equals(action)) {
-			// ¼ÓÔØÊéµÄÏêÇé
+			// åŠ è½½ä¹¦çš„è¯¦æƒ…
 			bookinfoHandle(request, response);
 		} else if ("borrowbook".equals(action)) {
-			// ½«½èÔÄĞÅÏ¢¼ÓÔØµ½½èÔÄÀ¸£¬ÆäÊµ¾ÍÊÇsession´¦Àí¡£
+			// å°†å€Ÿé˜…ä¿¡æ¯åŠ è½½åˆ°å€Ÿé˜…æ ï¼Œå…¶å®å°±æ˜¯sessionå¤„ç†ã€‚
 			borrowbookHandle(request, response);
 		} else if ("borrowcart".equals(action)) {
-			// ÏÔÊ¾½èÔÄ³µµÄĞÅÏ¢
+			// æ˜¾ç¤ºå€Ÿé˜…è½¦çš„ä¿¡æ¯
 			showborrowcart(request, response);
 		} else if ("borrowconfirm".equals(action)) {
-			// ¶Ô½èÔÄÍ¼Êé¶¯×÷½øĞĞ´¦Àí
+			// å¯¹å€Ÿé˜…å›¾ä¹¦åŠ¨ä½œè¿›è¡Œå¤„ç†
 			borrowconfirmHandle(request, response);
 		} else if ("showborrowbook".equals(action)) {
-			// ¶ÔÍ¼Êé½èÔÄµÄĞÅÏ¢ÏÔÊ¾
+			// å¯¹å›¾ä¹¦å€Ÿé˜…çš„ä¿¡æ¯æ˜¾ç¤º
 			showborrowbook(request, response);
 		} else if ("returnbook".equals(action)) {
-			// ¶ÔÍ¼Êé¹é»¹µÄÈ·ÈÏ´¦Àí
+			// å¯¹å›¾ä¹¦å½’è¿˜çš„ç¡®è®¤å¤„ç†
 			returnbookHandle(request, response);
 		} else if ("showborrowinfo".equals(action)) {
-			// ¸ù¾İÓÃ»§µÄÒªÇóÏÔÊ¾½èÊéÍ¼ÊéµÄÄÚÈİ
+			// æ ¹æ®ç”¨æˆ·çš„è¦æ±‚æ˜¾ç¤ºå€Ÿä¹¦å›¾ä¹¦çš„å†…å®¹
 			showborrowinfo(request, response);
 		} else if ("sign".equals(action)) {
-			// ÓÃ»§Ç©µ½
+			// ç”¨æˆ·ç­¾åˆ°
 			sign(request, response);
 		} else if ("showpoint".equals(action)) {
 			showpoint(request, response);
@@ -119,7 +119,7 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function: ÏÔÊ¾ÉÏ´ÎµÇÂ¼µÄÊ±¼ä
+	 * @function: æ˜¾ç¤ºä¸Šæ¬¡ç™»å½•çš„æ—¶é—´
 	 * @param request
 	 * @param response
 	 */
@@ -127,18 +127,18 @@ public class ActionServlet extends HttpServlet {
 		PrintWriter out = null;
 		PointDao pointdao = null;
 		try {
-			// »ñµÃÊä³öÁ÷
+			// è·å¾—è¾“å‡ºæµ
 			out = response.getWriter();
-			// »ñµÃ¶ÁÕßµÄid
+			// è·å¾—è¯»è€…çš„id
 			String readerid = (String) session.getAttribute("readerid");
 			System.out.println("readerid=" + readerid);
 			if (readerid == null) {
-				// Èç¹ûsessionÖĞÃ»ÓĞ¶ÁÕßµÄid,ÄÇÃ´¶ÁÕßÒ»¶¨ÊÇÃ»ÓĞµÇÂ½£¬¾ÍÌø×ªµ½µÇÂ½½çÃæ
+				// å¦‚æœsessionä¸­æ²¡æœ‰è¯»è€…çš„id,é‚£ä¹ˆè¯»è€…ä¸€å®šæ˜¯æ²¡æœ‰ç™»é™†ï¼Œå°±è·³è½¬åˆ°ç™»é™†ç•Œé¢
 				response.sendRedirect("readerlogin.teg");
 				return;
 			} else {
 				pointdao = new PointDao();
-				// ²éÑ¯¶ÁÕßÉÏ´ÎµÄµÇÂ½Ê±¼ä
+				// æŸ¥è¯¢è¯»è€…ä¸Šæ¬¡çš„ç™»é™†æ—¶é—´
 				String lastsign = pointdao.QueryValueByKey("lastsign", "reader_id", readerid);
 				out.print(lastsign);
 			}
@@ -150,7 +150,7 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:¶¯Ì¬µØÏÔÊ¾¶ÁÕßµÄ»ı·Ö
+	 * @function:åŠ¨æ€åœ°æ˜¾ç¤ºè¯»è€…çš„ç§¯åˆ†
 	 * @param request
 	 * @param response
 	 */
@@ -158,18 +158,18 @@ public class ActionServlet extends HttpServlet {
 		PrintWriter out = null;
 		PointDao pointdao = null;
 		try {
-			// »ñµÃÊä³öÁ÷
+			// è·å¾—è¾“å‡ºæµ
 			out = response.getWriter();
-			// »ñµÃ¶ÁÕßµÄid
+			// è·å¾—è¯»è€…çš„id
 			String readerid = (String) session.getAttribute("readerid");
 			System.out.println("readerid=" + readerid);
 			if (readerid == null) {
-				// Èç¹ûsessionÖĞÃ»ÓĞ¶ÁÕßµÄid,ÄÇÃ´¶ÁÕßÒ»¶¨ÊÇÃ»ÓĞµÇÂ½£¬¾ÍÌø×ªµ½µÇÂ½½çÃæ
+				// å¦‚æœsessionä¸­æ²¡æœ‰è¯»è€…çš„id,é‚£ä¹ˆè¯»è€…ä¸€å®šæ˜¯æ²¡æœ‰ç™»é™†ï¼Œå°±è·³è½¬åˆ°ç™»é™†ç•Œé¢
 				response.sendRedirect("readerlogin.teg");
 				return;
 			} else {
 				pointdao = new PointDao();
-				// ²éÑ¯¶ÁÕß¶ÔÓ¦µÄ»ı·ÖÊı¾İ
+				// æŸ¥è¯¢è¯»è€…å¯¹åº”çš„ç§¯åˆ†æ•°æ®
 				String sumpoint = pointdao.QueryValueByKey("sumpoint", "reader_id", readerid);
 				out.print(sumpoint);
 			}
@@ -181,7 +181,7 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:¶ÁÕßÇ©µ½´¦Àí
+	 * @function:è¯»è€…ç­¾åˆ°å¤„ç†
 	 * @param request
 	 * @param response
 	 */
@@ -190,38 +190,38 @@ public class ActionServlet extends HttpServlet {
 		PrintWriter out = null;
 		PointDao pointDao = null;
 		try {
-			// »ñµÃout
+			// è·å¾—out
 			out = response.getWriter();
-			// »ñµÃsession ÀïÃæ´æ´¢µÄ readerid
+			// è·å¾—session é‡Œé¢å­˜å‚¨çš„ readerid
 			String readerid = (String) session.getAttribute("readerid");
 			if (readerid == null) {
-				// Èç¹ûsessionÖĞÃ»ÓĞ¶ÁÕßµÄid,ÄÇÃ´¶ÁÕßÒ»¶¨ÊÇÃ»ÓĞµÇÂ½£¬¾ÍÌø×ªµ½µÇÂ½½çÃæ
+				// å¦‚æœsessionä¸­æ²¡æœ‰è¯»è€…çš„id,é‚£ä¹ˆè¯»è€…ä¸€å®šæ˜¯æ²¡æœ‰ç™»é™†ï¼Œå°±è·³è½¬åˆ°ç™»é™†ç•Œé¢
 				response.sendRedirect("readerlogin.teg");
 				return;
 			} else {
 				pointDao = new PointDao();
-				// »ñµÃ¸Ã¶ÁÕßÉÏ´ÎÇ©µ½µÄÊ±¼ä
+				// è·å¾—è¯¥è¯»è€…ä¸Šæ¬¡ç­¾åˆ°çš„æ—¶é—´
 				String lastsign = pointDao.QueryValueByKey("lastsign", "reader_id", readerid);
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				// »ñµÃµ±Ç°Ê±¼ä
+				// è·å¾—å½“å‰æ—¶é—´
 				java.util.Date now = new java.util.Date();
-				// ×ª»»µ±Ç°Ê±¼äÎªµ±ÌìÈÕÆÚ£¬²¢×ª»»Îª×Ö·û´®ĞÎÊ½
+				// è½¬æ¢å½“å‰æ—¶é—´ä¸ºå½“å¤©æ—¥æœŸï¼Œå¹¶è½¬æ¢ä¸ºå­—ç¬¦ä¸²å½¢å¼
 				String nowStr = sdf.format(now);
 				System.out.println("now=" + nowStr);
 				System.out.println("last=" + lastsign);
-				// Èç¹ûlastsign²»Îª¿Õ,²¢ÇÒºÍ½ñÌìÈÕÆÚÏàÍ¬£¬ÄÇÃ´¾ÍÊÇÒ»ÌìÖØ¸´Ç©µ½ÁË
+				// å¦‚æœlastsignä¸ä¸ºç©º,å¹¶ä¸”å’Œä»Šå¤©æ—¥æœŸç›¸åŒï¼Œé‚£ä¹ˆå°±æ˜¯ä¸€å¤©é‡å¤ç­¾åˆ°äº†
 				if (lastsign != null && lastsign.equals(nowStr)) {
-					// Èç¹ûÊı¾İ¿âÀï´æ´¢µÄÊ±¼äºÍÏÖÔÚÒ»ÖÂ£¬·µ»ØÊ§°Ü
+					// å¦‚æœæ•°æ®åº“é‡Œå­˜å‚¨çš„æ—¶é—´å’Œç°åœ¨ä¸€è‡´ï¼Œè¿”å›å¤±è´¥
 					out.print("fail");
 
 				} else {
-					// Èç¹ûÊı¾İ¿âÀï´æ´¢µÄÊ±¼äºÍÏÖÔÚ²»Ò»ÖÂ£¬ÄÇÃ´¾Í¸üĞÂÊı¾İ¿â
-					// ½«µ±Ììjava.utilµÄÈÕÆÚ×ª»»java.sqlµÄÈÕÆÚ
+					// å¦‚æœæ•°æ®åº“é‡Œå­˜å‚¨çš„æ—¶é—´å’Œç°åœ¨ä¸ä¸€è‡´ï¼Œé‚£ä¹ˆå°±æ›´æ–°æ•°æ®åº“
+					// å°†å½“å¤©java.utilçš„æ—¥æœŸè½¬æ¢java.sqlçš„æ—¥æœŸ
 					java.sql.Date sqlnow = new java.sql.Date(now.getTime());
 					pointDao.readerSignOperate(readerid, sqlnow);
 					out.print("success");
 				}
-				// ¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+				// å…³é—­æ•°æ®åº“è¿æ¥
 				pointDao.close();
 			}
 		} catch (Exception e) {
@@ -231,61 +231,61 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	public void showborrowinfo(HttpServletRequest request, HttpServletResponse response) {
-		// ´ı¿ª·¢
+		// å¾…å¼€å‘
 
 	}
 
 	/**
-	 * @function:ÏÔÊ¾ÒÑ¾­½èÔÄÊéµÄÏà¹ØĞÅÏ¢
+	 * @function:æ˜¾ç¤ºå·²ç»å€Ÿé˜…ä¹¦çš„ç›¸å…³ä¿¡æ¯
 	 * @param request
 	 * @param response
 	 */
 	public void showborrowbook(HttpServletRequest request, HttpServletResponse response) {
 		try {
 
-			// 1.´ÓsessionÖĞ»ñµÃ¸Ã¶ÁÕßµÄid
+			// 1.ä»sessionä¸­è·å¾—è¯¥è¯»è€…çš„id
 			String reader_id = (String) session.getAttribute("readerid");
 			if (reader_id == null) {
-				String err_msg = "ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½";
+				String err_msg = "æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†";
 				request.setAttribute("err_msg", err_msg);
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
 				return;
 			}
 
-			// 2.»ñµÃµ±Ç°Ò³
+			// 2.è·å¾—å½“å‰é¡µ
 			String currentpage = request.getParameter("currentPage");
-			int currentPage = 1;// Ä¬ÈÏµÚÒ»´Î²éÑ¯µÄÊ±ºò£¬currentPageÎª1£¬µ±Ç°ÎªµÚÒ»Ò³
+			int currentPage = 1;// é»˜è®¤ç¬¬ä¸€æ¬¡æŸ¥è¯¢çš„æ—¶å€™ï¼ŒcurrentPageä¸º1ï¼Œå½“å‰ä¸ºç¬¬ä¸€é¡µ
 			if (currentpage == null || "".equals(currentpage.trim())) {
-				// Ê²Ã´¶¼²»×ö
+				// ä»€ä¹ˆéƒ½ä¸åš
 			} else {
-				// Èç¹ûÓĞÖµ´«Èë
+				// å¦‚æœæœ‰å€¼ä¼ å…¥
 				currentPage = Integer.parseInt(currentpage);
 			}
-			String startpage = null; // startPageµÄstring±íÊ¾
-			int startPage = 0;// Ä¬ÈÏ´Ó0¿ªÊ¼£¬¾ÍÊÇµÚÒ»Ìõ¼ÇÂ¼¿ªÊ¼
+			String startpage = null; // startPageçš„stringè¡¨ç¤º
+			int startPage = 0;// é»˜è®¤ä»0å¼€å§‹ï¼Œå°±æ˜¯ç¬¬ä¸€æ¡è®°å½•å¼€å§‹
 
-			int pageSize = 3; // Ä¬ÈÏÃ¿´Î»ñÈ¡ 3Ìõ¼ÇÂ¼£¬Õâ¸öÊÇ¶¨Öµ
+			int pageSize = 3; // é»˜è®¤æ¯æ¬¡è·å– 3æ¡è®°å½•ï¼Œè¿™ä¸ªæ˜¯å®šå€¼
 
 			startPage = (currentPage - 1) * pageSize;
 
-			// 3.Í¨¹ı¶ÁÕßid²éÑ¯¸Ã¶ÁÕßµÄËùÓĞ½èÔÄĞÅÏ¢£¬²¢´æ´¢ĞÅÏ¢
+			// 3.é€šè¿‡è¯»è€…idæŸ¥è¯¢è¯¥è¯»è€…çš„æ‰€æœ‰å€Ÿé˜…ä¿¡æ¯ï¼Œå¹¶å­˜å‚¨ä¿¡æ¯
 			Borrow_historyDao bhd = new Borrow_historyDao();
-			// »ñµÃ·ÖÒ³²éÑ¯µÄ½á¹û
+			// è·å¾—åˆ†é¡µæŸ¥è¯¢çš„ç»“æœ
 			List<Borrow_history> borrow_historys = bhd.queryInfoByReader_idPagination(reader_id, startPage, pageSize);
-			// ¸ù¾İ¶ÁÕßµÄid¶Ô»ñµÃ×Ü½á¹ûÌõÊı
+			// æ ¹æ®è¯»è€…çš„idå¯¹è·å¾—æ€»ç»“æœæ¡æ•°
 			int resultRow = bhd.getResultRowByReader_id(reader_id);
 
-			// ¹Ø±ÕÁ¬½Ó
+			// å…³é—­è¿æ¥
 			bhd.close();
-			// 4¼ÆËã³ö×Ü½á¹ûµÄÒ³Êı
+			// 4è®¡ç®—å‡ºæ€»ç»“æœçš„é¡µæ•°
 			int pages = resultRow / pageSize + (resultRow % pageSize == 0 ? 0 : 1);
-			// 5.×ª·¢ĞÅÏ¢µ½Ò³Ãæ
-			// ÅĞ¶Ï½á¹ûÊÇ·ñÎª¿ÕÖµ£¬Èç¹ûÎª¿Õ·¢ËÍÌáÊ¾
+			// 5.è½¬å‘ä¿¡æ¯åˆ°é¡µé¢
+			// åˆ¤æ–­ç»“æœæ˜¯å¦ä¸ºç©ºå€¼ï¼Œå¦‚æœä¸ºç©ºå‘é€æç¤º
 			if (borrow_historys == null || borrow_historys.size() == 0) {
-				request.setAttribute("emptyresult", "ÄãÃ»ÓĞ½è¹ıÈÎºÎÊé");
+				request.setAttribute("emptyresult", "ä½ æ²¡æœ‰å€Ÿè¿‡ä»»ä½•ä¹¦");
 				request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 			} else {
-				// ×ª·¢½á¹ûµÄ½èÔÄ¼ÇÂ¼¡¢×Ü½á¹û·ÖÒ³Ö®ºóµÄ×ÜÒ³Êı¡¢µ±Ç°ä¯ÀÀµÄËùÔÚÒ³Êı¡¢¿Õlist£¨³¤¶ÈÎªÒ³Êı£©
+				// è½¬å‘ç»“æœçš„å€Ÿé˜…è®°å½•ã€æ€»ç»“æœåˆ†é¡µä¹‹åçš„æ€»é¡µæ•°ã€å½“å‰æµè§ˆçš„æ‰€åœ¨é¡µæ•°ã€ç©ºlistï¼ˆé•¿åº¦ä¸ºé¡µæ•°ï¼‰
 				request.setAttribute("borrow_historys", borrow_historys);
 				request.setAttribute("pages", pages);
 				request.setAttribute("currentPage", currentPage);
@@ -301,73 +301,73 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:¶Ô»¹Êé²Ù×÷½øĞĞ´¦Àí
+	 * @function:å¯¹è¿˜ä¹¦æ“ä½œè¿›è¡Œå¤„ç†
 	 * @param request
 	 * @param response
 	 */
 	public void returnbookHandle(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			// 1.»ñµÃsessionÖĞµÄÓÃ»§id,Èç¹ûÎª¿Õ£¬ÔòÌø×ªµ½ÉÏÒ»Ò³
+			// 1.è·å¾—sessionä¸­çš„ç”¨æˆ·id,å¦‚æœä¸ºç©ºï¼Œåˆ™è·³è½¬åˆ°ä¸Šä¸€é¡µ
 			String readerid = (String) session.getAttribute("readerid");
 			if (readerid == null) {
 				response.sendRedirect("showborrowbook.teg");
 				return;
 			}
-			// 2.»ñµÃrequestµÄborrow_id,Èç¹ûÎª¿ÕÔò·µ»ØÉÏÒ»Ò³£¬¾ÍÊÇshowborrowbook.teg
+			// 2.è·å¾—requestçš„borrow_id,å¦‚æœä¸ºç©ºåˆ™è¿”å›ä¸Šä¸€é¡µï¼Œå°±æ˜¯showborrowbook.teg
 			String borrow_id = request.getParameter("borrow_id");
 			if (borrow_id == null) {
 				response.sendRedirect("showborrowbook.teg");
 				return;
 			}
-			// 3¡£´ÓÊı¾İ¿âÖĞ»ñÈ¡Ê±¼ä£¬²¢ÓÚ´Ë¿ÌÊ±¼ä¶Ô±È£¬¼ÆËã²îÖµ£¨ÌìÊı£©£¬´Ó¶øµÃµ½¶ÁÕßÓ¦¸Ã½ÉÄÉµÄ½èÊé½ğ¶î
+			// 3ã€‚ä»æ•°æ®åº“ä¸­è·å–æ—¶é—´ï¼Œå¹¶äºæ­¤åˆ»æ—¶é—´å¯¹æ¯”ï¼Œè®¡ç®—å·®å€¼ï¼ˆå¤©æ•°ï¼‰ï¼Œä»è€Œå¾—åˆ°è¯»è€…åº”è¯¥ç¼´çº³çš„å€Ÿä¹¦é‡‘é¢
 			Borrow_historyDao bhd = new Borrow_historyDao();
 			List<Borrow_history> borrow_historys = bhd.queryBorrowInfoByBorrow_id(borrow_id);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			// »ñÈ¡½èÔÄµÄÊ±¼ä×Ö·û´®
+			// è·å–å€Ÿé˜…çš„æ—¶é—´å­—ç¬¦ä¸²
 			String borrow_date = borrow_historys.get(0).getborrow_date();
-			// ½«½èÔÄÊ±¼ä×Ö·û´®×ª»»ÎªÊ±¼äÀà¶ÔÏó
+			// å°†å€Ÿé˜…æ—¶é—´å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ—¶é—´ç±»å¯¹è±¡
 			java.util.Date borrowdate = sdf.parse(borrow_date);
-			// »ñÈ¡µ±Ç°Ê±¼ä¶ÔÓ¦µÄÊ±¼äÀà¶ÔÏó
+			// è·å–å½“å‰æ—¶é—´å¯¹åº”çš„æ—¶é—´ç±»å¯¹è±¡
 			java.util.Date nowdate = new java.util.Date();
-			// ¼ÆËãÊ±¼ä²î£¨ÌìÊı£© ,ËÄÉáÎåÈë
+			// è®¡ç®—æ—¶é—´å·®ï¼ˆå¤©æ•°ï¼‰ ,å››èˆäº”å…¥
 			int days = (int) ((nowdate.getTime() / 86400000 - borrowdate.getTime() / 86400000));
-			// »ñµÃ·ÑÓÃ
+			// è·å¾—è´¹ç”¨
 			BookDao bookDao = new BookDao();
 			String rent = bookDao.QueryRentByBorrowId(borrow_id);
-			// ¹Ø±ÕÁ¬½Ó
+			// å…³é—­è¿æ¥
 			bookDao.close();
-			// ¼ÆËã»¨·Ñ
+			// è®¡ç®—èŠ±è´¹
 			float fee = (float) (days * Double.parseDouble(rent));
-			// ¼ÆËã¶ÔÓ¦µÄ»ı·Ö £¨0.1Ôª¶ÔÓ¦4»ı·Ö ,ËùÒÔ1Ôª¶ÔÓÚ40»ı·Ö£©
+			// è®¡ç®—å¯¹åº”çš„ç§¯åˆ† ï¼ˆ0.1å…ƒå¯¹åº”4ç§¯åˆ† ,æ‰€ä»¥1å…ƒå¯¹äº40ç§¯åˆ†ï¼‰
 			int feepoint = (int) (fee * 40);
 			System.out.println("feepoint=" + feepoint);
 			System.out.println("fee=" + fee);
-			// ²é¿´¸Ã¶ÁÕß»ı·ÖÊÇ·ñ×ã¹»
+			// æŸ¥çœ‹è¯¥è¯»è€…ç§¯åˆ†æ˜¯å¦è¶³å¤Ÿ
 			PointDao pointDao = new PointDao();
 			String sumpointstr = pointDao.QueryValueByKey("sumpoint", "reader_id", readerid);
-			// »ñµÃ¶ÔÓ¦»ı·Ö
+			// è·å¾—å¯¹åº”ç§¯åˆ†
 			int sumpoint = Integer.parseInt(sumpointstr.trim());
 			if (sumpoint < feepoint) {
-				// Èç¹ûÊ£ÓàµÄ»ı·Ö²»¹»
-				request.setAttribute("err_msg", "»ı·Ö²»×ã£¬ÎŞ·¨»¹Êé£¬Çë³äÖµ»ò¶àÇ©µ½");
+				// å¦‚æœå‰©ä½™çš„ç§¯åˆ†ä¸å¤Ÿ
+				request.setAttribute("err_msg", "ç§¯åˆ†ä¸è¶³ï¼Œæ— æ³•è¿˜ä¹¦ï¼Œè¯·å……å€¼æˆ–å¤šç­¾åˆ°");
 				request.getRequestDispatcher("showborrowbook.teg").forward(request, response);
 			} else {
-				// Èç¹û»ı·Ö»¹¹»£¬¾ÍÏÈ¿Û³ı»ı·Ö
+				// å¦‚æœç§¯åˆ†è¿˜å¤Ÿï¼Œå°±å…ˆæ‰£é™¤ç§¯åˆ†
 				boolean isReduce = pointDao.reducepoint(readerid, feepoint);
-				// 4.´ÓÊı¾İ¿âÖĞĞŞ¸Äborrow_history ÖĞµÄ½èÊé±êÖ¾Î»Îª1,Í¬Ê±¼ÇÂ¼·ÑÓÃ
+				// 4.ä»æ•°æ®åº“ä¸­ä¿®æ”¹borrow_history ä¸­çš„å€Ÿä¹¦æ ‡å¿—ä½ä¸º1,åŒæ—¶è®°å½•è´¹ç”¨
 				boolean isReturn = bhd.returnByBorrow_id(borrow_id, fee + "");
-				// 5.ÌáÊ¾»¹Êé²Ù×÷³É¹¦
+				// 5.æç¤ºè¿˜ä¹¦æ“ä½œæˆåŠŸ
 				String err_msg = null;
 				String success_msg = null;
 				if (isReturn == true && isReturn == true) {
-					System.out.println("»¹Êé³É¹¦");
-					success_msg = "»¹Êé³É¹¦£¬»¨·Ñ" + feepoint + "»ı·Ö";
+					System.out.println("è¿˜ä¹¦æˆåŠŸ");
+					success_msg = "è¿˜ä¹¦æˆåŠŸï¼ŒèŠ±è´¹" + feepoint + "ç§¯åˆ†";
 				} else {
-					System.out.println("»¹ÊéÊ§°Ü");
-					err_msg = "»¹ÊéÊ§°Ü";
+					System.out.println("è¿˜ä¹¦å¤±è´¥");
+					err_msg = "è¿˜ä¹¦å¤±è´¥";
 				}
-				// 6.ÖØ¶¨Ïòµ½showborrowbook.teg
-				// ¸ù¾İ²»Í¬µÄ½á¹û·¢ËÍ²»Í¬µÄĞÅÏ¢
+				// 6.é‡å®šå‘åˆ°showborrowbook.teg
+				// æ ¹æ®ä¸åŒçš„ç»“æœå‘é€ä¸åŒçš„ä¿¡æ¯
 				if (isReturn) {
 					request.setAttribute("success_msg", success_msg);
 				} else {
@@ -384,70 +384,70 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:¶Ô½èÔÄÊé²Ù×÷µÄÈ·ÈÏ
+	 * @function:å¯¹å€Ÿé˜…ä¹¦æ“ä½œçš„ç¡®è®¤
 	 * @param request
 	 * @param response
 	 */
 	@SuppressWarnings("unchecked")
 	public void borrowconfirmHandle(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			// 1.´ÓsessionÀï»ñµÃĞèÒª¶ÁÕßµÄreaderid,Èç¹ûÃ»ÓĞÔòÌø×ª»Øµ½Ê×Ò³
+			// 1.ä»sessioné‡Œè·å¾—éœ€è¦è¯»è€…çš„readerid,å¦‚æœæ²¡æœ‰åˆ™è·³è½¬å›åˆ°é¦–é¡µ
 			String reader_id = (String) session.getAttribute("readerid");
 			if (reader_id == null) {
-				System.out.println("ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½");
-				String err_msg = "ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½";
+				System.out.println("æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†");
+				String err_msg = "æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†";
 				request.setAttribute("err_msg", err_msg);
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
 				return;
 			}
-			// 2.´Órequest»ñµÃbookµÄid,Èç¹ûÃ»ÓĞÔò·µ»Øµ½½èÊé³µborrowcart.jsp½çÃæ
+			// 2.ä»requestè·å¾—bookçš„id,å¦‚æœæ²¡æœ‰åˆ™è¿”å›åˆ°å€Ÿä¹¦è½¦borrowcart.jspç•Œé¢
 			String book_id = request.getParameter("id");
 			if (book_id == null) {
 				response.sendRedirect("borrowcart.jsp");
 				return;
 			}
-			// 3.Èç¹ûÓĞÁËreaderidºÍbookµÄid£¬ÔòÔÚÊı¾İ¿âÀï½«Í¼Êé½èÔÄ±ê¼ÇÉèÖÃÎª½è³ö£¬Í¬Ê±Ò²Òª¶ÔÓÃ»§µÄ½è³öĞĞÎª½øĞĞ±£´æ
+			// 3.å¦‚æœæœ‰äº†readeridå’Œbookçš„idï¼Œåˆ™åœ¨æ•°æ®åº“é‡Œå°†å›¾ä¹¦å€Ÿé˜…æ ‡è®°è®¾ç½®ä¸ºå€Ÿå‡ºï¼ŒåŒæ—¶ä¹Ÿè¦å¯¹ç”¨æˆ·çš„å€Ÿå‡ºè¡Œä¸ºè¿›è¡Œä¿å­˜
 			Borrow_historyDao bhd = new Borrow_historyDao();
 			java.util.Date date = new java.util.Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			// »ñµÃµ±Ç°Ê±¼äµÄ×Ö·û´®
+			// è·å¾—å½“å‰æ—¶é—´çš„å­—ç¬¦ä¸²
 			String borrow_date = sdf.format(date);
 			Borrow_history bh = new Borrow_history(book_id, reader_id, borrow_date, "0");
-			System.out.println("µ±Ç°Ê±¼äÊÇ" + borrow_date);
+			System.out.println("å½“å‰æ—¶é—´æ˜¯" + borrow_date);
 			boolean isAdd = bhd.add(bh);
 			if (isAdd) {
-				System.out.println("Ìí¼Ó½èÔÄ¼ÇÂ¼³É¹¦");
+				System.out.println("æ·»åŠ å€Ÿé˜…è®°å½•æˆåŠŸ");
 			} else {
-				System.out.println("Ìí¼Ó½èÔÄ¼ÇÂ¼Ê§°Ü");
+				System.out.println("æ·»åŠ å€Ÿé˜…è®°å½•å¤±è´¥");
 			}
-			// 4.ÔÚsessionÖĞ»ñµÃbookIds£¬½«´¦Àí¹ıµÄbookµÄid´ÓÆäÖĞÉ¾³ı
+			// 4.åœ¨sessionä¸­è·å¾—bookIdsï¼Œå°†å¤„ç†è¿‡çš„bookçš„idä»å…¶ä¸­åˆ é™¤
 			@SuppressWarnings("unchecked")
 			ArrayList<String> bookIds = (ArrayList<String>) session.getAttribute("bookIds");
 			String success_msg = null;
 			String err_msg = null;
-			// ÔÙ×öÒ»´ÎÅĞ¶ÏÎªºÃ
+			// å†åšä¸€æ¬¡åˆ¤æ–­ä¸ºå¥½
 			if (bookIds.contains(book_id)) {
-				// ÒÆ³öbook_id
+				// ç§»å‡ºbook_id
 				boolean isRemove = bookIds.remove(book_id);
 				if (isRemove) {
-					System.out.println("´ÓsessionÖĞÒÆ³ıbookid³É¹¦");
-					success_msg = "²Ù×÷³É¹¦";
-					// ÔÙÒÆ³ölistÖĞµÄbook
+					System.out.println("ä»sessionä¸­ç§»é™¤bookidæˆåŠŸ");
+					success_msg = "æ“ä½œæˆåŠŸ";
+					// å†ç§»å‡ºlistä¸­çš„book
 					BookDao bookDao = new BookDao();
 					if ((session.getAttribute("books")) != null) {
 						((List<Book>) session.getAttribute("books"))
 								.remove(bookDao.QueryByBookIdWithInfo(book_id).get(0));
 					}
 				} else {
-					System.out.println("ÒÆ³ıbookidÊ§°Ü£¬Çë¼ì²é");
-					err_msg = "ÒÆ³ıÊ§°Ü£¬ÇëÖØÊÔ";
+					System.out.println("ç§»é™¤bookidå¤±è´¥ï¼Œè¯·æ£€æŸ¥");
+					err_msg = "ç§»é™¤å¤±è´¥ï¼Œè¯·é‡è¯•";
 				}
 			} else {
-				System.out.println("¸ÃÍ¼ÊéÃ»ÓĞ±»ÄúÔ¤ÏÈÑ¡ÖĞ");
-				err_msg = "¸ÃÍ¼ÊéÃ»ÓĞ±»ÄúÔ¤ÏÈÑ¡ÖĞ";
+				System.out.println("è¯¥å›¾ä¹¦æ²¡æœ‰è¢«æ‚¨é¢„å…ˆé€‰ä¸­");
+				err_msg = "è¯¥å›¾ä¹¦æ²¡æœ‰è¢«æ‚¨é¢„å…ˆé€‰ä¸­";
 			}
 
-			// 5.×ª·¢µ½borrowcart.jspÒ³Ãæ£¬ÆäÊµ¾ÍÊÇË¢ĞÂÒ³Ãæ
+			// 5.è½¬å‘åˆ°borrowcart.jspé¡µé¢ï¼Œå…¶å®å°±æ˜¯åˆ·æ–°é¡µé¢
 			if (err_msg != null) {
 				request.setAttribute("err_msg", err_msg);
 			} else if (success_msg != null) {
@@ -455,15 +455,15 @@ public class ActionServlet extends HttpServlet {
 			}
 
 			if (session.getAttribute("books") != null && ((List<Book>) session.getAttribute("books")).size() != 0) {
-				System.out.println("³¤¶È" + ((List<Book>) session.getAttribute("books")).size());
-				System.out.println("Ìø×ªµ½borrwcart");
-				// Èç¹ûsession ÀïÃæµÄ books ¶ÔÏó´æÔÚÇÒÆäÖĞµÄÔªËØ²»Îª¿Õ£¬ÔòÈ¡³ö
+				System.out.println("é•¿åº¦" + ((List<Book>) session.getAttribute("books")).size());
+				System.out.println("è·³è½¬åˆ°borrwcart");
+				// å¦‚æœsession é‡Œé¢çš„ books å¯¹è±¡å­˜åœ¨ä¸”å…¶ä¸­çš„å…ƒç´ ä¸ä¸ºç©ºï¼Œåˆ™å–å‡º
 				request.setAttribute("books", session.getAttribute("books"));
 				request.getRequestDispatcher("borrowcart.teg").forward(request, response);
 			} else {
-				// Èç¹ûÃ»ÓĞÖµÁË£¬ÄÇÃ´¾ÍÌø×ªµ½Ê×Ò³
-				System.out.println("Ìø×ªµ½¶ÁÕßÊ×Ò³");
-				request.setAttribute("success_msg", "Êı¾İ´¦Àí³É¹¦£¬½èÔÄ³µÎª¿Õ£¬ÇĞ»»µ½ÄúµÄÊ×Ò³");
+				// å¦‚æœæ²¡æœ‰å€¼äº†ï¼Œé‚£ä¹ˆå°±è·³è½¬åˆ°é¦–é¡µ
+				System.out.println("è·³è½¬åˆ°è¯»è€…é¦–é¡µ");
+				request.setAttribute("success_msg", "æ•°æ®å¤„ç†æˆåŠŸï¼Œå€Ÿé˜…è½¦ä¸ºç©ºï¼Œåˆ‡æ¢åˆ°æ‚¨çš„é¦–é¡µ");
 				request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
@@ -475,41 +475,41 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:ÏÔÊ¾½èÔÄ³µµÄÏêÏ¸ĞÅÏ¢
+	 * @function:æ˜¾ç¤ºå€Ÿé˜…è½¦çš„è¯¦ç»†ä¿¡æ¯
 	 * @param request
 	 * @param response
 	 */
 	public void showborrowcart(HttpServletRequest request, HttpServletResponse response) {
-		// 1.ÅĞ¶ÏsessionÖĞµÄ±äÁ¿bookIdsÊÇ·ñÓĞÖµ
+		// 1.åˆ¤æ–­sessionä¸­çš„å˜é‡bookIdsæ˜¯å¦æœ‰å€¼
 		@SuppressWarnings("unchecked")
 		ArrayList<String> bookIds = (ArrayList<String>) session.getAttribute("bookIds");
 		try {
-			// 2.Èç¹ûÃ»ÓĞÖµ£¬ÔòÌø×ªµ½¶ÁÕßÊ×Ò³
+			// 2.å¦‚æœæ²¡æœ‰å€¼ï¼Œåˆ™è·³è½¬åˆ°è¯»è€…é¦–é¡µ
 			if (bookIds == null || bookIds.size() == 0) {
-				System.out.println("Ã»ÓĞ´ı½èÔÄµÄÊé");
-				String err_msg = "Ã»ÓĞ´ı½èÔÄµÄÊé";
-				request.setAttribute("emptyresult", "½èÔÄ³µÎª¿Õ£¬ÇëÌí¼Ó½èÔÄÊı¾İ");
+				System.out.println("æ²¡æœ‰å¾…å€Ÿé˜…çš„ä¹¦");
+				String err_msg = "æ²¡æœ‰å¾…å€Ÿé˜…çš„ä¹¦";
+				request.setAttribute("emptyresult", "å€Ÿé˜…è½¦ä¸ºç©ºï¼Œè¯·æ·»åŠ å€Ÿé˜…æ•°æ®");
 				request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 				return;
 			}
-			// 3.Èç¹ûÓĞÖµ£¬¾Í»ñµÃ¶ÔÓ¦µÄbook¶ÔÏó£¬´æÈëÊı¾İ
+			// 3.å¦‚æœæœ‰å€¼ï¼Œå°±è·å¾—å¯¹åº”çš„bookå¯¹è±¡ï¼Œå­˜å…¥æ•°æ®
 			else {
 				BookDao bookDao = new BookDao();
 				ArrayList<Book> books = new ArrayList<Book>();
 				try {
 					for (int i = 0; i < bookIds.size(); i++) {
-						// È¡µÃÃ¿Ò»¸öid¶ÔÓ¦µÄbook¶ÔÏó
+						// å–å¾—æ¯ä¸€ä¸ªidå¯¹åº”çš„bookå¯¹è±¡
 						List<Book> book = bookDao.QueryByBookIdWithInfo(bookIds.get(i));
-						// ´ÓbookÖĞÈ¡³öµÚÒ»¸ö£¬ÒòÎªÒ»¹²²ÅÒ»¸ö£¬È»ºó´æµ½booksÀïÃæ¡£
+						// ä»bookä¸­å–å‡ºç¬¬ä¸€ä¸ªï¼Œå› ä¸ºä¸€å…±æ‰ä¸€ä¸ªï¼Œç„¶åå­˜åˆ°booksé‡Œé¢ã€‚
 						books.add(book.get(0));
 					}
 				} catch (Exception e) {
 
 					e.printStackTrace();
 				}
-				// ±£´æbooks µ½ session ÖĞ
+				// ä¿å­˜books åˆ° session ä¸­
 				session.setAttribute("books", books);
-				// 4.ÏÈ°ó¶¨£¬ºóÖØ¶¨ÏòÖÁborrowcart½çÃæ
+				// 4.å…ˆç»‘å®šï¼Œåé‡å®šå‘è‡³borrowcartç•Œé¢
 				request.setAttribute("books", books);
 				request.getRequestDispatcher("borrowcart.jsp").forward(request, response);
 
@@ -522,16 +522,16 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:½èÔÄ²Ù×÷µÄ´¦Àí
+	 * @function:å€Ÿé˜…æ“ä½œçš„å¤„ç†
 	 * @param request
 	 * @param response
 	 */
 	public void borrowbookHandle(HttpServletRequest request, HttpServletResponse response) {
-		// 1.´ÓsessionÀï»ñµÃĞèÒª¶ÁÕßµÄreaderid,Èç¹ûÃ»ÓĞÔòÌø×ª»Øµ½Ê×Ò³
+		// 1.ä»sessioné‡Œè·å¾—éœ€è¦è¯»è€…çš„readerid,å¦‚æœæ²¡æœ‰åˆ™è·³è½¬å›åˆ°é¦–é¡µ
 		String reader_id = (String) session.getAttribute("readerid");
 		if (reader_id == null) {
-			System.out.println("ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½");
-			String err_msg = "ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½";
+			System.out.println("æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†");
+			String err_msg = "æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†";
 			request.setAttribute("err_msg", err_msg);
 			try {
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
@@ -542,7 +542,7 @@ public class ActionServlet extends HttpServlet {
 			}
 			return;
 		}
-		// 1.»ñÈ¡µÄbookµÄidÖµ,²¢ÅĞ¶Ï¸ÃÊéÊÇ·ñ±»½è³ö
+		// 1.è·å–çš„bookçš„idå€¼,å¹¶åˆ¤æ–­è¯¥ä¹¦æ˜¯å¦è¢«å€Ÿå‡º
 		String id = request.getParameter("id");
 		if (id == null) {
 			try {
@@ -555,10 +555,10 @@ public class ActionServlet extends HttpServlet {
 		Borrow_historyDao bhd = new Borrow_historyDao();
 		boolean isReturn = bhd.isReturnByBook_id(id);
 		if (!isReturn) {
-			System.out.println("¸ÃÊéÒÑ±»½è³ö£¬ÇëÖØĞÂÑ¡Ôñ");
-			// ÖØ¶¨Ïòµ½Ê×Ò³
+			System.out.println("è¯¥ä¹¦å·²è¢«å€Ÿå‡ºï¼Œè¯·é‡æ–°é€‰æ‹©");
+			// é‡å®šå‘åˆ°é¦–é¡µ
 			try {
-				String err_msg = "¸ÃÊéÒÑ±»½è³ö£¬ÇëÖØĞÂÑ¡Ôñ";
+				String err_msg = "è¯¥ä¹¦å·²è¢«å€Ÿå‡ºï¼Œè¯·é‡æ–°é€‰æ‹©";
 				request.setAttribute("err_msg", err_msg);
 				request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 			} catch (Exception e) {
@@ -567,40 +567,40 @@ public class ActionServlet extends HttpServlet {
 			return;
 		}
 		System.out.println("bookid=" + id);
-		// 2.È¡³ösessionÀïÃæµÄ±äÁ¿bookIds
+		// 2.å–å‡ºsessioné‡Œé¢çš„å˜é‡bookIds
 		@SuppressWarnings("unchecked")
 		ArrayList<String> bookIds = (ArrayList<String>) session.getAttribute("bookIds");
-		// 3.ÅĞ¶ÏbookIdsÊÇ·ñÎª¿Õ
+		// 3.åˆ¤æ–­bookIdsæ˜¯å¦ä¸ºç©º
 		if (bookIds == null) {
-			// 4.Èç¹ûÎª¿Õ£¬¾Í³õÊ¼»¯bookIds,²¢Ìí¼ÓÕâ´Î´«ÈëµÄÊı¾İ
+			// 4.å¦‚æœä¸ºç©ºï¼Œå°±åˆå§‹åŒ–bookIds,å¹¶æ·»åŠ è¿™æ¬¡ä¼ å…¥çš„æ•°æ®
 			bookIds = new ArrayList<String>();
 			bookIds.add(id);
-			// ±£´æµ½session±äÁ¿ÖĞ
+			// ä¿å­˜åˆ°sessionå˜é‡ä¸­
 			session.setAttribute("bookIds", bookIds);
-			// ÌáÊ¾²Ù×÷³É¹¦
+			// æç¤ºæ“ä½œæˆåŠŸ
 		} else {
-			// 5.Èç¹û²»Îª¿Õ£¬²é¿´¿âÖĞÊÇ·ñ´æÔÚ¸ÃÊıÖµ£¬Èç¹û²»´æÔÚÔò½øĞĞsession±£´æ¡£zz
+			// 5.å¦‚æœä¸ä¸ºç©ºï¼ŒæŸ¥çœ‹åº“ä¸­æ˜¯å¦å­˜åœ¨è¯¥æ•°å€¼ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™è¿›è¡Œsessionä¿å­˜ã€‚zz
 			for (int i = 0; i < bookIds.size(); i++) {
 				System.out.println("bookIds[" + i + "]=" + bookIds.get(i));
 			}
 			String err_msg = null;
 			String success_msg = null;
 			if (!bookIds.contains(id)) {
-				// Èç¹û²»°üº¬£¬ÔòÌí¼Ó
+				// å¦‚æœä¸åŒ…å«ï¼Œåˆ™æ·»åŠ 
 				bookIds.add(id);
-				// ±£´æµ½session±äÁ¿ÖĞ
+				// ä¿å­˜åˆ°sessionå˜é‡ä¸­
 				session.setAttribute("bookIds", bookIds);
-				// ÌáÊ¾²Ù×÷³É¹¦
-				success_msg = "³É¹¦Ìí¼Óµ½½èÔÄ³µ";
+				// æç¤ºæ“ä½œæˆåŠŸ
+				success_msg = "æˆåŠŸæ·»åŠ åˆ°å€Ÿé˜…è½¦";
 				request.setAttribute("success_msg", success_msg);
 			} else {
-				// Ê²Ã´¶¼²»×ö£¬ÌáÊ¾ÒÑ´æÔÚ
-				System.out.println("ÒÑ´æÔÚ¸ÃÊé£¬ÇëÎğÖØ¸´Ìí¼Ó");
-				err_msg = "½èÔÄ³µÒÑ´æÔÚ¸ÃÊé£¬ÇëÎğÖØ¸´Ìí¼Ó";
+				// ä»€ä¹ˆéƒ½ä¸åšï¼Œæç¤ºå·²å­˜åœ¨
+				System.out.println("å·²å­˜åœ¨è¯¥ä¹¦ï¼Œè¯·å‹¿é‡å¤æ·»åŠ ");
+				err_msg = "å€Ÿé˜…è½¦å·²å­˜åœ¨è¯¥ä¹¦ï¼Œè¯·å‹¿é‡å¤æ·»åŠ ";
 				request.setAttribute("err_msg", err_msg);
 			}
 		}
-		// Ìø×ªµ½ÓÃ»§Ö÷½çÃæ
+		// è·³è½¬åˆ°ç”¨æˆ·ä¸»ç•Œé¢
 		try {
 			request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 			return;
@@ -611,16 +611,16 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:ÏÔÊ¾ÓÃ»§ËÑË÷µÄÊé¼®ÏêÏ¸ĞÅÏ¢
+	 * @function:æ˜¾ç¤ºç”¨æˆ·æœç´¢çš„ä¹¦ç±è¯¦ç»†ä¿¡æ¯
 	 * @param request
 	 * @param response
 	 */
 	public void bookinfoHandle(HttpServletRequest request, HttpServletResponse response) {
-		// ´ÓsessionÀï»ñµÃĞèÒª¶ÁÕßµÄreaderid,Èç¹ûÃ»ÓĞÔòÌø×ª»Øµ½Ê×Ò³
+		// ä»sessioné‡Œè·å¾—éœ€è¦è¯»è€…çš„readerid,å¦‚æœæ²¡æœ‰åˆ™è·³è½¬å›åˆ°é¦–é¡µ
 		String reader_id = (String) session.getAttribute("readerid");
 		if (reader_id == null) {
-			System.out.println("ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½");
-			String err_msg = "ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½";
+			System.out.println("æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†");
+			String err_msg = "æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†";
 			request.setAttribute("err_msg", err_msg);
 			try {
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
@@ -631,9 +631,9 @@ public class ActionServlet extends HttpServlet {
 			}
 			return;
 		}
-		// Ìø×ªµ½¼ÓÔØÒ³Ãæ
+		// è·³è½¬åˆ°åŠ è½½é¡µé¢
 		String id = request.getParameter("id");
-		// »ñµÃÊéµÄĞÅÏ¢
+		// è·å¾—ä¹¦çš„ä¿¡æ¯
 		BookDao bookDao;
 
 		List<Book> books = null;
@@ -642,27 +642,27 @@ public class ActionServlet extends HttpServlet {
 			System.out.println(id);
 			books = bookDao.QueryByBookIdWithInfo(id);
 			System.out.println(books.get(0).getName());
-			// °ó¶¨Êı¾İ
+			// ç»‘å®šæ•°æ®
 			request.setAttribute("books", books);
-			// ×ª·¢Êı¾İµ½load.jspÒ³Ãæ
+			// è½¬å‘æ•°æ®åˆ°load.jspé¡µé¢
 			request.getRequestDispatcher("bookinfo.jsp").forward(request, response);
 		} catch (Exception e1) {
-			System.out.println("²éÑ¯Í¼ÊéÊ§°Ü");
+			System.out.println("æŸ¥è¯¢å›¾ä¹¦å¤±è´¥");
 			e1.printStackTrace();
 		}
 
 	}
 
 	/**
-	 * @function: ÓÃÓÚ¹ÜÀíÔ±É¾³ıÍ¼ÊéµÄ²Ù×÷
+	 * @function: ç”¨äºç®¡ç†å‘˜åˆ é™¤å›¾ä¹¦çš„æ“ä½œ
 	 * @param request
 	 * @param response
 	 */
 	public void deletebookHandle(HttpServletRequest request, HttpServletResponse response) {
-		// ÅĞ¶ÏÊÇ·ñÒÔ¹ÜÀíÔ±Éí·İµÇÂ½
+		// åˆ¤æ–­æ˜¯å¦ä»¥ç®¡ç†å‘˜èº«ä»½ç™»é™†
 		String adminname = (String) session.getAttribute("adminname");
 		if (adminname == null || "".equals(adminname.trim())) {
-			// Èç¹û¶ÁÕßÃ»µÇÂ½£¬ÄÇÃ´¾ÍÌø×ªµ½¹ÜÀíÔ±µÇÂ½Ò³Ãæ
+			// å¦‚æœè¯»è€…æ²¡ç™»é™†ï¼Œé‚£ä¹ˆå°±è·³è½¬åˆ°ç®¡ç†å‘˜ç™»é™†é¡µé¢
 			try {
 				response.sendRedirect("adminlogin.teg");
 			} catch (IOException e) {
@@ -670,25 +670,25 @@ public class ActionServlet extends HttpServlet {
 			}
 			return;
 		}
-		// Ìø×ªµ½ĞŞ¸ÄÒ³Ãæ
+		// è·³è½¬åˆ°ä¿®æ”¹é¡µé¢
 		String id = request.getParameter("id");
 		Boolean isDelete = false;
 		try {
 			BookDao bookDao = new BookDao();
 			isDelete = bookDao.deleteBookById(id);
 		} catch (SQLException e) {
-			System.out.println("É¾³ıÊ§°Ü£¬ÇëÖØĞÂ³¢ÊÔ£¡");
+			System.out.println("åˆ é™¤å¤±è´¥ï¼Œè¯·é‡æ–°å°è¯•ï¼");
 		}
 		String err_msg = null;
 		String deletesuccess_msg = null;
 		try {
 			if (isDelete) {
-				System.out.println("É¾³ı³É¹¦");
-				deletesuccess_msg = "É¾³ı³É¹¦";
+				System.out.println("åˆ é™¤æˆåŠŸ");
+				deletesuccess_msg = "åˆ é™¤æˆåŠŸ";
 				request.setAttribute("deletesuccess_msg", deletesuccess_msg);
 			} else {
-				System.out.println("É¾³ıÊ§°Ü");
-				err_msg = "É¾³ıÊ§°Ü";
+				System.out.println("åˆ é™¤å¤±è´¥");
+				err_msg = "åˆ é™¤å¤±è´¥";
 				request.setAttribute("err_msg", err_msg);
 			}
 			request.getRequestDispatcher("admindefault.jsp").forward(request, response);
@@ -701,15 +701,15 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:ÓÃÓÚ¹ÜÀíÔ±ĞŞ¸ÄÊé¼®ĞÅÏ¢µÄ²Ù×÷
+	 * @function:ç”¨äºç®¡ç†å‘˜ä¿®æ”¹ä¹¦ç±ä¿¡æ¯çš„æ“ä½œ
 	 * @param request
 	 * @param response
 	 */
 	public void modifybookHandle(HttpServletRequest request, HttpServletResponse response) {
-		// ÅĞ¶ÏÊÇ·ñÒÔ¹ÜÀíÔ±Éí·İµÇÂ½
+		// åˆ¤æ–­æ˜¯å¦ä»¥ç®¡ç†å‘˜èº«ä»½ç™»é™†
 				String adminname = (String) session.getAttribute("adminname");
 				if (adminname == null || "".equals(adminname.trim())) {
-					// Èç¹û¶ÁÕßÃ»µÇÂ½£¬ÄÇÃ´¾ÍÌø×ªµ½¹ÜÀíÔ±µÇÂ½Ò³Ãæ
+					// å¦‚æœè¯»è€…æ²¡ç™»é™†ï¼Œé‚£ä¹ˆå°±è·³è½¬åˆ°ç®¡ç†å‘˜ç™»é™†é¡µé¢
 					try {
 						response.sendRedirect("adminlogin.teg");
 					} catch (IOException e) {
@@ -717,10 +717,10 @@ public class ActionServlet extends HttpServlet {
 					}
 					return;
 				}
-		// Ìø×ªµ½ĞŞ¸ÄÒ³Ãæ
+		// è·³è½¬åˆ°ä¿®æ”¹é¡µé¢
 		String id = request.getParameter("id");
 		if (id == null || "".equals(id.trim())) {
-			// Èç¹ûidÎª¿Õ£¬ËµÃ÷Öµ¾ÍÃ»ÓĞ´«¹ıÀ´
+			// å¦‚æœidä¸ºç©ºï¼Œè¯´æ˜å€¼å°±æ²¡æœ‰ä¼ è¿‡æ¥
 			try {
 				response.sendRedirect("adminlogin.jsp");
 			} catch (IOException e) {
@@ -744,18 +744,18 @@ public class ActionServlet extends HttpServlet {
 		/** test */
 		String[] info = book.getInfo();
 		for (int i = 0; i < info.length; i++) {
-			System.out.println("Êä³öÏà¹ØĞÅÏ¢");
+			System.out.println("è¾“å‡ºç›¸å…³ä¿¡æ¯");
 			System.out.println(info[i]);
 		}
 
-		// ¼ì²â´«Èë²ÎÊıµÄºÏ·¨ĞÔ
+		// æ£€æµ‹ä¼ å…¥å‚æ•°çš„åˆæ³•æ€§
 		boolean isValid = BookCheck.isValidBookMessage(book);
 		if (!isValid) {
-			// Èç¹û²»ºÏ·¨¾ÍÌáÊ¾²¢·µ»Ø
-			System.out.println("²åÈëÊı¾İ²»ºÏ·¨À²");
-			String err_msg = "²åÈëÊı¾İ²»ºÏ·¨£¬ÇëÖØÊÔ£¡";
+			// å¦‚æœä¸åˆæ³•å°±æç¤ºå¹¶è¿”å›
+			System.out.println("æ’å…¥æ•°æ®ä¸åˆæ³•å•¦");
+			String err_msg = "æ’å…¥æ•°æ®ä¸åˆæ³•ï¼Œè¯·é‡è¯•ï¼";
 			try {
-				/* Ò»´Î°ó¶¨Á½¸öÊı¾İ£¬Ò»¸öÊÇ´íÎóĞÅÏ¢£¬Ò»¸öÊÇÍ¼ÊéµÄid */
+				/* ä¸€æ¬¡ç»‘å®šä¸¤ä¸ªæ•°æ®ï¼Œä¸€ä¸ªæ˜¯é”™è¯¯ä¿¡æ¯ï¼Œä¸€ä¸ªæ˜¯å›¾ä¹¦çš„id */
 				request.setAttribute("err_msg", err_msg);
 				request.setAttribute("id", id);
 				request.getRequestDispatcher("loadbook.jsp").forward(request, response);
@@ -773,22 +773,22 @@ public class ActionServlet extends HttpServlet {
 			isUpdate = bookDao.updateById(book);
 			bookDao.close();
 		} catch (SQLException e) {
-			System.out.println("¸üĞÂ³ö´í");
+			System.out.println("æ›´æ–°å‡ºé”™");
 			e.printStackTrace();
 		}
 		if (isUpdate) {
-			System.out.println("¸üĞÂ³É¹¦");
-			updatesuccess_msg = "¸üĞÂ³É¹¦";
+			System.out.println("æ›´æ–°æˆåŠŸ");
+			updatesuccess_msg = "æ›´æ–°æˆåŠŸ";
 			request.setAttribute("updatesuccess_msg", updatesuccess_msg);
 		} else {
-			System.out.println("¸üĞÂÊ§°Ü");
-			err_msg = "¸üĞÂÊ§°Ü";
+			System.out.println("æ›´æ–°å¤±è´¥");
+			err_msg = "æ›´æ–°å¤±è´¥";
 			request.setAttribute("err_msg", err_msg);
 			System.out.println("err_msg" + err_msg);
 
 		}
 
-		// ×ª·¢ĞÅÏ¢µ½ÏÔÊ¾Ò³Ãæ
+		// è½¬å‘ä¿¡æ¯åˆ°æ˜¾ç¤ºé¡µé¢
 		try {
 			request.getRequestDispatcher("admindefault.jsp").forward(request, response);
 
@@ -799,15 +799,15 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @function:¹ÜÀíÔ±²é¿´Êé¼®ÏêÏ¸ĞÅÏ¢µÄ²Ù×÷
+	 * @function:ç®¡ç†å‘˜æŸ¥çœ‹ä¹¦ç±è¯¦ç»†ä¿¡æ¯çš„æ“ä½œ
 	 * @param request
 	 * @param response
 	 */
 	public void loadbookHandle(HttpServletRequest request, HttpServletResponse response) {
-		// ÅĞ¶ÏÊÇ·ñÒÔ¹ÜÀíÔ±Éí·İµÇÂ½
+		// åˆ¤æ–­æ˜¯å¦ä»¥ç®¡ç†å‘˜èº«ä»½ç™»é™†
 		String adminname = (String) session.getAttribute("adminname");
 		if (adminname == null || "".equals(adminname.trim())) {
-			// Èç¹û¶ÁÕßÃ»µÇÂ½£¬ÄÇÃ´¾ÍÌø×ªµ½¹ÜÀíÔ±µÇÂ½Ò³Ãæ
+			// å¦‚æœè¯»è€…æ²¡ç™»é™†ï¼Œé‚£ä¹ˆå°±è·³è½¬åˆ°ç®¡ç†å‘˜ç™»é™†é¡µé¢
 			try {
 				response.sendRedirect("adminlogin.teg");
 			} catch (IOException e) {
@@ -815,28 +815,28 @@ public class ActionServlet extends HttpServlet {
 			}
 			return;
 		}
-		// Ìø×ªµ½¼ÓÔØÒ³Ãæ
+		// è·³è½¬åˆ°åŠ è½½é¡µé¢
 		String id = request.getParameter("id");
-		// »ñµÃÊéµÄĞÅÏ¢
+		// è·å¾—ä¹¦çš„ä¿¡æ¯
 		BookDao bookDao;
 		List<Book> books = null;
 		try {
 			bookDao = new BookDao();
 			books = bookDao.QueryByBookIdWithInfo(id);
-			// °ó¶¨Êı¾İ
+			// ç»‘å®šæ•°æ®
 			request.setAttribute("books", books);
-			// ×ª·¢Êı¾İµ½load.jspÒ³Ãæ
+			// è½¬å‘æ•°æ®åˆ°load.jspé¡µé¢
 			request.getRequestDispatcher("loadbook.jsp").forward(request, response);
 		} catch (Exception e1) {
-			System.out.println("²éÑ¯Í¼ÊéÊ§°Ü");
+			System.out.println("æŸ¥è¯¢å›¾ä¹¦å¤±è´¥");
 			e1.printStackTrace();
 		}
 
 	}
 
 	/**
-	 * @author : ÀîìÏ modified by ³ÂÇ¨¶Ô
-	 * @function : ¶Ô¹ÜÀíÔ±µÇÂ½½á¹û½øĞĞ´¦Àí
+	 * @author : æç…œ modified by é™ˆè¿å¯¹
+	 * @function : å¯¹ç®¡ç†å‘˜ç™»é™†ç»“æœè¿›è¡Œå¤„ç†
 	 * @param request
 	 * @param response
 	 * 
@@ -844,8 +844,8 @@ public class ActionServlet extends HttpServlet {
 	public void adminloginHandle(HttpServletRequest request, HttpServletResponse response) {
 
 		if (session.getAttribute("adminname") != null) {
-			System.out.println("ÄúÒÑµÇÂ½£¬Ìø×ªÖÁÖ÷Ò³Ãæ");
-			String success_msg = "ÄúÒÑµÇÂ½£¬ÒÑÎªÄúÌø×ªÖÁÖ÷Ò³Ãæ";
+			System.out.println("æ‚¨å·²ç™»é™†ï¼Œè·³è½¬è‡³ä¸»é¡µé¢");
+			String success_msg = "æ‚¨å·²ç™»é™†ï¼Œå·²ä¸ºæ‚¨è·³è½¬è‡³ä¸»é¡µé¢";
 			try {
 				request.setAttribute("success_msg", success_msg);
 				request.getRequestDispatcher("admindefault.jsp").forward(request, response);
@@ -859,19 +859,19 @@ public class ActionServlet extends HttpServlet {
 		String number = (String) session.getAttribute("code");
 		String code = request.getParameter("vcode");
 
-		// Èç¹ûÃÜÂëºÍÕË»§¶¼Îª¿Õ£¬¿ÉÄÜÊÇ»¹Ã»ÓĞÊäÈëÈÎºÎÖµ
+		// å¦‚æœå¯†ç å’Œè´¦æˆ·éƒ½ä¸ºç©ºï¼Œå¯èƒ½æ˜¯è¿˜æ²¡æœ‰è¾“å…¥ä»»ä½•å€¼
 		if (nameOrId == null && pwd == null) {
 			try {
-				// Ö±½ÓÌø×ª°É
+				// ç›´æ¥è·³è½¬å§
 				response.sendRedirect("adminlogin.jsp");
 				return;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		// Èç¹ûÃÜÂëºÍÕË»§ÓĞÒ»¸öÎª¿Õ£¬ÄÇÃ´¾Í´íÎóÌáÊ¾
+		// å¦‚æœå¯†ç å’Œè´¦æˆ·æœ‰ä¸€ä¸ªä¸ºç©ºï¼Œé‚£ä¹ˆå°±é”™è¯¯æç¤º
 		if (nameOrId == null || pwd == null) {
-			request.setAttribute("err_msg", "¹ÜÀíÔ±Ãû»òÃÜÂë´íÎó");
+			request.setAttribute("err_msg", "ç®¡ç†å‘˜åæˆ–å¯†ç é”™è¯¯");
 			try {
 				request.getRequestDispatcher("adminlogin.jsp").forward(request, response);
 				return;
@@ -888,17 +888,17 @@ public class ActionServlet extends HttpServlet {
 			}
 
 		}
-		// ²éÑ¯¹ÜÀíÔ±±íµÄĞÕÃûÓëÃÜÂë
+		// æŸ¥è¯¢ç®¡ç†å‘˜è¡¨çš„å§“åä¸å¯†ç 
 		Admin admin = new Admin(nameOrId, nameOrId, pwd);
 		try {
 			AdminDao adminDao = new AdminDao();
 
-			// ÏÈÅĞ¶ÏÊÇ·ñÎª¶ÁÕß
+			// å…ˆåˆ¤æ–­æ˜¯å¦ä¸ºè¯»è€…
 			boolean isAdmin = adminDao.isAdmin(admin);
-			// ÊÇ¶ÁÕß
+			// æ˜¯è¯»è€…
 			if (isAdmin) {
 				// if(number.equals(code.toUpperCase())){
-				if (true) { // ²âÊÔ½×¶ÎÌø¹ıÑéÖ¤Âë
+				if (true) { // æµ‹è¯•é˜¶æ®µè·³è¿‡éªŒè¯ç 
 					boolean isId = adminDao.isRightId(admin);
 					if (isId) {
 						adminDao = new AdminDao();
@@ -908,18 +908,18 @@ public class ActionServlet extends HttpServlet {
 						session.setAttribute("adminname", nameOrId);
 						
 					}
-					// ÖØ¶¨Ïòµ½Ê×Ò³
-					request.setAttribute("success_msg", "»¶Ó­»ØÀ´£¡");
+					// é‡å®šå‘åˆ°é¦–é¡µ
+					request.setAttribute("success_msg", "æ¬¢è¿å›æ¥ï¼");
 					request.getRequestDispatcher("admindefault.jsp").forward(request, response);
 					return;
 				} else {
-					// ÖØ¶¨Ïòµ½Ê×Ò³
-					request.setAttribute("err_msg", "ÑéÖ¤Âë´íÎó");
+					// é‡å®šå‘åˆ°é¦–é¡µ
+					request.setAttribute("err_msg", "éªŒè¯ç é”™è¯¯");
 					request.getRequestDispatcher("adminlogin.jsp").forward(request, response);
 					return;
 				}
 			} else {
-				request.setAttribute("err_msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+				request.setAttribute("err_msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 				request.getRequestDispatcher("adminlogin.jsp").forward(request, response);
 				return;
 			}
@@ -930,7 +930,7 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @author : ÀîìÏ modified by ³ÂÇ¨¶Ô function : ¶ÔÓÃ»§µÇÂ¼½á¹û½øĞĞ´¦Àí
+	 * @author : æç…œ modified by é™ˆè¿å¯¹ function : å¯¹ç”¨æˆ·ç™»å½•ç»“æœè¿›è¡Œå¤„ç†
 	 * @param request
 	 * @param response
 	 * @return
@@ -938,25 +938,25 @@ public class ActionServlet extends HttpServlet {
 	public void readerloginHandle(HttpServletRequest request, HttpServletResponse response) {
 
 		if (session.getAttribute("readername") != null) {
-			// Èç¹û¸Ã¶ÁÕßÒÑ¾­µÇÂ½£¬ÔòÌø×ª
-			System.out.println("ÄúÒÑµÇÂ½£¬½«Ìø×ªÖÁÄúµÄÖ÷Ò³Ãæ");
+			// å¦‚æœè¯¥è¯»è€…å·²ç»ç™»é™†ï¼Œåˆ™è·³è½¬
+			System.out.println("æ‚¨å·²ç™»é™†ï¼Œå°†è·³è½¬è‡³æ‚¨çš„ä¸»é¡µé¢");
 			try {
-				request.setAttribute("success_msg", "ÄúÒÑµÇÂ½£¬½«Ìø×ªÖÁÄúµÄÖ÷Ò³Ãæ");
+				request.setAttribute("success_msg", "æ‚¨å·²ç™»é™†ï¼Œå°†è·³è½¬è‡³æ‚¨çš„ä¸»é¡µé¢");
 				request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 				return;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		// ÅĞ¶Ï¶¯×÷ÊÇ·ñÎªµÇÂ¼
+		// åˆ¤æ–­åŠ¨ä½œæ˜¯å¦ä¸ºç™»å½•
 		String nameOrId = request.getParameter("name");
 		String pwd = request.getParameter("pwd");
 		String number = (String) session.getAttribute("code");
 		String code = request.getParameter("vcode");
 
-		// Èç¹ûÃÜÂëºÍÕË»§ÓĞ¶¼Îª¿Õ£¬¿ÉÄÜÊÇµÚÒ»´Î½øÀ´
+		// å¦‚æœå¯†ç å’Œè´¦æˆ·æœ‰éƒ½ä¸ºç©ºï¼Œå¯èƒ½æ˜¯ç¬¬ä¸€æ¬¡è¿›æ¥
 		if (nameOrId == null && pwd == null) {
-			// Ö±½ÓÌø×ª°É
+			// ç›´æ¥è·³è½¬å§
 			try {
 				response.sendRedirect("readerlogin.jsp");
 				return;
@@ -964,9 +964,9 @@ public class ActionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		// Èç¹ûÃÜÂëºÍÕË»§ÓĞÒ»¸öÎª¿Õ£¬ÄÇÃ´¾Í´íÎóÌáÊ¾
+		// å¦‚æœå¯†ç å’Œè´¦æˆ·æœ‰ä¸€ä¸ªä¸ºç©ºï¼Œé‚£ä¹ˆå°±é”™è¯¯æç¤º
 		if (nameOrId == null || pwd == null) {
-			request.setAttribute("err_msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+			request.setAttribute("err_msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 			try {
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
 			} catch (ServletException e) {
@@ -976,40 +976,40 @@ public class ActionServlet extends HttpServlet {
 			}
 			return;
 		}
-		// ²éÑ¯¶ÁÕß±íµÄĞÕÃûÓëÃÜÂë
+		// æŸ¥è¯¢è¯»è€…è¡¨çš„å§“åä¸å¯†ç 
 		Reader reader = new Reader(nameOrId, nameOrId, pwd);
 		try {
 			ReaderDao readerDao = new ReaderDao();
-			// ÅĞ¶ÏÊÇ·ñÎª¶ÁÕß
+			// åˆ¤æ–­æ˜¯å¦ä¸ºè¯»è€…
 			boolean isReader = readerDao.isReader(reader);
-			// ÊÇ¶ÁÕß²¢ÇÒÑéÖ¤ÂëÕıÈ·ÔòµÇÂ¼³É¹¦
+			// æ˜¯è¯»è€…å¹¶ä¸”éªŒè¯ç æ­£ç¡®åˆ™ç™»å½•æˆåŠŸ
 			if (isReader) {
 				// if(number.equals(code.toUpperCase())){
-				if (true) { // ²âÊÔ½×¶ÎÌø¹ıÑéÖ¤Âë
+				if (true) { // æµ‹è¯•é˜¶æ®µè·³è¿‡éªŒè¯ç 
 					boolean isId = readerDao.isRightId(reader);
 					readerDao = new ReaderDao();
 					if (isId) {
 						String readername = readerDao.getNameById(nameOrId);
-						// ±£´æÓÃ»§idºÍÃû×Öµ½session±äÁ¿
+						// ä¿å­˜ç”¨æˆ·idå’Œåå­—åˆ°sessionå˜é‡
 						session.setAttribute("readername", readername);
 						session.setAttribute("readerid", nameOrId);
 					} else {
 						String readerid = readerDao.getIdByName(nameOrId);
-						// ±£´æÓÃ»§idºÍÃû×Öµ½session±äÁ¿
+						// ä¿å­˜ç”¨æˆ·idå’Œåå­—åˆ°sessionå˜é‡
 						session.setAttribute("readername", nameOrId);
 						session.setAttribute("readerid", readerid);
 					}
-					// ÖØ¶¨Ïòµ½Ê×Ò³
-					request.setAttribute("success_msg", "µÇÂ½³É¹¦£¬»¶Ó­»ØÀ´");
+					// é‡å®šå‘åˆ°é¦–é¡µ
+					request.setAttribute("success_msg", "ç™»é™†æˆåŠŸï¼Œæ¬¢è¿å›æ¥");
 					request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 					return;
 				} else {
-					request.setAttribute("err_msg", "ÑéÖ¤Âë´íÎó");
+					request.setAttribute("err_msg", "éªŒè¯ç é”™è¯¯");
 					request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
 					return;
 				}
 			} else {
-				request.setAttribute("err_msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+				request.setAttribute("err_msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
 				return;
 			}
@@ -1019,17 +1019,17 @@ public class ActionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @author : ÀîìÏ modified by ³ÂÇ¨¶Ô function : ¶ÔÍË³ö½øĞĞ´¦Àí
+	 * @author : æç…œ modified by é™ˆè¿å¯¹ function : å¯¹é€€å‡ºè¿›è¡Œå¤„ç†
 	 * @param request
 	 * @param response
 	 * @return
 	 * @deprecated
 	 */
 	public void exitHanlde(HttpServletResponse response) {
-		// ÕâÀïÓÃÓÚÏú»Ùsession,×¢ÒâÏÈÌø×ªµ½µÇÂ½½çÃæÔÙÏú»Ù£¬·ñÔò»áÉú³ÉĞÂµÄsession¡£
+		// è¿™é‡Œç”¨äºé”€æ¯session,æ³¨æ„å…ˆè·³è½¬åˆ°ç™»é™†ç•Œé¢å†é”€æ¯ï¼Œå¦åˆ™ä¼šç”Ÿæˆæ–°çš„sessionã€‚
 		try {
 			response.sendRedirect("default.jsp");
-			// session Ê§Ğ§
+			// session å¤±æ•ˆ
 			session.invalidate();
 			return;
 		} catch (Exception e) {
@@ -1037,16 +1037,16 @@ public class ActionServlet extends HttpServlet {
 		}
 	}
 	/**
-	 * @author :³ÂÇ¨¶Ô function : ¶Ô¹ÜÀíÔ±ÍË³ö½øĞĞ´¦Àí
+	 * @author :é™ˆè¿å¯¹ function : å¯¹ç®¡ç†å‘˜é€€å‡ºè¿›è¡Œå¤„ç†
 	 * @param request
 	 * @param response
 	 * @return
 	 */
 	public void adminexitHanlde(HttpServletResponse response) {
-		// ÕâÀïÓÃÓÚÏú»Ùsession,×¢ÒâÏÈÌø×ªµ½µÇÂ½½çÃæÔÙÏú»Ù£¬·ñÔò»áÉú³ÉĞÂµÄsession¡£
+		// è¿™é‡Œç”¨äºé”€æ¯session,æ³¨æ„å…ˆè·³è½¬åˆ°ç™»é™†ç•Œé¢å†é”€æ¯ï¼Œå¦åˆ™ä¼šç”Ÿæˆæ–°çš„sessionã€‚
 		try {
 			response.sendRedirect("default.jsp");
-			// ¹ÜÀíÔ±session Ê§Ğ§
+			// ç®¡ç†å‘˜session å¤±æ•ˆ
 			session.removeAttribute("adminid");
 			session.removeAttribute("adminname");
 			return;
@@ -1055,16 +1055,16 @@ public class ActionServlet extends HttpServlet {
 		}
 	}
 	/**
-	 * @author :³ÂÇ¨¶Ô function : ¶Ô¶ÁÕßÍË³ö½øĞĞ´¦Àí
+	 * @author :é™ˆè¿å¯¹ function : å¯¹è¯»è€…é€€å‡ºè¿›è¡Œå¤„ç†
 	 * @param request
 	 * @param response
 	 * @return
 	 */
 	public void readerexitHanlde(HttpServletResponse response) {
-		// ÕâÀïÓÃÓÚÏú»Ùsession,×¢ÒâÏÈÌø×ªµ½µÇÂ½½çÃæÔÙÏú»Ù£¬·ñÔò»áÉú³ÉĞÂµÄsession¡£
+		// è¿™é‡Œç”¨äºé”€æ¯session,æ³¨æ„å…ˆè·³è½¬åˆ°ç™»é™†ç•Œé¢å†é”€æ¯ï¼Œå¦åˆ™ä¼šç”Ÿæˆæ–°çš„sessionã€‚
 		try {
 			response.sendRedirect("default.jsp");
-			// ¹ÜÀíÔ±session Ê§Ğ§
+			// ç®¡ç†å‘˜session å¤±æ•ˆ
 			session.removeAttribute("readerid");
 			session.removeAttribute("readername");
 			return;
@@ -1073,19 +1073,19 @@ public class ActionServlet extends HttpServlet {
 		}
 	}
 	/**
-	 * function : ¶Ô¹ÜÀíÔ±·¢³öµÄÇëÇó½øĞĞ´¦Àí£¬Èç¹ûÊÇ²éÔÄÊé¼®¾Í·µ»Ø½á¹û¡£
+	 * function : å¯¹ç®¡ç†å‘˜å‘å‡ºçš„è¯·æ±‚è¿›è¡Œå¤„ç†ï¼Œå¦‚æœæ˜¯æŸ¥é˜…ä¹¦ç±å°±è¿”å›ç»“æœã€‚
 	 * 
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @param request
 	 * @param response
 	 * @return
 	 */
 	public void adminsearchHandle(HttpServletRequest request, HttpServletResponse response) {
 
-		// ÅĞ¶ÏÊÇ·ñÒÔ¹ÜÀíÔ±Éí·İµÇÂ½
+		// åˆ¤æ–­æ˜¯å¦ä»¥ç®¡ç†å‘˜èº«ä»½ç™»é™†
 		String adminname = (String) session.getAttribute("adminname");
 		if (adminname == null || "".equals(adminname.trim())) {
-			// Èç¹û¶ÁÕßÃ»µÇÂ½£¬ÄÇÃ´¾ÍÌø×ªµ½¹ÜÀíÔ±µÇÂ½Ò³Ãæ
+			// å¦‚æœè¯»è€…æ²¡ç™»é™†ï¼Œé‚£ä¹ˆå°±è·³è½¬åˆ°ç®¡ç†å‘˜ç™»é™†é¡µé¢
 			try {
 				response.sendRedirect("adminlogin.teg");
 			} catch (IOException e) {
@@ -1096,42 +1096,42 @@ public class ActionServlet extends HttpServlet {
 
 		String value = request.getParameter("value");
 		String searchtype = request.getParameter("searchtype");
-		// ´Órequest»ñÈ¡Êı¾İ
+		// ä»requestè·å–æ•°æ®
 		String currentpage = request.getParameter("currentpage");
 
 		if (value == null || "".equals(value.trim())) {
-			// Èç¹ûÃ»ÓĞvalue´«¹ıÀ´£¬ÓĞ¿ÉÄÜÊÇ·ÖÒ³ÖĞÑ¡ÔñÒ³Ãæ
+			// å¦‚æœæ²¡æœ‰valueä¼ è¿‡æ¥ï¼Œæœ‰å¯èƒ½æ˜¯åˆ†é¡µä¸­é€‰æ‹©é¡µé¢
 			if (currentpage == null || "".equals(currentpage.trim())) {
-				// Èç¹ûÃ»ÓĞvalue´«¹ıÀ´£¬Ò²Ã»ÓĞµ±Ç°Ò³Ãæ´«¹ıÀ´£¬ÄÇÃ´ÊÇ²éÑ¯ÄÚÈİÎª¿Õ
+				// å¦‚æœæ²¡æœ‰valueä¼ è¿‡æ¥ï¼Œä¹Ÿæ²¡æœ‰å½“å‰é¡µé¢ä¼ è¿‡æ¥ï¼Œé‚£ä¹ˆæ˜¯æŸ¥è¯¢å†…å®¹ä¸ºç©º
 				try {
-					request.setAttribute("err_msg", "²éÑ¯ÄÚÈİ²»ÄÜÎª¿Õ");
+					request.setAttribute("err_msg", "æŸ¥è¯¢å†…å®¹ä¸èƒ½ä¸ºç©º");
 					request.getRequestDispatcher("admindefault.jsp").forward(request, response);
 					return;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
-				// Èç¹ûÖ»ÊÇÃ»ÓĞvalue,ÄÇÒ»¶¨ÊÇ·ÖÒ³²éÑ¯ÖĞ»»ÁËÒ»Ò³£¬ÄÇÃ´ÖØĞÂÈ¡³övalue
+				// å¦‚æœåªæ˜¯æ²¡æœ‰value,é‚£ä¸€å®šæ˜¯åˆ†é¡µæŸ¥è¯¢ä¸­æ¢äº†ä¸€é¡µï¼Œé‚£ä¹ˆé‡æ–°å–å‡ºvalue
 				value = (String) session.getAttribute("value");
 			}
 		}
-		// startPage = 0ºÍ currentPage =1 ÊÇÄ¬ÈÏµÄÉèÖÃ¡£
-		// startPage ´ÓµÚ¼¸ĞĞÊı¾İ¿ªÊ¼£¬currentPage ĞĞÊı
+		// startPage = 0å’Œ currentPage =1 æ˜¯é»˜è®¤çš„è®¾ç½®ã€‚
+		// startPage ä»ç¬¬å‡ è¡Œæ•°æ®å¼€å§‹ï¼ŒcurrentPage è¡Œæ•°
 		int startPage = 0;
 		int currentPage = 1;
 		int resultRows = 0;
-		int pageSize = 3;// pageSizeÊÇ¸ö¶¨Öµ£¬×Ô¼ºÉèÖÃ
+		int pageSize = 3;// pageSizeæ˜¯ä¸ªå®šå€¼ï¼Œè‡ªå·±è®¾ç½®
 
 		if (currentpage != null && !"".equals(currentpage.trim())) {
-			// Èç¹ûcurrentpageÀïÃæ²»Îª¿Õ£¬ÄÇÃ´»ñÈ¡ÆäÖĞµÄÖµ
+			// å¦‚æœcurrentpageé‡Œé¢ä¸ä¸ºç©ºï¼Œé‚£ä¹ˆè·å–å…¶ä¸­çš„å€¼
 			currentPage = Integer.parseInt(currentpage);
 		} else {
-			// Èç¹ûcurrentpage Îª¿Õ£¬¾Í´ÓsessionÖĞÈ¡µÃ±äÁ¿Öµ
+			// å¦‚æœcurrentpage ä¸ºç©ºï¼Œå°±ä»sessionä¸­å–å¾—å˜é‡å€¼
 			if (session.getAttribute("currentPage") != null) {
 				currentPage = (Integer) session.getAttribute("currentPage");
 			}
 		}
-		// startPage ´ÓµÚ¼¸ĞĞ¿ªÊ¼
+		// startPage ä»ç¬¬å‡ è¡Œå¼€å§‹
 		startPage = (currentPage - 1) * pageSize;
 		BookDao bookDao = null;
 		List<Book> books = null;
@@ -1141,50 +1141,50 @@ public class ActionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (searchtype == null || "".equals(searchtype.trim())) {
-			// Èç¹û´«ÈëÊı¾İÎª¿Õ£¬ÄÇÃ´¾Í´ÓsessionÖĞ»ñÈ¡
+			// å¦‚æœä¼ å…¥æ•°æ®ä¸ºç©ºï¼Œé‚£ä¹ˆå°±ä»sessionä¸­è·å–
 			searchtype = (String) session.getAttribute("searchtype");
 		}
 		try {
 
 			books = bookDao.QueryAndPaginationWithShortIinfo(searchtype, value, startPage, pageSize);
-			// »ñµÃ½á¹û¼¯µÄÁĞÊı
+			// è·å¾—ç»“æœé›†çš„åˆ—æ•°
 			resultRows = bookDao.getQueryResultRows(searchtype, value);
-			// ±£´ævalueµ½session
+			// ä¿å­˜valueåˆ°session
 			session.setAttribute("value", value);
-			// ±£´æ²éÑ¯ÀàĞÍµ½session
+			// ä¿å­˜æŸ¥è¯¢ç±»å‹åˆ°session
 			session.setAttribute("searchtype", searchtype);
-			// pages »ñµÃÏÔÊ¾ÔÚÒ²Ò³ÃæµÄ×ÜÒ³Êı
+			// pages è·å¾—æ˜¾ç¤ºåœ¨ä¹Ÿé¡µé¢çš„æ€»é¡µæ•°
 			int pages = resultRows / pageSize + (resultRows % pageSize == 0 ? 0 : 1);
 			
 
-			// °ó¶¨Êı¾İ
+			// ç»‘å®šæ•°æ®
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("pages", pages);
 			request.setAttribute("books", books);
-			// arr ÊÇ¸öĞéÄâµÄlist,ÀïÃæ²¢Ã»ÓĞ¾ßÌåµÄÖµ
+			// arr æ˜¯ä¸ªè™šæ‹Ÿçš„list,é‡Œé¢å¹¶æ²¡æœ‰å…·ä½“çš„å€¼
 			request.setAttribute("arr", new List[pages]);
 			request.getRequestDispatcher("admindefault.jsp").forward(request, response);
 			return;
 		} catch (Exception e) {
-			System.out.println("²éÑ¯Ê§°Ü");
+			System.out.println("æŸ¥è¯¢å¤±è´¥");
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * function : ¶ÔÓÃ»§£¨¶ÁÕß£©·¢³öµÄÇëÇó½øĞĞ´¦Àí£¬Èç¹ûÊÇ²éÔÄÊé¼®¾Í·µ»Ø½á¹û¡£
+	 * function : å¯¹ç”¨æˆ·ï¼ˆè¯»è€…ï¼‰å‘å‡ºçš„è¯·æ±‚è¿›è¡Œå¤„ç†ï¼Œå¦‚æœæ˜¯æŸ¥é˜…ä¹¦ç±å°±è¿”å›ç»“æœã€‚
 	 * 
-	 * @author ³ÂÇ¨¶Ô
+	 * @author é™ˆè¿å¯¹
 	 * @param request
 	 * @param response
 	 * @return
 	 */
 	public void readersearchHandle(HttpServletRequest request, HttpServletResponse response) {
-		// 1.´ÓsessionÀï»ñµÃĞèÒª¶ÁÕßµÄreaderid,Èç¹ûÃ»ÓĞÔòÌø×ª»Øµ½Ê×Ò³
+		// 1.ä»sessioné‡Œè·å¾—éœ€è¦è¯»è€…çš„readerid,å¦‚æœæ²¡æœ‰åˆ™è·³è½¬å›åˆ°é¦–é¡µ
 		String reader_id = (String) session.getAttribute("readerid");
 		if (reader_id == null) {
-			System.out.println("ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½");
-			String err_msg = "ÄúµÄµÇÂ½Éí·İ¹ıÆÚ»òÕßÄúÃ»ÓĞµÇÂ½£¬ÇëÖØĞÂµÇÂ½";
+			System.out.println("æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†");
+			String err_msg = "æ‚¨çš„ç™»é™†èº«ä»½è¿‡æœŸæˆ–è€…æ‚¨æ²¡æœ‰ç™»é™†ï¼Œè¯·é‡æ–°ç™»é™†";
 			request.setAttribute("err_msg", err_msg);
 			try {
 				request.getRequestDispatcher("readerlogin.jsp").forward(request, response);
@@ -1195,37 +1195,37 @@ public class ActionServlet extends HttpServlet {
 		}
 		String value = request.getParameter("value");
 		String searchtype = request.getParameter("searchtype");
-		// ´Órequest»ñÈ¡Êı¾İ
+		// ä»requestè·å–æ•°æ®
 		String currentpage = request.getParameter("currentpage");
 
 		if (value == null || "".equals(value.trim())) {
-			// Èç¹ûÃ»ÓĞvalue´«¹ıÀ´£¬ÓĞ¿ÉÄÜÊÇ·ÖÒ³ÖĞÑ¡ÔñÒ³Ãæ
+			// å¦‚æœæ²¡æœ‰valueä¼ è¿‡æ¥ï¼Œæœ‰å¯èƒ½æ˜¯åˆ†é¡µä¸­é€‰æ‹©é¡µé¢
 			if (currentpage == null || "".equals(currentpage.trim())) {
-				// Èç¹ûÃ»ÓĞvalue´«¹ıÀ´£¬Ò²Ã»ÓĞµ±Ç°Ò³Ãæ´«¹ıÀ´£¬ÄÇÃ´ÊÇ²éÑ¯ÄÚÈİÎª¿Õ
+				// å¦‚æœæ²¡æœ‰valueä¼ è¿‡æ¥ï¼Œä¹Ÿæ²¡æœ‰å½“å‰é¡µé¢ä¼ è¿‡æ¥ï¼Œé‚£ä¹ˆæ˜¯æŸ¥è¯¢å†…å®¹ä¸ºç©º
 				try {
-					request.setAttribute("err_msg", "²éÑ¯ÄÚÈİ²»ÄÜÎª¿Õ");
+					request.setAttribute("err_msg", "æŸ¥è¯¢å†…å®¹ä¸èƒ½ä¸ºç©º");
 					request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 					return;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
-				// Èç¹ûÖ»ÊÇÃ»ÓĞvalue,ÄÇÒ»¶¨ÊÇ·ÖÒ³²éÑ¯ÖĞ»»ÁËÒ»Ò³£¬ÄÇÃ´ÖØĞÂÈ¡³övalue
+				// å¦‚æœåªæ˜¯æ²¡æœ‰value,é‚£ä¸€å®šæ˜¯åˆ†é¡µæŸ¥è¯¢ä¸­æ¢äº†ä¸€é¡µï¼Œé‚£ä¹ˆé‡æ–°å–å‡ºvalue
 				value = (String) session.getAttribute("value");
 			}
 		}
-		// startPage = 0ºÍ currentPage =1 ÊÇÄ¬ÈÏµÄÉèÖÃ¡£
-		// startPage ´ÓµÚ¼¸ĞĞÊı¾İ¿ªÊ¼£¬currentPage ĞĞÊı
+		// startPage = 0å’Œ currentPage =1 æ˜¯é»˜è®¤çš„è®¾ç½®ã€‚
+		// startPage ä»ç¬¬å‡ è¡Œæ•°æ®å¼€å§‹ï¼ŒcurrentPage è¡Œæ•°
 		int startPage = 0;
 		int currentPage = 1;
 		int resultRows = 0;
-		int pageSize = 3;// pageSizeÊÇ¸ö¶¨Öµ£¬×Ô¼ºÉèÖÃ
+		int pageSize = 3;// pageSizeæ˜¯ä¸ªå®šå€¼ï¼Œè‡ªå·±è®¾ç½®
 
 		if (currentpage != null && !"".equals(currentpage.trim())) {
-			// Èç¹ûcurrentpageÀïÃæ²»Îª¿Õ£¬ÄÇÃ´»ñÈ¡ÆäÖĞµÄÖµ
+			// å¦‚æœcurrentpageé‡Œé¢ä¸ä¸ºç©ºï¼Œé‚£ä¹ˆè·å–å…¶ä¸­çš„å€¼
 			currentPage = Integer.parseInt(currentpage);
 		}
-		// startPage ´ÓµÚ¼¸ĞĞ¿ªÊ¼
+		// startPage ä»ç¬¬å‡ è¡Œå¼€å§‹
 		startPage = (currentPage - 1) * pageSize;
 		BookDao bookDao = null;
 		List<Book> books = null;
@@ -1235,35 +1235,35 @@ public class ActionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (searchtype == null || "".equals(searchtype.trim())) {
-			// Èç¹û´«ÈëÊı¾İÎª¿Õ£¬ÄÇÃ´¾Í´ÓsessionÖĞ»ñÈ¡
+			// å¦‚æœä¼ å…¥æ•°æ®ä¸ºç©ºï¼Œé‚£ä¹ˆå°±ä»sessionä¸­è·å–
 			searchtype = (String) session.getAttribute("readersearchtype");
 		}
 		try {
 
 			books = bookDao.QueryAndPagination(searchtype, value, startPage, pageSize);
-			// »ñµÃ½á¹û¼¯µÄÁĞÊı
+			// è·å¾—ç»“æœé›†çš„åˆ—æ•°
 			resultRows = bookDao.getQueryResultRows(searchtype, value);
-			// ±£´ævalueµ½session
+			// ä¿å­˜valueåˆ°session
 			session.setAttribute("value", value);
-			// ±£´æ²éÑ¯ÀàĞÍµ½session
+			// ä¿å­˜æŸ¥è¯¢ç±»å‹åˆ°session
 			session.setAttribute("readersearchtype", searchtype);
-			// pages »ñµÃÏÔÊ¾ÔÚÒ²Ò³ÃæµÄ×ÜÒ³Êı
+			// pages è·å¾—æ˜¾ç¤ºåœ¨ä¹Ÿé¡µé¢çš„æ€»é¡µæ•°
 			int pages = resultRows / pageSize + (resultRows % pageSize == 0 ? 0 : 1);
 
 			if (books.size() == 0) {
-				request.setAttribute("emptyresult", "²éÑ¯½á¹ûÎª¿Õ");
+				request.setAttribute("emptyresult", "æŸ¥è¯¢ç»“æœä¸ºç©º");
 			} else {
-				// ½á¹û²»Îª¿Õ£¬°ó¶¨Êı¾İ
+				// ç»“æœä¸ä¸ºç©ºï¼Œç»‘å®šæ•°æ®
 				request.setAttribute("currentPage", currentPage);
 				request.setAttribute("pages", pages);
 				request.setAttribute("books", books);
-				// arr ÊÇ¸öĞéÄâµÄlist,ÀïÃæ²¢Ã»ÓĞ¾ßÌåµÄÖµ
+				// arr æ˜¯ä¸ªè™šæ‹Ÿçš„list,é‡Œé¢å¹¶æ²¡æœ‰å…·ä½“çš„å€¼
 				request.setAttribute("arr", new List[pages]);
 			}
 			request.getRequestDispatcher("readerdefault.jsp").forward(request, response);
 			return;
 		} catch (Exception e) {
-			System.out.println("²éÑ¯Ê§°Ü");
+			System.out.println("æŸ¥è¯¢å¤±è´¥");
 			e.printStackTrace();
 		}
 	}
