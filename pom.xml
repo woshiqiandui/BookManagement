@@ -6,17 +6,30 @@
   <packaging>war</packaging>
   
 <dependencies>
- 
+
+    <!-- tomcat 依赖包 -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>jasper</artifactId>
+        <version>6.0.32</version>
+    </dependency>
+
+    <dependency>
+   <groupId>mysql</groupId>
+   <artifactId>mysql-connector-java</artifactId>
+   <version>5.1.8</version>
+   </dependency>
   	<dependency>
-  <groupId>mysql</groupId>
-  <artifactId>mysql-connector-java</artifactId>
-  <version>5.1.8</version>
-</dependency>
-  	<dependency>
-  <groupId>commons-dbcp</groupId>
-  <artifactId>commons-dbcp</artifactId>
-  <version>1.2.2</version>
-</dependency>
+    <groupId>commons-dbcp</groupId>
+    <artifactId>commons-dbcp</artifactId>
+    <version>1.2.2</version>
+   </dependency>
 <dependency>
   <groupId>commons-collections</groupId>
   <artifactId>commons-collections</artifactId>
